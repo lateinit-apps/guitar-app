@@ -1,6 +1,6 @@
 # Guitar app
 
-Upcoming guitar app built with Flask/SQLAlchemy, a bit of frontend (under desicion) and with a pinch
+Upcoming guitar app built with Flask/SQLAlchemy, a bit of frontend (under decision) and with a pinch
 of love.
 
 ## Development
