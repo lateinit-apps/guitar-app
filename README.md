@@ -14,3 +14,17 @@ an access into virtual env. Run `deactivate` to exit from the environment.
 All required python modules are listed in `requirements.txt`. A `cfg.py` is comprised of
 configuration classes definitions. An example of launching the application:
 `python app.py config.ProductionConfig`.
+
+## Our team/in cast
+
+### Artem Bondar aka "Keter Curtis"
+
+<img src="docs/images/keter&#32;curtis.jpg" width="33%">
+
+### Yaroslav Bondarev aka "Evil Yarek"
+
+<img src="docs/images/evil&#32;yarek.jpg" width="33%">
+
+### Konstantin Kukushkin aka "Kost Metallist"
+
+<img src="docs/images/kost&#32;metallist.jpg" width="33%"> 
