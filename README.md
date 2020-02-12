@@ -3,6 +3,10 @@
 Upcoming guitar app built with Flask/SQLAlchemy, a bit of frontend (under decision) and with a pinch
 of love.
 
+## Plan
+
+Provide a SaaS containing of web site and mobile app (probably), all powered by AWS.
+
 ## Development
 
 The project is intended to be built inside the Python virtual environment. For that, use
