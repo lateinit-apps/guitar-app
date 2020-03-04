@@ -6,6 +6,8 @@ of love.
 ## Plan
 
 Provide a SaaS containing of web site and mobile app (probably), all powered by AWS.
+You can see full list of planned features in [PRD](docs/PRD.md) and list of planned
+techologies [here](docs/Tech%20Specs.md).
 
 ## Development
 
