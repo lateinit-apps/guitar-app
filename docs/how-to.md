@@ -1,4 +1,8 @@
-##### How to use pipenv driven virtual environment
+# How to
+
+Will contain list of how to's.
+
+## How to use pipenv driven virtual environment
 
 - Install pipenv utility:
   - *sudo apt install pipenv* (linux)
@@ -7,7 +11,7 @@
 - To install new packages into env use *pipenv install <package_name>*
 - Then execute command *pipenv shell* to enter virtual environment
 
-##### How to run application
+## How to run application
 
 - Enter virtual environment
 - Define FLASK_APP env variable (FLASK_APP=guitar_app.py) TODO: make this predefined

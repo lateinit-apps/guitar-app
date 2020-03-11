@@ -1,7 +1,0 @@
-- Corporative mail service
-- Automate PR & commit builds
-- CI/CD
-- Terraform
-- Docker
-- REST API for bots
-- Telegram bot/VK bot/Discord bot
