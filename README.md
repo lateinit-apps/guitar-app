@@ -13,7 +13,8 @@ techologies [here](docs/Tech%20Specs.md).
 
 The project is intended to be built inside the Python virtual environment. For that, use
 `python -m venv venv` in the root of the project. Executing `source venv/bin/activate` will provide
-an access into virtual env. Run `deactivate` to exit from the environment.
+an access into virtual env. Run `deactivate` to exit from the environment. Also, consider viewing
+this [page](docs/how-to.md) for additional information.
 
 ## Launching application
 
