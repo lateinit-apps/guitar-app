@@ -42,3 +42,9 @@ configuration classes definitions. An example of launching the application:
 - Backend Developer/Database Developer & Administrator/DevOps Engineer/~~Wishmaster~~ Docker Master
 
 <img src="docs/images/kost&#32;metallist.jpg" width="33%"> 
+
+### Valentin Alexandrov aka "Nagibator Lalok"
+
+- Frontend Developer/Machine Learning Engineer/~~Outsorce~~ Anonymous (?) Data Scientist
+
+<img src="docs/images/nagibator&#32;lalok.jpg" width="33%"> 
