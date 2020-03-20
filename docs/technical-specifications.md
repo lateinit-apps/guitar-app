@@ -5,11 +5,14 @@
 - Flask + SQLAlchemy for backend
 - Pure JS/CSS/HTML for frontend
 - AWS for hosting
+- Automate PR & commit builds
+- Unit testing
+- Code coverage
 
 ## The things that we are going to implement (or not)
 
+- React for frontend
 - CI/CD
-- Automate PR & commit builds
 - Docker
 - Terraform
 - Corporative mail service
