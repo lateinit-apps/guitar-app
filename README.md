@@ -28,23 +28,23 @@ configuration classes definitions. An example of launching the application:
 
 - Project Manager/DevOps Engineer/Full Stack Developer/Software Architect (wannabe)/~~Secretary~~
 
-<img src="docs/images/keter&#32;curtis.jpg" width="33%">
+<img src="docs/images/keter-curtis.jpg" width="33%">
 
 ### Yaroslav Bondarev aka "Evil Yarek"
 
 - Project Initiator/Full Stack Developer/Python ~~guru~~ Team Hive Mind/Team Spirit Holder &
   Spiritual Mastermind
 
-<img src="docs/images/evil&#32;yarek.jpg" width="33%">
+<img src="docs/images/evil-yarek.jpg" width="33%">
 
 ### Konstantin Kukushkin aka "Kost Metallist"
 
 - Backend Developer/Database Developer & Administrator/DevOps Engineer/~~Wishmaster~~ Docker Master
 
-<img src="docs/images/kost&#32;metallist.jpg" width="33%"> 
+<img src="docs/images/kost-metallist.jpg" width="33%"> 
 
 ### Valentin Alexandrov aka "Nagibator Lalok"
 
 - Frontend Developer/Machine Learning Engineer/~~Outsorce~~ Anonymous (?) Data Scientist
 
-<img src="docs/images/nagibator&#32;lalok.jpg" width="33%"> 
+<img src="docs/images/nagibator-lalok.jpg" width="33%"> 
