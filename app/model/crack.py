@@ -33,3 +33,4 @@ if __name__ == "__main__":
                  f"{db_password}@{db_host}:{db_port}/{db_name}"
 
     engine = create_engine(db_url)
+    Base.metadata.create_all(engine)
