@@ -17,13 +17,13 @@ class Artist(Base):
 
 
 if __name__ == "__main__":
-    db_dialect = os.environ.get("DB_DIALECT")
-    db_driver = os.environ.get("DB_DRIVER")
-    db_username = os.environ.get("DB_USERNAME")
-    db_password = os.environ.get("DB_PASSWORD")
-    db_host = os.environ.get("DB_HOST")
-    db_port = os.environ.get("DB_PORT")
-    db_name = os.environ.get("DB_NAME")
+    db_dialect = os.getenv("DB_DIALECT")
+    db_driver = os.getenv("DB_DRIVER")
+    db_username = os.getenv("DB_USERNAME")
+    db_password = os.getenv("DB_PASSWORD")
+    db_host = os.getenv("DB_HOST")
+    db_port = os.getenv("DB_PORT")
+    db_name = os.getenv("DB_NAME")
 
     if db_driver:
         db_url = f"{db_dialect}+{db_driver}://{db_username}:" + \
