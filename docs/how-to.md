@@ -19,7 +19,7 @@ Will contain list of how to's.
 - Then you will see debug info in your console and url (default: `localhost:5000`)
 - Just open url and you're the man
 
-## Escaping virtual environment
+## How to escape from virtual environment
 
 - Execute `deactivate`
 - To restore exactly the same state as before entering the virtual env, you may also need to kill current terminal session (i.e. ^D or ^Z for different shells) cause pipenv may create a subsession while providing an access to the virtual env
