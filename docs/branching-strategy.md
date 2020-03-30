@@ -3,6 +3,11 @@
 Strict GitHub Flow is a bit of overkill for us, so to keep things quite simple and flexible, we will
 use a cut and modified version of [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/).
 
+**tl; dr version**:
+
+1. Implementing new independent functionality? - Create new branch
+2. Working on existing components? - Commit directly to *develop* branch
+
 ## Git Flow cut summary
 
 You have two branches that always exist, *master* and *develop*:
