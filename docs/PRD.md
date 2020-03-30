@@ -6,12 +6,12 @@ ASAP we got the MVP - we go live immediately and start to deploy our platform. I
 dev this stage is called open beta. After reaching this stage we can show our platfrom to close
 acquaintances and relatives.
 
-- database with songs with tabs
+- empty database for storing all data that we will need on this stage
 - search by release names and artists names/albums/year/genre
 - download tabs in ASCII .txt (our own format)
 - sorting by release names and artists names
 
-*Note: by release here are considered Release category from our databse, look
+*Note: by release here are considered release category from our databse, look
 [here](db-schema-explanatory.md) for explanation.*
 
 ## Release version
@@ -21,9 +21,7 @@ reaching this stage at least we are encouraged to share our service via the soci
 have.
 
 - sorting by release year/genre name/release type/album kind
-- users' account table in database
-- authentication
-- account recovery
+- login/password authentication
 - store custom songs lists
 - store custom sheets/tabs lists
 - static rating system statistics (view/download/searched/indexed times)
@@ -31,6 +29,7 @@ have.
 - tab editor + editing chain
 - tab creator + creation chain
 - dark/lite themes
+- somehow populated database
 
 ## Post-release suggestions
 
@@ -41,6 +40,8 @@ we can consider starting an advertising company to engage a lot of real users to
   - print tabs to PDF
   - playing of songs
   - difficulty of song
+  - email authentication
+  - account recovery service
   - SSO authentication
   - share songs/sheets/tabs via social network
   - share songs/sheets/tabs or even lists to another account
