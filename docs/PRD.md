@@ -11,7 +11,7 @@ acquaintances and relatives.
 - download tabs in ASCII .txt (our own format)
 - sorting by release names and artists names
 
-*Note: by release here are considered release category from our databse, look
+*Note: by release here are considered release category from our database, look
 [here](db-schema-explanatory.md) for explanation.*
 
 ## Release version
