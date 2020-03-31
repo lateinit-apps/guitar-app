@@ -1,5 +1,6 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Date, Text, create_engine
+from sqlalchemy import Column, Integer, String, Date, Text, Time, LargeBinary, \
+                       create_engine
 import os
 
 
@@ -14,6 +15,51 @@ class Artist(Base):
     year_founded = Column(Date)
     country = Column(String(32))
     about = Column(Text)
+
+
+class Genre(Base):
+    __tablename__ = "genre"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String(64))
+    highlights = Column(Text)
+
+
+class Song(Base):
+    __tablename__ = "song"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String(64))
+    trivia = Column(Text)
+
+
+class Sheet(Base):
+    __tablename__ = "sheet"
+
+    id = Column(Integer, primary_key=True)
+    date_uploaded = Column(Date)
+    bpm = Column(Integer)
+
+
+class TrackTab(Base):
+    __tablename__ = "tracktab"
+
+    id = Column(Integer, primary_key=True)
+    instrument = Column(String(32))
+    time_start = Column(Time)
+    tuning = Column(String(64))
+    gp5 = Column(LargeBinary)
+
+
+class Release(Base):
+    __tablename__ = "release"
+
+    id = Column(Integer, primary_key=True)
+    name = Column(String(64))
+    year = Column(Integer)
+    label = Column(String(64))
+    type = Column(String(32))
+    album_kind = Column(String(32))
 
 
 if __name__ == "__main__":
