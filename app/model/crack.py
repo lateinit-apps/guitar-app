@@ -53,7 +53,8 @@ class Release(Base):
     genres = relationship(Genre, secondary="genre_release")
     artists = relationship(Artist, secondary="artist_release")
     songs = relationship("Song", secondary="release_song")
-    embracing_release = relationship("Release", remote_side=[id], 
+    embracing_release = relationship("Release", 
+                                     remote_side=[id], 
                                      backref="included_release")
 
 
@@ -96,7 +97,7 @@ class Sheet(Base):
     bpm = Column(Integer)
     song_id = Column(Integer, ForeignKey(Song.id))
 
-    song = relationship(Song, back_populates="sheets")
+    song = relationship(Song, backref="sheets")
 
 
 class TrackTab(Base):
@@ -109,7 +110,7 @@ class TrackTab(Base):
     gp5 = Column(LargeBinary)
     sheet_id = Column(Integer, ForeignKey(Sheet.id))
 
-    sheet = relationship(Sheet, back_populates="tracktabs")
+    sheet = relationship(Sheet, backref="tracktabs")
 
 
 if __name__ == "__main__":
