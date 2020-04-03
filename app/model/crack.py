@@ -1,11 +1,6 @@
-from sqlalchemy import Column, Integer, String, Date, Text, Time, LargeBinary, \
-                       ForeignKey, create_engine
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String, Date, Text, Time, LargeBinary, ForeignKey
 from sqlalchemy.orm import relationship
-import os
-
-
-Base = declarative_base()
+from misc import Base
 
 
 class Genre(Base):
@@ -53,9 +48,7 @@ class Release(Base):
     genres = relationship(Genre, secondary="genre_release")
     artists = relationship(Artist, secondary="artist_release")
     songs = relationship("Song", secondary="release_song")
-    embracing_release = relationship("Release", 
-                                     remote_side=[id], 
-                                     backref="included_release")
+    embracing_release = relationship("Release", remote_side=[id], backref="included_release")
 
 
 class GenreRelease(Base):
@@ -111,23 +104,3 @@ class TrackTab(Base):
     sheet_id = Column(Integer, ForeignKey(Sheet.id))
 
     sheet = relationship(Sheet, backref="tracktabs")
-
-
-if __name__ == "__main__":
-    db_dialect = os.getenv("DB_DIALECT")
-    db_driver = os.getenv("DB_DRIVER")
-    db_username = os.getenv("DB_USERNAME")
-    db_password = os.getenv("DB_PASSWORD")
-    db_host = os.getenv("DB_HOST")
-    db_port = os.getenv("DB_PORT")
-    db_name = os.getenv("DB_NAME")
-
-    if db_driver:
-        db_url = f"{db_dialect}+{db_driver}://{db_username}:" + \
-                 f"{db_password}@{db_host}:{db_port}/{db_name}"
-    else:
-        db_url = f"{db_dialect}://{db_username}:" + \
-                 f"{db_password}@{db_host}:{db_port}/{db_name}"
-
-    engine = create_engine(db_url)
-    Base.metadata.create_all(engine)
