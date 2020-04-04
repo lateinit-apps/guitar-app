@@ -11,16 +11,11 @@ technologies [here](docs/technical-specifications.md).
 
 ## Development
 
-The project is intended to be built inside the Python virtual environment. For that, use
-`python -m venv venv` in the root of the project. Executing `source venv/bin/activate` will provide
-an access into virtual env. Run `deactivate` to exit from the environment. Also, consider viewing
-this [page](docs/how-to.md) for additional information.
-
-## Launching application
-
-All required python modules are listed in `requirements.txt`. A `cfg.py` is comprised of
-configuration classes definitions. An example of launching the application:
-`python app.py config.ProductionConfig`.
+The project is intended to be built inside the Python virtual environment. It is considered as a 
+good practice to place all the dependencies for a particular application in separate workspace.
+Instead of directly using `venv` module to manipulate virtual environments, one is obliged to 
+utilize the `pipenv` high-level wrapper around `venv` tool. Please refer to this 
+[page](docs/how-to.md) for additional information.
 
 ## Our team/in cast
 
