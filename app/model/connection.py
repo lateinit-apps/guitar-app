@@ -1,16 +1,8 @@
 from sqlalchemy import create_engine
-from os import getenv
 from misc import Base
 from crack import *
+from db_config import db_dialect, db_driver, db_username, db_password, db_host, db_port, db_name
 
-
-db_dialect = getenv("DB_DIALECT")
-db_driver = getenv("DB_DRIVER")
-db_username = getenv("DB_USERNAME")
-db_password = getenv("DB_PASSWORD")
-db_host = getenv("DB_HOST")
-db_port = getenv("DB_PORT")
-db_name = getenv("DB_NAME")
 
 if db_driver:
     db_url = f"{db_dialect}+{db_driver}://{db_username}:" \
