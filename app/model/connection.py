@@ -1,23 +1,15 @@
 from sqlalchemy import create_engine
-from os import getenv
 from misc import Base
 from crack import *
+import db_config
 
 
-db_dialect = getenv("DB_DIALECT")
-db_driver = getenv("DB_DRIVER")
-db_username = getenv("DB_USERNAME")
-db_password = getenv("DB_PASSWORD")
-db_host = getenv("DB_HOST")
-db_port = getenv("DB_PORT")
-db_name = getenv("DB_NAME")
-
-if db_driver:
-    db_url = f"{db_dialect}+{db_driver}://{db_username}:" \
-             + f"{db_password}@{db_host}:{db_port}/{db_name}"
+if db_config.driver:
+    db_url = f"{db_config.dialect}+{db_config.driver}://{db_config.username}:" \
+             + f"{db_config.password}@{db_config.host}:{db_config.port}/{db_config.name}"
 else:
-    db_url = f"{db_dialect}://{db_username}:" \
-             + f"{db_password}@{db_host}:{db_port}/{db_name}"
+    db_url = f"{db_config.dialect}://{db_config.username}:" \
+             + f"{db_config.password}@{db_config.host}:{db_config.port}/{db_config.name}"
 
 engine = create_engine(db_url)
 Base.metadata.bind = engine
