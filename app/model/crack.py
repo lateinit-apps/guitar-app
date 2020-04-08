@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, Date, Text, Time, LargeBinary, ForeignKey
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, backref
 from misc import Base
 
 
@@ -91,6 +91,7 @@ class Sheet(Base):
     song_id = Column(Integer, ForeignKey(Song.id))
 
     song = relationship(Song, backref='sheets')
+    tracktabs = relationship('TrackTab', backref='sheet', passive_deletes=True)
 
 
 class TrackTab(Base):
@@ -101,6 +102,4 @@ class TrackTab(Base):
     time_start = Column(Time)
     tuning = Column(String(64))
     gp5 = Column(LargeBinary)
-    sheet_id = Column(Integer, ForeignKey(Sheet.id))
-
-    sheet = relationship(Sheet, backref='tracktabs')
+    sheet_id = Column(Integer, ForeignKey(Sheet.id, ondelete='CASCADE'))
