@@ -23,7 +23,6 @@ for escaping from the environment)
 ## How to run application
 
 - Enter virtual environment
-- Define `FLASK_APP` env variable (`FLASK_APP=guitar_app.py`) TODO: make this predefined
 - Execute command `flask run`
 - Then you will see debug info in your console and url (default: `localhost:5000`)
 - Just open url and you're the man
