@@ -24,13 +24,14 @@ for escaping from the environment)
 
 - Enter virtual environment
 - Execute command `flask run`
-- Then you will see debug info in your console and url (default: `localhost:5000`)
+- Then you will see debug info in your console and url (default: `http://localhost:5000/`)
 - Just open url and you're the man
 
 ## How to setup a connection to the database
 
-- Locate the `samples/db_config.py` module and create a copy of this file in the `app/model` 
-directory &ndash; this one is not published to the repository thus no crucial data will be disclosed
-- Enter the real value for the `db_password` variable (it should be known since you've finished 
+- Locate the `samples/.env` and create a copy of this file in the project's root directory &ndash; 
+the latter isn't published to the repository thus no crucial data will be disclosed
+- Enter the real value for the `CRACK_PASSWORD` variable (it should be known since you've finished 
 [this guide](db-postgresql-setup.md))
+- Make sure you have re-entered the virtual environment
 - Probe your connection with running `app/model/connection.py`
