@@ -3,12 +3,12 @@
 ## MVP
 
 ASAP we got the MVP - we go live immediately and start to deploy our platform. In concept of game
-dev this stage is called open beta. After reaching this stage we can show our platfrom to close
+dev this stage is called open beta. After reaching this stage we can show our platfrom to
 acquaintances and relatives.
 
-- empty database for storing all data that we will need on this stage
+- test database with dummy data for storing all that we will need on this stage
 - search by release names and artists names/albums/year/genre
-- download tabs in ASCII .txt (our own format)
+- download tabs in ASCII .txt (our own format) - *under decision*
 - sorting by release names and artists names
 
 *Note: by release here are considered release category from our database, look
@@ -22,14 +22,16 @@ have.
 
 - sorting by release year/genre name/release type/album kind
 - login/password authentication
+- admin/moderator/user authentication pools
+- admin/moderator page
 - store custom songs lists
 - store custom sheets/tabs lists
 - static rating system statistics (view/download/searched/indexed times)
 - full screen mode
-- tab editor + editing chain
-- tab creator + creation chain
+- tab editor + editing queue (always approved by default)
+- tab creator + creation queue (always approved by default)
 - dark/lite themes
-- somehow populated database
+- *somehow* populated database
 
 ## Post-release suggestions
 
@@ -43,9 +45,10 @@ we can consider starting an advertising company to engage a lot of real users to
   - email authentication
   - account recovery service
   - SSO authentication
+  - timed lyrics for songs
   - share songs/sheets/tabs via social network
   - share songs/sheets/tabs or even lists to another account
-  - editing/upload chains verification mechanism
+  - editing/upload queues verification mechanism
   - private storage of self-uploaded content without verifications
   - more themes (we definitely need at least another one with anime)
   - customizable UI
@@ -54,15 +57,10 @@ we can consider starting an advertising company to engage a lot of real users to
   - RU localization
   - album/author thumbnails
   - link for youtube video
-  - link for itunes/spotify/soundcloud/yandex music
+  - link for itunes/spotify/soundcloud/deezer/yandex music
   - mobile app
 
 - Arguable:
-  - using microphone to record tabs (we are not an audio recognition service, are we?)
-  - using guitar input to record tabs (we are not a recording software, are we?)
-  - timed lyrics for songs (we are not a karaoke service, are we?)
+  - using sound input to record tabs (we are not an audio recognition service, are we?)
   - comments section for tab page (we are not a video hosting service, are we?)
-  - forum/message chain for discussions (we are not a social network service, are we?)
-  - other localizations (we are not satisfied with ENG/RU one, are we?)
-    - the only one language that we know and can add is UA, *seems like what is Ukraine nearabout?*
-  - accessibility (we are not invalides, are we?)
+  - forum/messages for discussions (we are not a social network service, are we?)
