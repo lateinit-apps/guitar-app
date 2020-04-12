@@ -46,3 +46,8 @@ def register_routes(app):
         elements = [f'<li>{x.id}: "{x.name}" - {x.trivia}</li>' 
                     for x in session.query(Song).all()]
         return '<ul>{}</ul>'.format('\n'.join(elements))
+
+    @app.route('/easter-egg')
+    def easter_egg():
+        with open('app/static/easter-egg.txt') as fstream:
+            return '<pre>{}</pre>'.format(''.join(fstream.readlines()))
