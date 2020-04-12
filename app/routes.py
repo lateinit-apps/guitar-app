@@ -1,4 +1,4 @@
-from flask import current_app
+from flask import current_app, g
 
 
 about_string = """
@@ -38,3 +38,8 @@ def register_routes(app):
     @app.route('/about')
     def about():
         return about_string
+
+    @app.route('/songs')
+    def songs():
+        session = g.pop(session, None)
+        return session.(...)?
