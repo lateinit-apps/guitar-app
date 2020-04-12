@@ -1,4 +1,5 @@
-from flask import current_app
+from flask import current_app, g
+from app.model.crack import Song
 
 
 about_string = """
@@ -38,3 +39,10 @@ def register_routes(app):
     @app.route('/about')
     def about():
         return about_string
+
+    @app.route('/songs')
+    def songs():
+        session = g.get('session')
+        elements = [f'<li>{x.id}: "{x.name}" - {x.trivia}</li>' 
+                    for x in session.query(Song).all()]
+        return '<ul>{}</ul>'.format('\n'.join(elements))

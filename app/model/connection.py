@@ -1,7 +1,10 @@
 from os import getenv
+
 from sqlalchemy import create_engine
-from misc import Base
-from crack import *
+from sqlalchemy.orm import scoped_session, sessionmaker
+
+from app.model.misc import Base
+from app.model.crack import *
 
 
 dialect = getenv('CRACK_DIALECT')
@@ -17,6 +20,8 @@ db_url = f'{dialect}+{driver}://{username}:{password}@{host}:{port}/{database_na
 
 engine = create_engine(db_url)
 Base.metadata.bind = engine
+session_factory = sessionmaker(bind=engine)
+Session = scoped_session(session_factory)
 
 
 def create_tables():
