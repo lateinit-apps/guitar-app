@@ -8,6 +8,7 @@ def create_app(config_class=None):
     if config_class:
         app.config.from_object(config_class)
     register_routes(app)
+    register_cli_commands(app)
 
     @app.before_request
     def setup_session():
