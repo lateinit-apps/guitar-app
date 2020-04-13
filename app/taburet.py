@@ -1,5 +1,6 @@
 from flask import Flask, g
 from app.routes import register_routes
+from app.cli import register_cli_commands
 from app.model.connection import Session
 
 

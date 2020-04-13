@@ -32,11 +32,17 @@ def drop_tables():
     Base.metadata.drop_all()
 
 
+def get_tables_list():
+    return Base.metadata.sorted_tables
+
+
 if __name__ == '__main__':
-    actions = ['create', 'drop']
+    actions = ['create', 'drop', 'list']
     print('possible actions: ', actions)
     choice = input('> ')
     if choice == 'create':
         create_tables()
     elif choice == 'drop':
         drop_tables()
+    elif choice == 'list':
+        print([x.name for x in get_tables_list()])
