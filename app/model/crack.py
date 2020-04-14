@@ -88,7 +88,7 @@ class Sheet(Base):
     id = Column(Integer, primary_key=True)
     date_uploaded = Column(Date)
     bpm = Column(Integer)
-    song_id = Column(Integer, ForeignKey(Song.id))
+    song_id = Column(Integer, ForeignKey(Song.id), nullable=False)
 
     song = relationship(Song, backref='sheets')
     tracktabs = relationship('TrackTab', backref='sheet', passive_deletes=True)
@@ -102,4 +102,4 @@ class TrackTab(Base):
     time_start = Column(Time)
     tuning = Column(String(64))
     gp5 = Column(LargeBinary)
-    sheet_id = Column(Integer, ForeignKey(Sheet.id, ondelete='CASCADE'))
+    sheet_id = Column(Integer, ForeignKey(Sheet.id, ondelete='CASCADE'), nullable=False)
