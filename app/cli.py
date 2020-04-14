@@ -7,19 +7,19 @@ from app.model.base import Base
 
 
 def register_cli_commands(app):
-    @app.cli.command('create-tables')
+    @app.cli.command('create-tables', help='Create all tables defined in the schema.')
     def create_tables():
         conn.create_tables()
 
-    @app.cli.command('drop-tables')
+    @app.cli.command('drop-tables', help='Remove all tables defined in the schema.')
     def drop_tables():
         conn.drop_tables()
 
-    @app.cli.command('list-tables')
+    @app.cli.command('list-tables', help='Print out a list of tables presented in a database.')
     def list_tables():
         print([x.name for x in conn.get_tables_list()])
 
-    @app.cli.command('populate-tables')
+    @app.cli.command('populate-tables', help='Fill up tables from data located in the sample file.')
     @click.argument('PADDING_FILE', default='app/static/sample-crack-data.json')
     def populate_tables(padding_file):
         with open(padding_file) as json_stream:
@@ -37,7 +37,7 @@ def register_cli_commands(app):
             session.commit()
         conn.Session.remove()
 
-    @app.cli.command('view-data')
+    @app.cli.command('view-data', help='Display all rows from a particular table.')
     @click.argument('TABLENAME')
     def display_table_data(tablename):
         candidates = [x for x in conn.get_tables_list() if x.name == tablename]
