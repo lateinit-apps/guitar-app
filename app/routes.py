@@ -1,5 +1,5 @@
 from flask import current_app, g
-from app.model.crack import Song
+from app.model.crack import Song, Sheet, TrackTab
 
 
 about_string = """
@@ -43,8 +43,19 @@ def register_routes(app):
     @app.route('/songs')
     def songs():
         session = g.get('session')
-        elements = [f'<li>{x.id}: "{x.name}" - {x.trivia}</li>' 
-                    for x in session.query(Song).all()]
+        elements = [f'<li>{repr(x)}</li>' for x in session.query(Song).all()]
+        return '<ul>{}</ul>'.format('\n'.join(elements))
+
+    @app.route('/sheets')
+    def sheets():
+        session = g.get('session')
+        elements = [f'<li>{repr(x)}</li>' for x in session.query(Sheet).all()]
+        return '<ul>{}</ul>'.format('\n'.join(elements))
+
+    @app.route('/tracktabs')
+    def tracktabs():
+        session = g.get('session')
+        elements = [f'<li>{repr(x)}</li>' for x in session.query(TrackTab).all()]
         return '<ul>{}</ul>'.format('\n'.join(elements))
 
     @app.route('/easter-egg')
