@@ -2,7 +2,7 @@ import click
 from sqlalchemy_utils.functions import get_class_by_table
 
 import app.model.connection as conn
-from app.model.misc import Base
+from app.model.base import Base
 
 
 def register_cli_commands(app):

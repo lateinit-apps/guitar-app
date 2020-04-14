@@ -3,7 +3,7 @@ from os import getenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-from app.model.misc import Base
+from app.model.base import Base
 from app.model.crack import *
 
 
