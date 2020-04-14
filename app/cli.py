@@ -1,4 +1,5 @@
 import click
+import json
 from sqlalchemy_utils.functions import get_class_by_table
 
 import app.model.connection as conn
@@ -17,6 +18,24 @@ def register_cli_commands(app):
     @app.cli.command('list-tables')
     def list_tables():
         print([x.name for x in conn.get_tables_list()])
+
+    @app.cli.command('populate-tables')
+    @click.argument('PADDING_FILE', default='app/static/sample-crack-data.json')
+    def populate_tables(padding_file):
+        with open(padding_file) as json_stream:
+            catalog = json.load(json_stream)
+        session = conn.Session()
+
+        for tablename in catalog:
+            mapped_class = get_class_by_table(Base, table=[x for x in conn.get_tables_list() 
+                                                           if x.name == tablename][0])
+            for row_data in catalog[tablename]:
+                instance = mapped_class()
+                for attr_name in row_data:
+                    setattr(instance, attr_name, row_data[attr_name])
+                session.add(instance)
+            session.commit()
+        conn.Session.remove()
 
     @app.cli.command('view-data')
     @click.argument('TABLENAME')

@@ -1,0 +1,95 @@
+{
+    "song": [
+        {
+            "id": 13336,
+            "name": "How many more times",
+            "trivia": "Jimmy Page have used a violin bow during recording the album version of the song."
+        },
+        {
+            "id": 12829,
+            "name": "Run through the jungle",
+            "trivia": "The song's jungle sound effects were produced by the backwards recorded guitar and piano sounds."
+        },
+        {
+            "id": 18190,
+            "name": "Schism",
+            "trivia": ""
+        }
+    ],
+    "sheet": [
+        {
+            "id": 71001235,
+            "date_uploaded": "2020-04-01", 
+            "bpm": 120,
+            "song_id": 12829
+        },
+        {
+            "id": 71301294,
+            "date_uploaded": "2019-10-20", 
+            "bpm": 154,
+            "song_id": 13336
+        },
+        {
+            "id": 81002254,
+            "date_uploaded": "2020-04-05", 
+            "bpm": 120,
+            "song_id": 12829
+        },
+        {
+            "id": 88131091,
+            "date_uploaded": "2012-02-29", 
+            "bpm": 88,
+            "song_id": 18190
+        }
+    ],
+    "tracktab": [
+        {
+            "id": 804281,
+            "instrument": "Electric guitar",
+            "time_start": "00:00:04",
+            "tuning": "Standard E (E-A-D-G-B-E)",
+            "gp5": "stub-data",
+            "sheet_id": 71001235
+        },
+        {
+            "id": 920084,
+            "instrument": "Acoustic guitar",
+            "time_start": "00:01:41",
+            "tuning": "Standard E (E-A-D-G-B-E)",
+            "gp5": "stub-data",
+            "sheet_id": 88131091
+        },
+        {
+            "id": 520421,
+            "instrument": "Acoustic guitar",
+            "time_start": "00:02:32",
+            "tuning": "Drop D (D-A-D-G-B-E)",
+            "gp5": "stub-data",
+            "sheet_id": 71001235
+        },
+        {
+            "id": 922183,
+            "instrument": "Bass",
+            "time_start": "01:01:59",
+            "tuning": "Standard E (E-A-D-G)",
+            "gp5": "stub-data",
+            "sheet_id": 81002254
+        },
+        {
+            "id": 446044,
+            "instrument": "Ukulele",
+            "time_start": "00:01:42",
+            "tuning": "Standard (G-C-E-A)",
+            "gp5": "stub-data",
+            "sheet_id": 71301294
+        },
+        {
+            "id": 123023,
+            "instrument": "Classical guitar",
+            "time_start": "00:00:05",
+            "tuning": "Celtic (D-A-D-G-A-D)",
+            "gp5": "stub-data",
+            "sheet_id": 81002254
+        }
+    ]
+}
