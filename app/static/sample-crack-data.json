@@ -12,11 +12,13 @@
         },
         {
             "id": 18190,
-            "name": "Schism"
+            "name": "Schism",
+            "trivia": null
         },
         {
             "id": 19828,
-            "name": "La Grange"
+            "name": "La Grange",
+            "trivia": null
         }
     ],
     "sheet": [
@@ -102,7 +104,8 @@
             "year": 1969,
             "label": "Atlantic Records",
             "type": "Album",
-            "album_kind": "Studio"
+            "album_kind": "Studio",
+            "release_id": null
         },
         {
             "id": 2810133,
@@ -110,7 +113,8 @@
             "year": 1973,
             "label": "London Records",
             "type": "Album",
-            "album_kind": "Studio"
+            "album_kind": "Studio",
+            "release_id": null
         },
         {
             "id": 2810135,
@@ -118,6 +122,7 @@
             "year": 1973,
             "label": "London Records",
             "type": "Single",
+            "album_kind": null,
             "release_id": 2810133
         },
         {
@@ -126,7 +131,8 @@
             "year": 2001,
             "label": "Volcano",
             "type": "Album",
-            "album_kind": "Studio"
+            "album_kind": "Studio",
+            "release_id": null
         },
         {
             "id": 4210295,
@@ -134,6 +140,7 @@
             "year": 2001,
             "label": "Volcano",
             "type": "Single",
+            "album_kind": null,
             "release_id": 4210292
         },
         {
@@ -142,7 +149,8 @@
             "year": 1970,
             "label": "Fantasy",
             "type": "Album",
-            "album_kind": "Studio"
+            "album_kind": "Studio",
+            "release_id": null
         }
     ],
     "artist": [
@@ -178,15 +186,18 @@
     "genre": [
         {
             "id": 182,
-            "name": "Southern Rock"
+            "name": "Southern Rock",
+            "highlights": null
         },
         {
             "id": 185,
-            "name": "Blues Rock"
+            "name": "Blues Rock",
+            "highlights": null
         },
         {
             "id": 186,
-            "name": "Country Rock"
+            "name": "Country Rock",
+            "highlights": null
         },
         {
             "id": 169,
@@ -195,47 +206,58 @@
         },
         {
             "id": 192,
-            "name": "Roots Rock"
+            "name": "Roots Rock",
+            "highlights": null
         },
         {
             "id": 188,
-            "name": "Swamp Rock"
+            "name": "Swamp Rock",
+            "highlights": null
         },
         {
             "id": 191,
-            "name": "Psychodelic Rock"
+            "name": "Psychodelic Rock",
+            "highlights": null
         },
         {
             "id": 291,
-            "name": "Alternative Metal"
+            "name": "Alternative Metal",
+            "highlights": null
         },
         {
             "id": 293,
-            "name": "Progressive Metal"
+            "name": "Progressive Metal",
+            "highlights": null
         },
         {
             "id": 179,
-            "name": "Progressive Rock"
+            "name": "Progressive Rock",
+            "highlights": null
         },
         {
             "id": 180,
-            "name": "Art Rock"
+            "name": "Art Rock",
+            "highlights": null
         },
         {
             "id": 171,
-            "name": "Hard Rock"
+            "name": "Hard Rock",
+            "highlights": null
         },
         {
             "id": 281,
-            "name": "Heavy Metal"
+            "name": "Heavy Metal",
+            "highlights": null
         },
         {
             "id": 174,
-            "name": "Folk Rock"
+            "name": "Folk Rock",
+            "highlights": null
         },
         {
             "id": 176,
-            "name": "Pop Rock"
+            "name": "Pop Rock",
+            "highlights": null
         }
     ],
     "genre_artist": [

@@ -2,55 +2,53 @@ import click
 import json
 from sqlalchemy_utils.functions import get_class_by_table
 
-import app.model.connection as conn
 from app.model.base import Base
+import app.model.zeugma as zeugma
 
 
 def register_cli_commands(app):
     @app.cli.command('create-tables', help='Create all tables defined in the schema.')
     def create_tables():
-        conn.create_tables()
+        zeugma.create_tables()
 
     @app.cli.command('drop-tables', help='Remove all tables defined in the schema.')
     def drop_tables():
-        conn.drop_tables()
+        zeugma.drop_tables()
 
     @app.cli.command('list-tables', help='Print out a list of tables presented in a database.')
     def list_tables():
-        print([x.name for x in conn.get_tables_list()])
+        print(*sorted([x.name for x in zeugma.get_tables_list()]), sep='\n')
 
     @app.cli.command('populate-tables', help='Fill up tables from data located in the sample file.')
     @click.argument('PADDING_FILE', default='app/static/sample-crack-data.json')
     def populate_tables(padding_file):
         with open(padding_file) as json_stream:
             catalog = json.load(json_stream)
-        session = conn.Session()
 
         for tablename in catalog:
-            mapped_class = get_class_by_table(Base, table=[x for x in conn.get_tables_list() 
-                                                           if x.name == tablename][0])
-            for row_data in catalog[tablename]:
-                instance = mapped_class()
-                for attr_name in row_data:
-                    setattr(instance, attr_name, row_data[attr_name])
-                session.add(instance)
-            session.commit()
-        conn.Session.remove()
+            table = next(filter(lambda x: x.name == tablename, zeugma.get_tables_list()), None)
+            mapped_class = get_class_by_table(Base, table)
+            if not mapped_class:
+                print(f'{tablename}: no corresponding class is found')
+                return
+            with zeugma.engine.begin() as conn:
+                conn.execute(table.insert(), catalog[tablename])
 
-    @app.cli.command('view-data', help='Display all rows from a particular table.')
+
+    @app.cli.command('view-table', help='Display all rows from a particular table.')
     @click.argument('TABLENAME')
     def display_table_data(tablename):
-        candidates = [x for x in conn.get_tables_list() if x.name == tablename]
-        if not candidates:
-            print('table with specified name is not found in the database')
+        table = next(filter(lambda x: x.name == tablename, zeugma.get_tables_list()), None)
+        if table is None:
+            print(f'table \"{tablename}\"" is not found in the database')
             return 
 
-        mapped_class = get_class_by_table(Base, table=candidates[0])
+        mapped_class = get_class_by_table(Base, table)
         if not mapped_class:
-            print('no corresponding class is found')
+            print(f'{tablename}: no corresponding class is found')
             return
 
-        session = conn.Session()
+        session = zeugma.Session()
         for x in session.query(mapped_class).all():
             print(x)
-        conn.Session.remove()
+        zeugma.Session.remove()
