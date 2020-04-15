@@ -1,4 +1,4 @@
-# PostreSQL database setup
+# PostgreSQL database setup
 
 ## General information
 
