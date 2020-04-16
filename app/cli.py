@@ -25,14 +25,16 @@ def register_cli_commands(app):
         with open(padding_file) as json_stream:
             catalog = json.load(json_stream)
 
+        connection = zeugma.engine.connect()
         for tablename in catalog:
             table = next(filter(lambda x: x.name == tablename, zeugma.get_tables_list()), None)
             mapped_class = get_class_by_table(Base, table)
             if not mapped_class:
                 print(f'{tablename}: no corresponding class is found')
                 return
-            with zeugma.engine.begin() as conn:
-                conn.execute(table.insert(), catalog[tablename])
+            with connection.begin():
+                connection.execute(table.insert(), catalog[tablename])
+        connection.close()
 
 
     @app.cli.command('view-table', help='Display all rows from a particular table.')
