@@ -34,4 +34,22 @@ the latter isn't published to the repository thus no crucial data will be disclo
 - Enter the real value for the `CRACK_PASSWORD` variable (it should be known since you've finished 
 [this guide](db-postgresql-setup.md))
 - Make sure you have re-entered the virtual environment
-- Probe your connection with running `app/model/connection.py`
+- Probe your connection with running `app/model/zeugma.py`
+
+## How to use flask CLI 
+
+Developer is encouraged to use command line shell for interacting with the application. Flask 
+provides an integration with Python's Click comprehensible library for CLI implementation. Apart 
+from this very project, feel free to append `--help` or `-h` for every command you type and you'll 
+be awarded. Enter `flask --help`to gain access to the list of available utilities. There is a 
+fistful of custom commands as well. 
+
+### How to fill out the `crack` database
+
+- `flask create-tables`
+- `flask populate-tables`
+
+In case your database instance is not virgin, consider purging tables first with 
+`flask drop-tables`. To ensure you've done everything right, retrieve some data, e.g. 
+`flask view-table song`. You can access the full list of tables with the help of 
+`flask list-tables`.

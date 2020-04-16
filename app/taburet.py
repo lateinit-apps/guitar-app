@@ -1,12 +1,14 @@
 from flask import Flask, g
+from app.cli import register_cli_commands
+from app.model.zeugma import Session
 from app.routes import register_routes
-from app.model.connection import Session
 
 
 def create_app(config_class=None):
     app = Flask(__name__)
     if config_class:
         app.config.from_object(config_class)
+    register_cli_commands(app)
     register_routes(app)
 
     @app.before_request

@@ -1,0 +1,443 @@
+{
+    "song": [
+        {
+            "id": 13336,
+            "name": "How Many More Times",
+            "trivia": "Jimmy Page have used a violin bow during recording the album version of the song."
+        },
+        {
+            "id": 12829,
+            "name": "Ramble Tamble",
+            "trivia": "According to Steven Hyden, it is \"the most rockin' song of all time\""
+        },
+        {
+            "id": 18190,
+            "name": "Schism",
+            "trivia": null
+        },
+        {
+            "id": 19828,
+            "name": "La Grange",
+            "trivia": null
+        }
+    ],
+    "sheet": [
+        {
+            "id": 71001235,
+            "date_uploaded": "2020-04-01", 
+            "bpm": 120,
+            "song_id": 12829
+        },
+        {
+            "id": 71301294,
+            "date_uploaded": "2019-10-20", 
+            "bpm": 154,
+            "song_id": 13336
+        },
+        {
+            "id": 81002254,
+            "date_uploaded": "2020-04-05", 
+            "bpm": 120,
+            "song_id": 12829
+        },
+        {
+            "id": 88131091,
+            "date_uploaded": "2012-02-29", 
+            "bpm": 88,
+            "song_id": 18190
+        }
+    ],
+    "tracktab": [
+        {
+            "id": 804281,
+            "instrument": "Electric guitar",
+            "time_start": "00:00:04",
+            "tuning": "Standard E (E-A-D-G-B-E)",
+            "gp5": "stub-data",
+            "sheet_id": 71001235
+        },
+        {
+            "id": 920084,
+            "instrument": "Acoustic guitar",
+            "time_start": "00:01:41",
+            "tuning": "Standard E (E-A-D-G-B-E)",
+            "gp5": "stub-data",
+            "sheet_id": 88131091
+        },
+        {
+            "id": 520421,
+            "instrument": "Acoustic guitar",
+            "time_start": "00:02:32",
+            "tuning": "Drop D (D-A-D-G-B-E)",
+            "gp5": "stub-data",
+            "sheet_id": 71001235
+        },
+        {
+            "id": 922183,
+            "instrument": "Bass",
+            "time_start": "01:01:59",
+            "tuning": "Standard E (E-A-D-G)",
+            "gp5": "stub-data",
+            "sheet_id": 81002254
+        },
+        {
+            "id": 446044,
+            "instrument": "Ukulele",
+            "time_start": "00:01:42",
+            "tuning": "Standard (G-C-E-A)",
+            "gp5": "stub-data",
+            "sheet_id": 71301294
+        },
+        {
+            "id": 123023,
+            "instrument": "Classical guitar",
+            "time_start": "00:00:05",
+            "tuning": "Celtic (D-A-D-G-A-D)",
+            "gp5": "stub-data",
+            "sheet_id": 81002254
+        }
+    ],
+    "release": [
+        {
+            "id": 1193041,
+            "name": "Led Zeppelin I",
+            "year": 1969,
+            "label": "Atlantic Records",
+            "type": "Album",
+            "album_kind": "Studio",
+            "release_id": null
+        },
+        {
+            "id": 2810133,
+            "name": "Tres Hombres",
+            "year": 1973,
+            "label": "London Records",
+            "type": "Album",
+            "album_kind": "Studio",
+            "release_id": null
+        },
+        {
+            "id": 2810135,
+            "name": "La Grange",
+            "year": 1973,
+            "label": "London Records",
+            "type": "Single",
+            "album_kind": null,
+            "release_id": 2810133
+        },
+        {
+            "id": 4210292,
+            "name": "Lateralus",
+            "year": 2001,
+            "label": "Volcano",
+            "type": "Album",
+            "album_kind": "Studio",
+            "release_id": null
+        },
+        {
+            "id": 4210295,
+            "name": "Schism",
+            "year": 2001,
+            "label": "Volcano",
+            "type": "Single",
+            "album_kind": null,
+            "release_id": 4210292
+        },
+        {
+            "id": 4250277,
+            "name": "Cosmo''s factory",
+            "year": 1970,
+            "label": "Fantasy",
+            "type": "Album",
+            "album_kind": "Studio",
+            "release_id": null
+        }
+    ],
+    "artist": [
+        {
+            "id": 16198,
+            "name": "Creedence Clearwater Revival",
+            "year_founded": "01-01-1967",
+            "country": "USA",
+            "about": "They performed in a southern rock style, despite their San Francisco roots, with lyrics about bayous, catfish, the Mississippi River and other popular elements of Southern U.S. iconography."
+        },
+        {
+            "id": 18927,
+            "name": "Tool",
+            "year_founded": "01-01-1990",
+            "country": "USA",
+            "about": "Tool''s efforts to combine audio experimentation, visual arts, and an idea of personal genesis were mostly shown in Lateralus (2001) and 10,000 Days (2006), gaining critical acclaim and international commercial success."
+        },
+        {
+            "id": 21999,
+            "name": "Led Zeppelin",
+            "year_founded": "01-01-1968",
+            "country": "United Kingdom",
+            "about": "Each of their nine studio albums placed in the top ten of the Billboard album chart and six reached the number-one spot. They achieved eight consecutive UK number-one albums."
+        },
+        {
+            "id": 28332,
+            "name": "ZZ Top",
+            "year_founded": "01-01-1969",
+            "country": "USA",
+            "about": "Their lyrics, often embellished with sexual innuendo, focus on their Texas roots and humor. Popular for their live performances, the group has staged several elaborate tours."
+        }
+    ],
+    "genre": [
+        {
+            "id": 182,
+            "name": "Southern Rock",
+            "highlights": null
+        },
+        {
+            "id": 185,
+            "name": "Blues Rock",
+            "highlights": null
+        },
+        {
+            "id": 186,
+            "name": "Country Rock",
+            "highlights": null
+        },
+        {
+            "id": 169,
+            "name": "Rock and Roll",
+            "highlights": "Some information about the brightest artists and performances in the scope of this particular genre"
+        },
+        {
+            "id": 192,
+            "name": "Roots Rock",
+            "highlights": null
+        },
+        {
+            "id": 188,
+            "name": "Swamp Rock",
+            "highlights": null
+        },
+        {
+            "id": 191,
+            "name": "Psychodelic Rock",
+            "highlights": null
+        },
+        {
+            "id": 291,
+            "name": "Alternative Metal",
+            "highlights": null
+        },
+        {
+            "id": 293,
+            "name": "Progressive Metal",
+            "highlights": null
+        },
+        {
+            "id": 179,
+            "name": "Progressive Rock",
+            "highlights": null
+        },
+        {
+            "id": 180,
+            "name": "Art Rock",
+            "highlights": null
+        },
+        {
+            "id": 171,
+            "name": "Hard Rock",
+            "highlights": null
+        },
+        {
+            "id": 281,
+            "name": "Heavy Metal",
+            "highlights": null
+        },
+        {
+            "id": 174,
+            "name": "Folk Rock",
+            "highlights": null
+        },
+        {
+            "id": 176,
+            "name": "Pop Rock",
+            "highlights": null
+        }
+    ],
+    "genre_artist": [
+        {
+            "genre_id": 182,
+            "artist_id": 16198
+        },
+        {
+            "genre_id": 185,
+            "artist_id": 16198
+        },
+        {
+            "genre_id": 186,
+            "artist_id": 16198
+        },
+        {
+            "genre_id": 188,
+            "artist_id": 16198
+        },
+        {
+            "genre_id": 169,
+            "artist_id": 16198
+        },
+        {
+            "genre_id": 191,
+            "artist_id": 16198
+        },
+        {
+            "genre_id": 192,
+            "artist_id": 16198
+        },
+        {
+            "genre_id": 179,
+            "artist_id": 18927
+        },
+        {
+            "genre_id": 180,
+            "artist_id": 18927
+        },
+        {
+            "genre_id": 291,
+            "artist_id": 18927
+        },
+        {
+            "genre_id": 293,
+            "artist_id": 18927
+        },
+        {
+            "genre_id": 171,
+            "artist_id": 21999
+        },
+        {
+            "genre_id": 174,
+            "artist_id": 21999
+        },
+        {
+            "genre_id": 185,
+            "artist_id": 21999
+        },
+        {
+            "genre_id": 281,
+            "artist_id": 21999
+        },
+        {
+            "genre_id": 182,
+            "artist_id": 28332
+        },
+        {
+            "genre_id": 185,
+            "artist_id": 28332
+        },
+        {
+            "genre_id": 171,
+            "artist_id": 28332
+        },
+        {
+            "genre_id": 176,
+            "artist_id": 28332
+        }
+    ],
+    "artist_release": [
+        {
+            "artist_id": 16198,
+            "release_id": 4250277
+        },
+        {
+            "artist_id": 18927,
+            "release_id": 4210292
+        },
+        {
+            "artist_id": 18927,
+            "release_id": 4210295
+        },
+        {
+            "artist_id": 21999,
+            "release_id": 1193041
+        },
+        {
+            "artist_id": 28332,
+            "release_id": 2810133
+        },
+        {
+            "artist_id": 28332,
+            "release_id": 2810135
+        }
+    ],
+    "genre_release": [
+        {
+            "genre_id": 171,
+            "release_id": 1193041
+        },
+        {
+            "genre_id": 185,
+            "release_id": 1193041 
+        },
+        {
+            "genre_id": 191,
+            "release_id": 1193041 
+        },
+        {
+            "genre_id": 281,
+            "release_id": 1193041 
+        },
+        {
+            "genre_id": 182,
+            "release_id": 2810133
+        },
+        {
+            "genre_id": 185,
+            "release_id": 2810133
+        },
+        {
+            "genre_id": 171,
+            "release_id": 2810133
+        },
+        {
+            "genre_id": 185,
+            "release_id": 2810135
+        },
+        {
+            "genre_id": 293,
+            "release_id": 4210292
+        },
+        {
+            "genre_id": 293,
+            "release_id": 4210295
+        },
+        {
+            "genre_id": 185,
+            "release_id": 4250277
+        },
+        {
+            "genre_id": 192,
+            "release_id": 4250277
+        }
+    ],
+    "release_song": [
+        {
+            "release_id": 1193041,
+            "song_id": 13336
+        },
+        {
+            "release_id": 4250277,
+            "song_id": 12829
+        },
+        {
+            "release_id": 4210292,
+            "song_id": 18190
+        },
+        {
+            "release_id": 4210295,
+            "song_id": 18190
+        },
+        {
+            "release_id": 2810133,
+            "song_id": 19828
+        },
+        {
+            "release_id": 2810135,
+            "song_id": 19828
+        }
+    ]
+}
