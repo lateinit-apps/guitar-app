@@ -1,4 +1,6 @@
-from flask import current_app, g
+from flask import current_app, g, Response
+import json
+
 from app.model.crack import Song, Sheet, TrackTab
 
 
@@ -27,6 +29,18 @@ vitae, scelerisque nec velit. Nam nec accumsan lectus.</p>
 """
 
 
+def _to_json(obj_or_list):
+    if not obj_or_list:
+        return json.dumps([])
+    if not isinstance(obj_or_list, list):
+        return json.dumps([obj_or_list])
+    return json.dumps(obj_or_list)
+
+
+def json_response(obj_or_list):
+    return Response(_to_json(obj_or_list), mimetype='application/json')
+
+
 def register_routes(app):
     @app.route('/')
     def index():
@@ -42,21 +56,18 @@ def register_routes(app):
 
     @app.route('/songs')
     def songs():
-        session = g.get('session')
-        elements = [f'<li>{repr(x)}</li>' for x in session.query(Song).all()]
-        return '<ul>{}</ul>'.format('\n'.join(elements))
+        elements = [repr(x) for x in g.session.query(Song).all()]
+        return json_response(elements)
 
     @app.route('/sheets')
     def sheets():
-        session = g.get('session')
-        elements = [f'<li>{repr(x)}</li>' for x in session.query(Sheet).all()]
-        return '<ul>{}</ul>'.format('\n'.join(elements))
+        elements = [repr(x) for x in g.session.query(Sheet).all()]
+        return json_response(elements)
 
     @app.route('/tracktabs')
     def tracktabs():
-        session = g.get('session')
-        elements = [f'<li>{repr(x)}</li>' for x in session.query(TrackTab).all()]
-        return '<ul>{}</ul>'.format('\n'.join(elements))
+        elements = [repr(x) for x in g.session.query(TrackTab).all()]
+        return json_response(elements)
 
     @app.route('/easter-egg')
     def easter_egg():
