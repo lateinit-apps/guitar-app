@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBRow} from "mdbreact";
-import placeholder from "../../public/150.png";
+import placeholder from "../assets/150.png";
 
 
 class MainPage extends Component {

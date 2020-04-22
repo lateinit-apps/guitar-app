@@ -1,13 +1,5 @@
 import React from 'react';
-// import MainPage from "./components/MainPage";
-import {
-    MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
-    MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBCol, MDBContainer, MDBRow, MDBFooter, MDBInput,
-    MDBIcon, MDBCard, MDBCardBody, MDBBtn
-} from "mdbreact";
 import {BrowserRouter as Router} from 'react-router-dom';
-import {InputGroup, FormControl} from "react-bootstrap";
-import placeholder from '../public/150.png';
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
