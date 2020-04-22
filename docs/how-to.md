@@ -53,3 +53,19 @@ In case your database instance is not virgin, consider purging tables first with
 `flask drop-tables`. To ensure you've done everything right, retrieve some data, e.g. 
 `flask view-table song`. You can access the full list of tables with the help of 
 `flask list-tables`.
+
+## How to run frontend app
+
+Since the frontend app is using the npm package manager, you must install it first. This
+task is straightforward: just install Node.js from [official site](https://nodejs.org/en/)
+and npm comes with it. [More info](https://www.npmjs.com/get-npm).
+
+Next, you shall install all project dependencies. Go to the app directory and
+- `npm install`
+Now, you must only endure long await of downloading and unpacking.
+**Note**. This command will create a special directory `node_modules` inside the app
+directory and will be **~200 Mb** size. Yes, this is normal.
+
+To run the app you must simply call
+- `npm run start`
+This will run node server and you can look at the project at 127.0.0.1:3000
