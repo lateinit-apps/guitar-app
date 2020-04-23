@@ -61,11 +61,15 @@ task is straightforward: just install Node.js from [official site](https://nodej
 and npm comes with it. [More info](https://www.npmjs.com/get-npm).
 
 Next, you shall install all project dependencies. Go to the app directory and
-- `npm install`
+
+`npm install`
+
 Now, you must only endure long await of downloading and unpacking.
 **Note**. This command will create a special directory `node_modules` inside the app
 directory and will be **~200 Mb** size. Yes, this is normal.
 
 To run the app you must simply call
-- `npm run start`
+
+`npm run start` or `npm start`
+
 This will run node server and you can look at the project at 127.0.0.1:3000
