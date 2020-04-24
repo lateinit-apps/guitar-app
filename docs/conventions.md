@@ -5,28 +5,25 @@ This file contains various conventions that we are suposed to be using in our pr
 ## Project structure
 
 ```md
-app/
-    model/
-        *.py
-    static/
-        *.css, *.js, *.txt, *.etc
-    templates/
-        *.html          # Jinja2 templates
-    __init__.py
-    *.py
-    taburet.py
 docs/
     images/
     *.md
-react/
+vanguarde/
     ???
+rearguarde/
+    data/
+       *.txt, *.etc
+    model/
+        *.py
+    __init__.py
+    *.py
+    taburet.py
 .env          # in .gitignore
 .flaskenv
 .gitignore
 Pipfile
 Pipfile.lock
 README.md
-run.py
 ```
 
 ## Files/directories naming guidelines
