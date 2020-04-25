@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {SongCard} from "./SongCard.jsx";
 import {MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBRow} from "mdbreact";
 import placeholder from "../assets/150.png";
 
@@ -22,21 +23,8 @@ class MainPage extends Component {
                                 <MDBIcon icon="tools" size="2x"/>
                             </MDBBtn></MDBCol>
                         </MDBRow>
-                        <MDBRow>
-                            <MDBCol md={3}>
-                                <img src={placeholder} alt="thumbnail"
-                                     className="img-fluid img-thumbnail rounded float-right"
-                                     style={{height: "150px"}}/>
-                            </MDBCol>
-                            <MDBCol md={8}>
-                                <MDBCard className="align-middle" style={{height: "100px"}}>
-                                    <MDBCardBody>
-                                        sdfsf
-                                    </MDBCardBody>
-                                </MDBCard>
-                            </MDBCol>
-                            <MDBCol md={1}><MDBIcon className="float-left" icon="download" size="2x"/></MDBCol>
-                        </MDBRow>
+                        <SongCard artist={"Some cool dude"} trackName={"Some cool track"}/>
+                        <SongCard artist={"Взрвыв кабачка в коляске с поносом"} trackName={"Мрачный аборт в сарае"}/>
                     </MDBCol>
                     <MDBCol md={2}>
                     </MDBCol>
