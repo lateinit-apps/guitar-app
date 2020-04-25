@@ -54,9 +54,9 @@ In case your database instance is not virgin, consider purging tables first with
 `flask view-table song`. You can access the full list of tables with the help of 
 `flask list-tables`.
 
-## How to run frontend app
+## How to run vanguarde app
 
-Since the frontend app is using the npm package manager, you must install it first. This
+Since the vanguarde app is using the npm package manager, you must install it first. This
 task is straightforward: just install Node.js from [official site](https://nodejs.org/en/)
 and npm comes with it. [More info](https://www.npmjs.com/get-npm).
 
