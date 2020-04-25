@@ -2,9 +2,25 @@ import React, { Component } from "react";
 import {SongCard} from "./SongCard.jsx";
 import {MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBRow} from "mdbreact";
 import placeholder from "../assets/150.png";
+import {SearchOptions} from "./SearchOptions";
 
 
 class MainPage extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            searchOptionsToggle: false
+        }
+
+        this.handleSearchOptionClick = this.handleSearchOptionClick.bind(this);
+    }
+
+    handleSearchOptionClick(e) {
+        this.setState(state => ({
+            searchOptionsToggle: !state.searchOptionsToggle
+        }))
+    }
 
     render() {
         return (
@@ -17,12 +33,15 @@ class MainPage extends Component {
                     <MDBCol md={8}>
                         <MDBRow>
                             <MDBCol md={10}>
-                                <MDBInput label="Material input"/>
+                                <MDBInput label="Search"/>
                             </MDBCol>
-                            <MDBCol><MDBBtn floating size="lg" gradient="purple">
+                            <MDBCol><MDBBtn floating size="lg" color="elegant" onClick={this.handleSearchOptionClick}>
                                 <MDBIcon icon="tools" size="2x"/>
                             </MDBBtn></MDBCol>
                         </MDBRow>
+                        {this.state.searchOptionsToggle ?
+                            <SearchOptions/>
+                        : null}
                         <SongCard artist={"Some cool dude"} trackName={"Some cool track"}/>
                         <SongCard artist={"Взрвыв кабачка в коляске с поносом"} trackName={"Мрачный аборт в сарае"}/>
                     </MDBCol>
