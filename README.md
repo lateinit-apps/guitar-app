@@ -26,8 +26,8 @@ can see full list of planned features in [PRD](docs/PRD.md).
 
 ## How to build
 
-We have two parts of our project, a backend and flask one, for particular instructions please refer
-to [how to's](docs/how-to-s.md) page.
+We have two parts of our project, a rearguarde and vanguarde one, for particular instructions please
+refer to [how to's](docs/how-to-s.md) page.
 
 ## PS
 
