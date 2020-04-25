@@ -1,12 +1,12 @@
 import React, {Component} from "react";
 import {
     MDBCollapse,
-    MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBFormInline, MDBNavbar,
+    MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBNavbar, MDBIcon,
     MDBNavbarBrand,
     MDBNavbarNav,
     MDBNavbarToggler,
     MDBNavItem,
-    MDBNavLink
+    MDBNavLink,
 } from "mdbreact";
 
 export class Header extends Component {
@@ -39,12 +39,10 @@ export class Header extends Component {
                     </MDBNavbarNav>
                     <MDBNavbarNav right>
                         <MDBNavItem>
-                            <MDBFormInline waves>
-                                <div className="md-form my-0">
-                                    <input className="form-control mr-sm-2" type="text" placeholder="Search"
-                                           aria-label="Search"/>
-                                </div>
-                            </MDBFormInline>
+                            <MDBNavLink to="#!">
+                                <MDBIcon icon="user" className="d-inline-inline" />{" "}
+                                <div className="d-none d-md-inline">Sign In</div>
+                            </MDBNavLink>
                         </MDBNavItem>
                     </MDBNavbarNav>
                 </MDBCollapse>
