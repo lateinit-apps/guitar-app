@@ -29,13 +29,13 @@ can see full list of planned features in [PRD](docs/PRD.md).
 We have two parts of our project, a rearguarde and vanguarde one, for particular instructions please
 refer to [how to's](docs/how-to-s.md) page.
 
-## PS
+## By the way
 
 In our project we are bundled with a significant amount of [conventions](docs/conventions.md), feel
-free to read them if you're interested.
+free to read them all if you're interested in.
 
-Also, we're using a kinda weird *cool* naming conventions, don't forget to look at [glossary](docs/glossary.md)
-to understand what it going on.
+Also, we're using a kinda weird *cool* naming conventions, don't forget to take a look at [glossary](docs/glossary.md)
+to understand what is going on.
 
 ## Our team/in cast
 
