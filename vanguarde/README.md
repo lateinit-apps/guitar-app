@@ -1,4 +1,4 @@
-This is  <s>fronttend</s> vanguarde application written in React. Obviously, WIP.
+This is  <s>frontend</s> vanguarde application written in React. Obviously, WIP.
 
 ## Install and run
 
