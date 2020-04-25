@@ -13,9 +13,9 @@ export class Header extends Component {
 
     render() {
         return (
-            <MDBNavbar color="indigo" dark expand="md">
+            <MDBNavbar color="elegant-color" dark expand="md">
                 <MDBNavbarBrand>
-                    <strong className="white-text">Navbar</strong>
+                    <strong className="white-text">Taburet</strong>
                 </MDBNavbarBrand>
                 <MDBNavbarToggler/>
                 <MDBCollapse id="navbarCollapse3" navbar>
