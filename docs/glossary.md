@@ -1,9 +1,11 @@
 # Glossary
 
-Will contain all weird namings that we use in our brand project.
+Contains all weird *cool* namings that we use through over our project.
 
-- Taburet - internal name for site
-- Crack - database name
-- Zeugma - name for module for setting connections
-- Vanguarde - "vanguard" name for directory with frontend stuff
-- Rearguarde - "rearguard" name for directory with backend stuff
+Term | Definition
+-----|-----------
+Taburet | internal name for site
+Crack | database name
+Vanguarde | (*from english:* vanguard) name for directory with frontend stuff
+Rearguarde | (*from english:* rearguard) name for directory with backend stuff
+Zeugma | (*from greek:* a figure of speech in which a word applies to two others in different senses) name for module with setting database connections
