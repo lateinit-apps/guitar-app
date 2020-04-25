@@ -1,14 +1,13 @@
-import sys
+from abc import ABC, abstractmethod
+from sys import stderr
 
 
-class AbstractRetriever():
+class AbstractRetriever(ABC):
     def __init__(self, session):
         self.session = session
 
-    def get_all_objects(self):
-        print("Not implemented", file=sys.stderr)
-
-    def get_specific_objects(self, desired_values={}):
+    @abstractmethod
+    def get_objects(self, desired_values={}):
         """Retrieve elements with fields satisfying constraints passed as an argument
 
         Parameters:
@@ -17,4 +16,4 @@ class AbstractRetriever():
         Returns:
             satisfied_objects(list): list of objects which met a conjunction of filter entries
         """
-        print("Not implemented", file=sys.stderr)
+        print("Not implemented", file=stderr)
