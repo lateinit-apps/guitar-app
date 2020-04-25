@@ -31,11 +31,11 @@ class MainPage extends Component {
 
                     </MDBCol>
                     <MDBCol md={8}>
-                        <MDBRow>
-                            <MDBCol md={10}>
+                        <MDBRow className={"d-flex flex-row"}>
+                            <MDBCol md="10">
                                 <MDBInput label="Search"/>
                             </MDBCol>
-                            <MDBCol><MDBBtn floating size="lg" color="elegant" onClick={this.handleSearchOptionClick}>
+                            <MDBCol  md="2"><MDBBtn floating size="lg" color="elegant" onClick={this.handleSearchOptionClick}>
                                 <MDBIcon icon="tools" size="2x"/>
                             </MDBBtn></MDBCol>
                         </MDBRow>
