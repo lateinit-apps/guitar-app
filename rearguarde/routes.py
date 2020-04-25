@@ -1,7 +1,7 @@
-from flask import current_app, g, Response
+from flask import current_app, g, Response, request
 import json
 
-from app.model.crack import Song, Sheet, TrackTab
+from .model.crack import Song, Sheet, TrackTab
 
 
 about_string = """
@@ -71,5 +71,5 @@ def register_routes(app):
 
     @app.route('/easter-egg')
     def easter_egg():
-        with open('app/static/easter-egg.txt') as fstream:
+        with open('data/easter-egg.txt') as fstream:
             return '<pre>{}</pre>'.format(''.join(fstream.readlines()))

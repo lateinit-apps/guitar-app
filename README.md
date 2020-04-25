@@ -1,21 +1,41 @@
 # Guitar app
 
-Upcoming guitar app built with Flask/SQLAlchemy, a bit of frontend (under decision) and with a pinch
-of love.
+Upcoming guitar app built with Flask/SQLAlchemy for backend, React ~~+Kotlin (WAT?)~~ for frontend
+and with a pinch of love ~♥!.
 
-## Plan
+We will provide a SaaS that includes a web site in bundle with backend API, all powered by AWS. You
+can see full list of planned features in [PRD](docs/PRD.md).
 
-Provide a SaaS containing of web site and mobile app (probably), all powered by AWS.
-You can see full list of planned features in [PRD](docs/PRD.md) and list of planned
-technologies [here](docs/technical-specifications.md).
+## The things that we will be definetely using
 
-## Development
+- Flask + SQLAlchemy for backend
+- React for frontend
+- AWS for hosting
+- Automate PR & commit builds
+- Unit testing
+- Code coverage
 
-The project is intended to be built inside the Python virtual environment. It is considered as a 
-good practice to place all the dependencies for a particular application in separate workspace.
-Instead of directly using `venv` module to manipulate virtual environments, one is obliged to 
-utilize the `pipenv` high-level wrapper around `venv` tool. Please refer to this 
-[page](docs/how-to.md) for additional information.
+## The things that we are going to implement (or not)
+
+- CI/CD
+- Docker
+- Terraform
+- Corporative mail service
+- full fledged REST API for bots
+- Telegram/VK/Discord bot
+
+## How to build
+
+We have two parts of our project, a rearguarde and vanguarde one, for particular instructions please
+refer to [how to's](docs/how-to-s.md) page.
+
+## By the way
+
+In our project we are bundled with a significant amount of [conventions](docs/conventions.md), feel
+free to read them all if you're interested in.
+
+Also, we're using a kinda weird *cool* naming conventions, don't forget to take a look at [glossary](docs/glossary.md)
+to understand what is going on.
 
 ## Our team/in cast
 
@@ -23,23 +43,23 @@ utilize the `pipenv` high-level wrapper around `venv` tool. Please refer to this
 
 - Project Manager/DevOps Engineer/Full Stack Developer/Software Architect (wannabe)/~~Secretary~~
 
-<img src="docs/images/keter-curtis.jpg" width="33%">
+<img src="docs/images/avatars/keter-curtis.jpg" width="33%">
 
 ### Yaroslav Bondarev aka "Evil Yarek"
 
 - Project Initiator/Full Stack Developer/Python ~~guru~~ Team Hive Mind/Team Spirit Holder &
   Spiritual Mastermind
 
-<img src="docs/images/evil-yarek.jpg" width="33%">
+<img src="docs/images/avatars/evil-yarek.jpg" width="33%">
 
 ### Konstantin Kukushkin aka "Kost Metallist"
 
 - Backend Developer/Database Developer & Administrator/DevOps Engineer/~~Wishmaster~~ Docker Master
 
-<img src="docs/images/kost-metallist.jpg" width="33%"> 
+<img src="docs/images/avatars/kost-metallist.jpg" width="33%"> 
 
 ### Valentin Alexandrov aka "Nagibator Lalok"
 
 - Frontend Developer/Machine Learning Engineer/~~Outsorce~~ Anonymous (?) Data Scientist
 
-<img src="docs/images/nagibator-lalok.jpg" width="33%"> 
+<img src="docs/images/avatars/nagibator-lalok.jpg" width="33%"> 

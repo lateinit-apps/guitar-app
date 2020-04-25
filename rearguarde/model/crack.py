@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, String, Date, Text, Time, LargeBinary, ForeignKey
 from sqlalchemy.orm import relationship, backref
-from app.model.base import Base
+
+from .base import Base
 
 
 class Genre(Base):
