@@ -34,14 +34,14 @@ rearguarde/
        *.txt, *.etc
     model/
         *.py
+    Pipfile
+    Pipfile.lock
     __init__.py
     *.py
     taburet.py
 .env          # in .gitignore
 .flaskenv
 .gitignore
-Pipfile
-Pipfile.lock
 README.md
 ```
 
