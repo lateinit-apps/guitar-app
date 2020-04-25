@@ -2,10 +2,9 @@
 
 - [Conventions](#conventions)
   - [Project structure](#project-structure)
-    - [Files/directories naming guidelines](#filesdirectories-naming-guidelines)
+    - [Files/directories naming](#filesdirectories-naming)
   - [Pull requests conventions](#pull-requests-conventions)
   - [Coding conventions](#coding-conventions)
-    - [Database tables naming](#database-tables-naming)
   - [Conflict solving](#conflict-solving)
     - [Weapon kits](#weapon-kits)
     - [1 vs 1](#1-vs-1)
@@ -45,17 +44,20 @@ rearguarde/
 README.md
 ```
 
-### Files/directories naming guidelines
+### Files/directories naming
 
 - kebab-case for any files and directories: use all-lowercase, and separate words with hyphens
 - snake_case for any python source code:    use all-lowercase, and separate words with underscore
-- prefer to use rather *cool* names than simple `src`, `app`, etc wherever possible for files and
+- Prefer to use rather *cool* names than simple `src`, `app`, etc wherever possible for files and
 directories and don't forget to update [glossary](glossary.md)
 
 ## Pull requests conventions
 
-- Keep strict to our brand [branching strategy](branching-strategy.md)
+- Keep strict to our brand ~~new~~ [branching strategy](branching-strategy.md)
 - At least two approves are needed to merge a pull request
+- Pull request shouldn't be merged until every comments are resolved
+- D.R.O.Y - Don't Resolve On Yourself - all comments to pull requests should be resolved by author
+  - violate D.R.O.Y. if the comments doesn't require additional review
 - All merges are done with a simple merge strategy to preserve all commit history and branches, no
 squashes, no rebasing is allowed
 
@@ -65,10 +67,11 @@ squashes, no rebasing is allowed
 - 100 characters line length limit
   - supports of opening two files side by side and a console/file explorer tab on 24" monitor
   - having a small part of word over limit is fine
-
-### Database tables naming
-
-Pascal case for ORM-classes, snake case for table names.
+- Database naming
+  - PascalCase for ORM-classes
+  - snake_case for table names
+- Prefer to use rather *cool* names than simple `conn`, `database`, etc wherever possible for classe
+and variables and don't forget to update [glossary](glossary.md)
 
 ## Conflict solving
 
