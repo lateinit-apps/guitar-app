@@ -1,7 +1,8 @@
 from flask import current_app, g, Response, request
 import json
 
-from .model.crack import Song, Sheet, TrackTab
+from .retrieval.retrievers import ArtistRetriever, GenreRetriever, ReleaseRetriever, \
+    SheetRetriever, SongRetriever, TrackTabRetriever
 
 
 about_string = """
@@ -54,20 +55,29 @@ def register_routes(app):
     def about():
         return about_string
 
-    @app.route('/songs')
-    def songs():
-        elements = [repr(x) for x in g.session.query(Song).all()]
-        return json_response(elements)
+    @app.route('/artists')
+    def artists():
+        return json_response(ArtistRetriever(g.session).get_objects())
+
+    @app.route('/genres')
+    def genres():
+        return json_response(GenreRetriever(g.session).get_objects())
+
+    @app.route('/releases')
+    def releases():
+        return json_response(ReleaseRetriever(g.session).get_objects())
 
     @app.route('/sheets')
     def sheets():
-        elements = [repr(x) for x in g.session.query(Sheet).all()]
-        return json_response(elements)
+        return json_response(SheetRetriever(g.session).get_objects())
+
+    @app.route('/songs')
+    def songs():
+        return json_response(SongRetriever(g.session).get_objects())
 
     @app.route('/tracktabs')
     def tracktabs():
-        elements = [repr(x) for x in g.session.query(TrackTab).all()]
-        return json_response(elements)
+        return json_response(TrackTabRetriever(g.session).get_objects())
 
     @app.route('/easter-egg')
     def easter_egg():
