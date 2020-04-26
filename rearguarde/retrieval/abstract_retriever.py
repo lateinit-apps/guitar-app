@@ -29,4 +29,4 @@ class AbstractRetriever(ABC):
         Returns:
             satisfied_objects(list): list of objects which met a conjunction of filter entries
         """
-        print('Not implemented', file=stderr)
+        raise NotImplementedError
