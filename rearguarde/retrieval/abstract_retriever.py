@@ -11,11 +11,12 @@ class AbstractRetriever(ABC):
         return None
 
     def _apply_filters(self, query, desired_values):
+        entity = self.underlying_class()
         for key in desired_values:
             if not hasattr(self.underlying_class(), key):
-                print(f'{key} is not found for class {self.underlying_class()}', file=stderr)
+                print(f'{key} is not found for class {entity}', file=stderr)
                 continue
-            query = query.filter_by(key=desired_values[key])
+            query = query.filter(getattr(entity, key) == desired_values[key])
         return query
 
     @abstractmethod

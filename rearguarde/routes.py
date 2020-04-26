@@ -1,5 +1,6 @@
 from flask import current_app, g, Response, request
 import json
+from urllib import parse as urlparser
 
 from .retrieval.retrievers import ArtistRetriever, GenreRetriever, ReleaseRetriever, \
     SheetRetriever, SongRetriever, TrackTabRetriever
@@ -57,27 +58,33 @@ def register_routes(app):
 
     @app.route('/artists')
     def artists():
-        return json_response(ArtistRetriever(g.session).get_objects())
+        params = dict(urlparser.parse_qsl(request.query_string.decode()))
+        return json_response(ArtistRetriever(g.session).get_objects(params))
 
     @app.route('/genres')
     def genres():
-        return json_response(GenreRetriever(g.session).get_objects())
+        params = dict(urlparser.parse_qsl(request.query_string.decode()))
+        return json_response(GenreRetriever(g.session).get_objects(params))
 
     @app.route('/releases')
     def releases():
-        return json_response(ReleaseRetriever(g.session).get_objects())
+        params = dict(urlparser.parse_qsl(request.query_string.decode()))
+        return json_response(ReleaseRetriever(g.session).get_objects(params))
 
     @app.route('/sheets')
     def sheets():
-        return json_response(SheetRetriever(g.session).get_objects())
+        params = dict(urlparser.parse_qsl(request.query_string.decode()))
+        return json_response(SheetRetriever(g.session).get_objects(params))
 
     @app.route('/songs')
     def songs():
-        return json_response(SongRetriever(g.session).get_objects())
+        params = dict(urlparser.parse_qsl(request.query_string.decode()))
+        return json_response(SongRetriever(g.session).get_objects(params))
 
     @app.route('/tracktabs')
     def tracktabs():
-        return json_response(TrackTabRetriever(g.session).get_objects())
+        params = dict(urlparser.parse_qsl(request.query_string.decode()))
+        return json_response(TrackTabRetriever(g.session).get_objects(params))
 
     @app.route('/easter-egg')
     def easter_egg():
