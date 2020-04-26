@@ -56,10 +56,10 @@ to understand what is going on.
 
 - Backend Developer/Database Developer & Administrator/DevOps Engineer/~~Wishmaster~~ Docker Master
 
-<img src="docs/images/avatars/kost-metallist.jpg" width="33%"> 
+<img src="docs/images/avatars/kost-metallist.jpg" width="33%">
 
 ### Valentin Alexandrov aka "Nagibator Lalok"
 
 - Frontend Developer/Machine Learning Engineer/~~Outsorce~~ Anonymous (?) Data Scientist
 
-<img src="docs/images/avatars/nagibator-lalok.jpg" width="33%"> 
+<img src="docs/images/avatars/nagibator-lalok.jpg" width="33%">
