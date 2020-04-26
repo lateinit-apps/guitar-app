@@ -29,14 +29,14 @@ for escaping from the environment)
 ### How to setup a connection to the database
 
 - Locate the `rearguarde/configuration/.env` and create a copy of this file in `rearguarde` 
-directrory &ndash; the latter isn't published to the repository thus no crucial data will be 
+directory &ndash; the latter isn't published to the repository thus no crucial data will be 
 disclosed
 - Enter the real value for the `CRACK_PASSWORD` variable (it should be known since you've finished 
 [this guide](db-postgresql-setup.md))
 - Make sure you have re-entered the virtual environment
 - Probe your connection with running `rearguarde/model/zeugma.py`
 
-### How to run Flask backend
+### How to run the Rearguarde application
 
 - Enter virtual environment
 - Execute command `flask run`
@@ -63,7 +63,7 @@ In case your database instance is not virgin, consider purging tables first with
 
 ---
 
-## How to configure and operate frontend
+## How to run the Vanguarde application
 
 Since the vanguarde app is using the npm package manager, you must install it first. This
 task is straightforward: just install Node.js from [official site](https://nodejs.org/en/)

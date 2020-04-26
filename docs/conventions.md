@@ -10,7 +10,7 @@
     - [1 vs 1](#1-vs-1)
     - [2 vs 2](#2-vs-2)
 
-This file contains various conventions that we are suposed to be using in our project ~~*or not*~~.
+This file contains various conventions that we are supposed to be using in our project ~~*or not*~~.
 
 ## Project structure
 
@@ -55,9 +55,9 @@ directories and don't forget to update [glossary](glossary.md)
 
 - Keep strict to our brand ~~new~~ [branching strategy](branching-strategy.md)
 - At least two approves are needed to merge a pull request
-- Pull request shouldn't be merged until every comments are resolved
+- Pull request shouldn't be merged until every comment is resolved
 - D.R.O.Y - Don't Resolve On Yourself - all comments to pull requests should be resolved by author
-  - violate D.R.O.Y. if the comments doesn't require additional review
+  - violate D.R.O.Y. if the comments don't require additional review
 - All merges are done with a simple merge strategy to preserve all commit history and branches, no
 squashes, no rebasing is allowed
 
