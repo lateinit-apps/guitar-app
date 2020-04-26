@@ -3,8 +3,8 @@ from os import getenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 
-from .base import Base
-from .crack import *
+from model.base import Base
+from model.crack import *
 
 
 dialect = getenv('CRACK_DIALECT')

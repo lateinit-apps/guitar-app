@@ -2,7 +2,7 @@ from flask import current_app, g, Response, request
 import json
 from urllib import parse as urlparser
 
-from .retrieval.retrievers import ArtistRetriever, GenreRetriever, ReleaseRetriever, \
+from retrieval.retrievers import ArtistRetriever, GenreRetriever, ReleaseRetriever, \
     SheetRetriever, SongRetriever, TrackTabRetriever
 
 

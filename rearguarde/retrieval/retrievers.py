@@ -1,5 +1,5 @@
-from .abstract_retriever import AbstractRetriever
-from ..model.crack import Artist, Genre, Release, Sheet, Song, TrackTab
+from retrieval.abstract_retriever import AbstractRetriever
+from model.crack import Artist, Genre, Release, Sheet, Song, TrackTab
 
 
 class ArtistRetriever(AbstractRetriever):

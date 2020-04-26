@@ -1,8 +1,8 @@
 from flask import Flask, g
 
-from .cli import register_cli_commands
-from .model.zeugma import Session
-from .routes import register_routes
+from cli import register_cli_commands
+from model.zeugma import Session
+from routes import register_routes
 
 
 def create_app(config_class=None):

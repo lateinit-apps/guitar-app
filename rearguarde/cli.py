@@ -2,8 +2,8 @@ import click
 import json
 from sqlalchemy_utils.functions import get_class_by_table
 
-from .model.base import Base
-from .model import zeugma
+from model.base import Base
+from model import zeugma
 
 
 def register_cli_commands(app):
