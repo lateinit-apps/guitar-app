@@ -27,11 +27,11 @@ class MainPage extends Component {
 
             <MDBContainer fluid>
                 <MDBRow>
-                    <MDBCol md={2}>
+                    <MDBCol md="2">
 
                     </MDBCol>
-                    <MDBCol md={8}>
-                        <MDBRow className={"d-flex flex-row"}>
+                    <MDBCol md="8">
+                        <MDBRow className="d-flex flex-row">
                             <MDBCol md="10">
                                 <MDBInput label="Search"/>
                             </MDBCol>
@@ -42,10 +42,10 @@ class MainPage extends Component {
                         {this.state.searchOptionsToggle ?
                             <SearchOptions/>
                         : null}
-                        <SongCard artist={"Some cool dude"} trackName={"Some cool track"}/>
-                        <SongCard artist={"Взрвыв кабачка в коляске с поносом"} trackName={"Мрачный аборт в сарае"}/>
+                        <SongCard artist="Some cool dude" trackName="Some cool track"/>
+                        <SongCard artist="Взрвыв кабачка в коляске с поносом" trackName="Мрачный аборт в сарае"/>
                     </MDBCol>
-                    <MDBCol md={2}>
+                    <MDBCol md="2">
                     </MDBCol>
                 </MDBRow>
             </MDBContainer>

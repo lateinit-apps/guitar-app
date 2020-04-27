@@ -8,11 +8,11 @@ export class SearchOptions extends Component {
         return (
             <MDBAnimation type="fadeInUp">
 
-                <MDBContainer className={'mb-2 pl-0 ml-0'}>
-                    <MDBCol md="9" className={'pl-0'}>
+                <MDBContainer className="mb-2 pl-0 ml-0">
+                    <MDBCol md="9" className="pl-0">
                         <MDBCard>
-                            <p className='h4 text-center py-4'>Search filters</p>
-                            <MDBRow className={'ml-2 mr-2'}>
+                            <p className="h4 text-center py-4">Search filters</p>
+                            <MDBRow className="ml-2 mr-2">
                                 <MDBCol md="6">
                                     <form>
                                         <div className="grey-text">

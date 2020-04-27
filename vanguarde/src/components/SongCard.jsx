@@ -11,7 +11,7 @@ export class SongCard extends Component {
     render() {
         return (
 
-            <MDBRow className={'pl-0'}>
+            <MDBRow className="pl-0">
                     <MDBCol md="10">
                         <MDBCard className="align-middle mb-3 text-left">
                             <div  className="row no-gutters">
@@ -28,7 +28,7 @@ export class SongCard extends Component {
                         </MDBCard>
                     </MDBCol>
                     <MDBCol md="2">
-                        <MDBBtn className={"alignRigh"} color="elegant">
+                        <MDBBtn className="alignRight" color="elegant">
                             <MDBIcon className="float-left" icon="download" size="2x"/>
                         </MDBBtn>
                     </MDBCol>

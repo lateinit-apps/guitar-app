@@ -9,11 +9,12 @@ export class Footer extends Component {
 
         this.footerClicks = 0;
         this.footerArray = [
-            '© ' + new Date().getFullYear() + ' Copyright LateInit Apps',
+            '© ' + new Date().getFullYear() + ' Copyright Lateinit Apps',
             'Шёл медведь по лесу, видит - машина горит. Сел в неё и сгорел',
             'Copyright © 2007. All bears reserved.',
             'Надел мужик шляпу.',
-            'А она ему как раз.'
+            'А она ему как раз.',
+            'It\'s a bird... It\'s a plane... No, it is a Songsterr clone!'
         ];
 
         this.state = {
