@@ -3,17 +3,15 @@ from sys import stderr
 
 
 class AbstractRetriever(ABC):
+    underlying_class = None
+
     def __init__(self, session):
         self.session = session
 
-    @staticmethod
-    def underlying_class():
-        return None
-
     def _apply_filters(self, query, desired_values):
-        entity = self.underlying_class()
+        entity = type(self).underlying_class
         for key in desired_values:
-            if not hasattr(self.underlying_class(), key):
+            if not hasattr(entity, key):
                 print(f'{key} is not found for class {entity}', file=stderr)
                 continue
             query = query.filter(getattr(entity, key) == desired_values[key])
