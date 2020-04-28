@@ -6,22 +6,21 @@ and with a pinch of love ~♥!.
 We will provide a SaaS that includes a web site in bundle with backend API, all powered by AWS. You
 can see full list of planned features in [PRD](docs/PRD.md).
 
-## The things that we will be definetely using
+## Things we will be definitely using
 
 - Flask + SQLAlchemy for backend
 - React for frontend
 - AWS for hosting
-- Automate PR & commit builds
+- Automated PR & commit builds
 - Unit testing
-- Code coverage
 
-## The things that we are going to implement (or not)
+## Things we are going to implement (or not)
 
 - CI/CD
-- Docker
-- Terraform
+- Docker image for service
+- AWS resources configuration through Terraform 
 - Corporative mail service
-- full fledged REST API for bots
+- Full fledged REST API for bots
 - Telegram/VK/Discord bot
 
 ## How to build
@@ -34,7 +33,7 @@ refer to [how to's](docs/how-to-s.md) page.
 In our project we are bundled with a significant amount of [conventions](docs/conventions.md), feel
 free to read them all if you're interested in.
 
-Also, we're using a kinda weird *cool* naming conventions, don't forget to take a look at [glossary](docs/glossary.md)
+Also, we're using kinda weird *cool* naming conventions, don't forget to take a look at [glossary](docs/glossary.md)
 to understand what is going on.
 
 ## Our team/in cast
@@ -60,6 +59,6 @@ to understand what is going on.
 
 ### Valentin Alexandrov aka "Nagibator Lalok"
 
-- Frontend Developer/Machine Learning Engineer/~~Outsorce~~ Anonymous (?) Data Scientist
+- Frontend Developer/Machine Learning Engineer/~~Outsource~~ Anonymous (?) Data Scientist
 
 <img src="docs/images/avatars/nagibator-lalok.jpg" width="33%">

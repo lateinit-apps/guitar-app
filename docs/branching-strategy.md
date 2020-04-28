@@ -24,14 +24,14 @@ state, merge it into *master*. It should always be safe to deploy to production 
 
 ## Our own modifications
 
-Anyone is allowed and even encouraged to make commits straight in *develop* branch without using
+Anyone is allowed and even encouraged to make commits straight to *develop* branch without using
 particular branches. The [original Git Flow idea](https://nvie.com/posts/a-successful-git-branching-model/#feature-branches)
 was about creating feature branches on *local* machines:
 
 > Feature branches typically exist in developer repos only, not in origin.
 
 Generally a developer shouldn't create new branches when he is working on existing components, this
-will help to avoid merge conflicts and will keep everyones code up-to-date.
+will help to avoid merge conflicts and will keep everyone's code up-to-date.
 
 And when a developer is going to implement a whole new bunch of functionality that looks to be
 independent from the existing ones it'll be a good idea to create a new branch for it, keeping in
