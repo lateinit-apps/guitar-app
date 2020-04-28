@@ -2,8 +2,8 @@ import click
 import json
 from sqlalchemy_utils.functions import get_class_by_table
 
-from app.model.base import Base
-import app.model.zeugma as zeugma
+from model.base import Base
+from model import zeugma
 
 
 def register_cli_commands(app):
@@ -20,7 +20,7 @@ def register_cli_commands(app):
         print(*sorted([x.name for x in zeugma.get_tables_list()]), sep='\n')
 
     @app.cli.command('populate-tables', help='Fill up tables from data located in the sample file.')
-    @click.argument('PADDING_FILE', default='app/static/sample-crack-data.json')
+    @click.argument('PADDING_FILE', default='data/sample-crack-data.json')
     def populate_tables(padding_file):
         with open(padding_file) as json_stream:
             catalog = json.load(json_stream)

@@ -1,5 +1,9 @@
-from flask import current_app, g
-from app.model.crack import Song, Sheet, TrackTab
+from flask import current_app, g, Response, request
+import json
+from urllib import parse as urlparser
+
+from retrieval.retrievers import ArtistRetriever, GenreRetriever, ReleaseRetriever, \
+    SheetRetriever, SongRetriever, TrackTabRetriever
 
 
 about_string = """
@@ -27,6 +31,18 @@ vitae, scelerisque nec velit. Nam nec accumsan lectus.</p>
 """
 
 
+def _to_json(obj_or_list):
+    if not obj_or_list:
+        return json.dumps([])
+    if not isinstance(obj_or_list, list):
+        return json.dumps([obj_or_list])
+    return json.dumps(obj_or_list)
+
+
+def json_response(obj_or_list):
+    return Response(_to_json(obj_or_list), mimetype='application/json')
+
+
 def register_routes(app):
     @app.route('/')
     def index():
@@ -40,25 +56,37 @@ def register_routes(app):
     def about():
         return about_string
 
-    @app.route('/songs')
-    def songs():
-        session = g.get('session')
-        elements = [f'<li>{repr(x)}</li>' for x in session.query(Song).all()]
-        return '<ul>{}</ul>'.format('\n'.join(elements))
+    @app.route('/artists')
+    def artists():
+        params = dict(urlparser.parse_qsl(request.query_string.decode()))
+        return json_response(ArtistRetriever(g.session).get_objects(params))
+
+    @app.route('/genres')
+    def genres():
+        params = dict(urlparser.parse_qsl(request.query_string.decode()))
+        return json_response(GenreRetriever(g.session).get_objects(params))
+
+    @app.route('/releases')
+    def releases():
+        params = dict(urlparser.parse_qsl(request.query_string.decode()))
+        return json_response(ReleaseRetriever(g.session).get_objects(params))
 
     @app.route('/sheets')
     def sheets():
-        session = g.get('session')
-        elements = [f'<li>{repr(x)}</li>' for x in session.query(Sheet).all()]
-        return '<ul>{}</ul>'.format('\n'.join(elements))
+        params = dict(urlparser.parse_qsl(request.query_string.decode()))
+        return json_response(SheetRetriever(g.session).get_objects(params))
+
+    @app.route('/songs')
+    def songs():
+        params = dict(urlparser.parse_qsl(request.query_string.decode()))
+        return json_response(SongRetriever(g.session).get_objects(params))
 
     @app.route('/tracktabs')
     def tracktabs():
-        session = g.get('session')
-        elements = [f'<li>{repr(x)}</li>' for x in session.query(TrackTab).all()]
-        return '<ul>{}</ul>'.format('\n'.join(elements))
+        params = dict(urlparser.parse_qsl(request.query_string.decode()))
+        return json_response(TrackTabRetriever(g.session).get_objects(params))
 
     @app.route('/easter-egg')
     def easter_egg():
-        with open('app/static/easter-egg.txt') as fstream:
+        with open('data/easter-egg.txt') as fstream:
             return '<pre>{}</pre>'.format(''.join(fstream.readlines()))
