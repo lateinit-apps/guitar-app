@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {SongCard} from "./SongCard.jsx";
 import {MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBRow} from "mdbreact";
-import placeholder from "../assets/150.png";
 import {SearchOptions} from "./SearchOptions";
 
 

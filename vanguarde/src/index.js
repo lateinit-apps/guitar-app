@@ -9,7 +9,13 @@ import {createStore} from 'redux'
 
 const store = createStore()
 
-// TODO: move <link> somewhere more proper
+const config = {
+  apiConfig: {
+      url: "/api",
+      delay: 300
+  }
+};
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
