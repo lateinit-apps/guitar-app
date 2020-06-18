@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {MDBBtn, MDBCol, MDBContainer, MDBInput, MDBRow, MDBCard, MDBCardTitle, MDBAnimation} from "mdbreact";
+import {MDBCol, MDBContainer, MDBInput, MDBRow, MDBCard, MDBAnimation} from "mdbreact";
 
 
 export class SearchOptions extends Component {

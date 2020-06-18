@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {SongCard} from "./SongCard.jsx";
-import {MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBRow} from "mdbreact";
+import {MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBRow} from "mdbreact";
 import {SearchOptions} from "./SearchOptions";
 
 

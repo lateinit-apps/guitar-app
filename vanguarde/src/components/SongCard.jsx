@@ -1,7 +1,5 @@
 import {
-    MDBCard,
-    MDBCardBody,
-    MDBContainer, MDBRow, MDBIcon, MDBBtn, MDBCol
+    MDBCard, MDBRow, MDBIcon, MDBBtn, MDBCol
 } from "mdbreact";
 import React, {Component} from "react";
 import placeholder from "../assets/150.png";
