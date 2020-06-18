@@ -53,8 +53,12 @@ class MainPage extends Component {
                         {this.state.searchOptionsToggle ?
                             <SearchOptions/>
                         : null}
-                        <SongCard artist="Some cool dude" trackName="Some cool track"/>
-                        <SongCard artist="Взрвыв кабачка в коляске с поносом" trackName="Мрачный аборт в сарае"/>
+                        {this.props.songList.map((value, index) => {
+                            let trackName = value.name
+                            return <SongCard artist="Someone cool" trackName={trackName}/>
+                        })}
+                        {/* <SongCard artist="Some cool dude" trackName="Some cool track"/> */}
+                        {/* <SongCard artist="Взрвыв кабачка в коляске с поносом" trackName="Мрачный аборт в сарае"/> */}
                     </MDBCol>
                     <MDBCol md="2">
                     </MDBCol>
