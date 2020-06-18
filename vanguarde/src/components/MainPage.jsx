@@ -57,8 +57,6 @@ class MainPage extends Component {
                             let trackName = value.name
                             return <SongCard artist="Someone cool" trackName={trackName}/>
                         })}
-                        {/* <SongCard artist="Some cool dude" trackName="Some cool track"/> */}
-                        {/* <SongCard artist="Взрвыв кабачка в коляске с поносом" trackName="Мрачный аборт в сарае"/> */}
                     </MDBCol>
                     <MDBCol md="2">
                     </MDBCol>
