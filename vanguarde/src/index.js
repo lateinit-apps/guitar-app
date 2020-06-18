@@ -9,11 +9,17 @@ import {applyMiddleware, createStore, combineReducers} from 'redux'
 import songReducer from './reducers'
 import thunk from "redux-thunk";
 
+const config = {
+  apiConfig: {
+    url: "http://127.0.0.1:5000/",
+  }
+};
+
 const store = createStore(
   combineReducers(
     {songReducer, }
   ),
-  applyMiddleware(thunk.withExtraArgument({}))
+  applyMiddleware(thunk.withExtraArgument(config))
 )
 
 ReactDOM.render(

@@ -13,7 +13,7 @@ export const fetchSongListSuccess = songList => ({
 export function getSongList() { return (dispatch, getState, { apiConfig }) => {
     console.log('getSongList');
     dispatch(fetchBegin());
-    axios.get(`http://127.0.0.1:5000/songs`) // FIXME: hardcoded API
+    axios.get(`${apiConfig.url}/songs`)
         .then(res => {
             console.log({res});
             dispatch(fetchSongListSuccess(res.data));
