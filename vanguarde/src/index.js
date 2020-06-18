@@ -7,11 +7,13 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux'
 import {applyMiddleware, createStore, combineReducers} from 'redux'
 import songReducer from './reducers'
+import thunk from "redux-thunk";
 
 const store = createStore(
   combineReducers(
     {songReducer, }
-  )
+  ),
+  applyMiddleware(thunk.withExtraArgument({}))
 )
 
 ReactDOM.render(
