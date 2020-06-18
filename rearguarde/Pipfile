@@ -12,6 +12,7 @@ pg8000 = "*"
 python-dotenv = "*"
 sqlalchemy = "*"
 sqlalchemy-utils = "*"
+flask-cors = "*"
 
 [requires]
 python_version = "3.8"
