@@ -5,16 +5,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import {Provider} from 'react-redux'
-import {createStore} from 'redux'
+import {applyMiddleware, createStore, combineReducers} from 'redux'
+import songReducer from './reducers'
 
-const store = createStore()
-
-const config = {
-  apiConfig: {
-      url: "/api",
-      delay: 300
-  }
-};
+const store = createStore(
+  combineReducers(
+    {songReducer, }
+  )
+)
 
 ReactDOM.render(
   <Provider store={store}>

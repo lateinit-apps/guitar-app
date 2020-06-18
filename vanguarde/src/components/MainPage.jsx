@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import {SongCard} from "./SongCard.jsx";
 import {MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBRow} from "mdbreact";
 import {SearchOptions} from "./SearchOptions";
+import {getSongList} from "../actions/songList";
+
+import { connect } from 'react-redux';
+
+// import axios from "axios";
+// import { FETCH_SONG_LIST_SUCCESS } from "../constants/action-types";
+// import { fetchBegin, fetchError, handleError } from "./actions/index";
 
 
 class MainPage extends Component {
@@ -19,6 +26,11 @@ class MainPage extends Component {
         this.setState(state => ({
             searchOptionsToggle: !state.searchOptionsToggle
         }))
+    }
+
+    componentDidMount() {
+        console.log("componentDidMount");
+        this.props.getSongList();
     }
 
     render() {
@@ -56,4 +68,8 @@ class MainPage extends Component {
 
 }
 
-export default MainPage;
+const mapStateToProps = (state) => ({
+    songList: state.songReducer.songList
+});
+
+export default connect(mapStateToProps, {getSongList})(MainPage);
