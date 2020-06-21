@@ -8,10 +8,6 @@ import MainPage from "./components/MainPage";
 import {Footer} from "./components/Footer";
 import {Header} from "./components/Header";
 
-
-/**
- * @return {boolean}
- */
 function App() {
     return (
         <Router>
@@ -19,7 +15,6 @@ function App() {
             <MainPage/>
             <Footer/>
         </Router>
-
     );
 }
 
