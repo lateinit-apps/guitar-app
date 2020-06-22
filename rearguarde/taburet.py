@@ -15,7 +15,8 @@ def create_app(config_class=None):
     register_cli_commands(app)
 
     register_routes(app)
-    api = Api(app, title='Main', description='Database objects manipulation API')
+    api = Api(app, title='Taburet API', 
+              description='Database objects manipulation API', doc='/docs/')
     register_common_namespace(api)
     register_resources_namespace(api)
 
