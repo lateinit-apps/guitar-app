@@ -5,7 +5,6 @@ from urllib import parse as urlparser
 from retrieval.retrievers import ArtistRetriever, GenreRetriever, ReleaseRetriever, \
     SheetRetriever, SongRetriever, TrackTabRetriever
 
-# TODO examples for every resource
 
 def register(api: Api):
     # this creates and assigns the namespace to the Api instance
@@ -124,10 +123,10 @@ def register(api: Api):
     @api.response(404, 'No entity is found')
     @api.response(422, 'Validation unsuccessful')
     class Releases(Resource):
-        """
-        Releases GET method.
-        """
         def get(self):
+            """
+            Releases GET method.
+            """
             params = dict(urlparser.parse_qsl(request.query_string.decode()))
             return ReleaseRetriever(g.session).get_objects(params)
 
@@ -152,10 +151,10 @@ def register(api: Api):
     @api.response(422, 'Validation unsuccessful')
     @ns.route('/songs')
     class Songs(Resource):
-        """
-        Songs GET method.
-        """
         def get(self):
+            """
+            Songs GET method.
+            """
             params = dict(urlparser.parse_qsl(request.query_string.decode()))
             return SongRetriever(g.session).get_objects(params)
 
@@ -194,10 +193,10 @@ def register(api: Api):
     @api.response(404, 'No entity is found')
     @api.response(422, 'Validation unsuccessful')
     class Sheets(Resource):
-        """
-        Sheets GET method.
-        """
         def get(self):
+            """
+            Sheets GET method.
+            """
             params = dict(urlparser.parse_qsl(request.query_string.decode()))
             return SheetRetriever(g.session).get_objects(params)
 
@@ -242,9 +241,9 @@ def register(api: Api):
     @api.response(422, 'Validation unsuccessful')
     @ns.route('/tracktabs')
     class Tracktabs(Resource):
-        """
-        Track tabs GET method.
-        """
         def get(self):
+            """
+            Track tabs GET method.
+            """
             params = dict(urlparser.parse_qsl(request.query_string.decode()))
             return TrackTabRetriever(g.session).get_objects(params)

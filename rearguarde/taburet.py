@@ -1,11 +1,10 @@
 from flask import Flask, g
 from flask_restx import Api
 
-from api.common import register as register_common_namespace
+from api.meta import register as register_meta_namespace
 from api.resources import register as register_resources_namespace
 from cli import register_cli_commands
 from model.zeugma import Session
-from routes import register_routes
 
 
 def create_app(config_class=None):
@@ -14,10 +13,9 @@ def create_app(config_class=None):
         app.config.from_object(config_class)
     register_cli_commands(app)
 
-    register_routes(app)
-    api = Api(app, title='Taburet API', 
+    api = Api(app, version='v1', title='Taburet API', validate=True,
               description='Database objects manipulation API', doc='/docs/')
-    register_common_namespace(api)
+    register_meta_namespace(api)
     register_resources_namespace(api)
 
     @app.before_request
