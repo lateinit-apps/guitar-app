@@ -1,4 +1,5 @@
 from flask import Flask, g
+from flask_cors import CORS
 from flask_restx import Api
 
 from api.meta import register as register_meta_namespace
@@ -9,6 +10,7 @@ from model.zeugma import Session
 
 def create_app(config_class=None):
     app = Flask(__name__)
+    CORS(app)
     if config_class:
         app.config.from_object(config_class)
     register_cli_commands(app)

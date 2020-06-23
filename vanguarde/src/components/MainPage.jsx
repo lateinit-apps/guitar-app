@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import {SongCard} from "./SongCard.jsx";
-import {MDBBtn, MDBCard, MDBCardBody, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBRow} from "mdbreact";
-import placeholder from "../assets/150.png";
+import {MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBRow} from "mdbreact";
 import {SearchOptions} from "./SearchOptions";
+import {getSongList} from "../actions/songList";
+
+import { connect } from 'react-redux';
+
+// import axios from "axios";
+// import { FETCH_SONG_LIST_SUCCESS } from "../constants/action-types";
+// import { fetchBegin, fetchError, handleError } from "./actions/index";
 
 
 class MainPage extends Component {
@@ -20,6 +26,11 @@ class MainPage extends Component {
         this.setState(state => ({
             searchOptionsToggle: !state.searchOptionsToggle
         }))
+    }
+
+    componentDidMount() {
+        console.log("componentDidMount");
+        this.props.getSongList();
     }
 
     render() {
@@ -42,8 +53,10 @@ class MainPage extends Component {
                         {this.state.searchOptionsToggle ?
                             <SearchOptions/>
                         : null}
-                        <SongCard artist="Some cool dude" trackName="Some cool track"/>
-                        <SongCard artist="Взрвыв кабачка в коляске с поносом" trackName="Мрачный аборт в сарае"/>
+                        {this.props.songList.map((value, index) => {
+                            let trackName = value.name
+                            return <SongCard artist="Someone cool" trackName={trackName}/>
+                        })}
                     </MDBCol>
                     <MDBCol md="2">
                     </MDBCol>
@@ -57,4 +70,8 @@ class MainPage extends Component {
 
 }
 
-export default MainPage;
+const mapStateToProps = (state) => ({
+    songList: state.songReducer.songList
+});
+
+export default connect(mapStateToProps, {getSongList})(MainPage);

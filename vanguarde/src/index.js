@@ -4,11 +4,28 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-// TODO: move <link> somewhere more proper
+import {Provider} from 'react-redux'
+import {applyMiddleware, createStore, combineReducers} from 'redux'
+import songReducer from './reducers'
+import thunk from "redux-thunk";
+
+const config = {
+  apiConfig: {
+    url: "http://127.0.0.1:5000/",
+  }
+};
+
+const store = createStore(
+  combineReducers(
+    {songReducer, }
+  ),
+  applyMiddleware(thunk.withExtraArgument(config))
+)
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 

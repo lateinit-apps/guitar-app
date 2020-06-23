@@ -40,7 +40,7 @@ we can consider starting an advertising company to engage a lot of real users to
 
 - Most likely:
   - print tabs to PDF
-  - playing of songs
+  - playing of songs + automatic scrolling with various bpm
   - difficulty of song
   - email authentication
   - account recovery service
@@ -61,6 +61,7 @@ we can consider starting an advertising company to engage a lot of real users to
   - mobile app
 
 - Arguable:
+  - interactive console aka linux shell just because we can
   - using sound input to record tabs (we are not an audio recognition service, are we?)
   - comments section for tab page (we are not a video hosting service, are we?)
   - forum/messages for discussions (we are not a social network service, are we?)
