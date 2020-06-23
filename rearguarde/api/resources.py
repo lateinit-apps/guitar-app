@@ -30,11 +30,11 @@ def register(api: Api):
             'paramType': 'query',
             'maxLength': 64,
         },
-        # TODO regex pattern for date
         'year_founded': {
             'description': 'Artist\'s initiation date (only year is taken into account)',
             'type': 'string',
             'format': 'date',
+            'pattern': '^\d{4}-\d{2}-\d{2}$',
             'paramType': 'query',
             'maxLength': 10,
         },
@@ -47,7 +47,7 @@ def register(api: Api):
     class Artists(Resource):
         def get(self):
             """
-            Artists summary text.
+            Artists GET method.
             """
             params = dict(urlparser.parse_qsl(request.query_string.decode()))
             return ArtistRetriever(g.session).get_objects(params)
@@ -74,6 +74,9 @@ def register(api: Api):
     @api.response(422, 'Validation unsuccessful')
     class Genres(Resource):
         def get(self):
+            """
+            Genres GET method.
+            """
             params = dict(urlparser.parse_qsl(request.query_string.decode()))
             return GenreRetriever(g.session).get_objects(params)
 
@@ -121,6 +124,9 @@ def register(api: Api):
     @api.response(404, 'No entity is found')
     @api.response(422, 'Validation unsuccessful')
     class Releases(Resource):
+        """
+        Releases GET method.
+        """
         def get(self):
             params = dict(urlparser.parse_qsl(request.query_string.decode()))
             return ReleaseRetriever(g.session).get_objects(params)
@@ -146,6 +152,9 @@ def register(api: Api):
     @api.response(422, 'Validation unsuccessful')
     @ns.route('/songs')
     class Songs(Resource):
+        """
+        Songs GET method.
+        """
         def get(self):
             params = dict(urlparser.parse_qsl(request.query_string.decode()))
             return SongRetriever(g.session).get_objects(params)
@@ -170,11 +179,11 @@ def register(api: Api):
             'paramType': 'query',
             'minimum': 1,
         },
-        # TODO regex pattern for date
         'upload_date': {
             'description': 'Associated date of upload',
             'type': 'string',
             'format': 'date',
+            'pattern': '^\d{4}-\d{2}-\d{2}$',
             'paramType': 'query',
             'maxLength': 10,
         },
@@ -185,6 +194,9 @@ def register(api: Api):
     @api.response(404, 'No entity is found')
     @api.response(422, 'Validation unsuccessful')
     class Sheets(Resource):
+        """
+        Sheets GET method.
+        """
         def get(self):
             params = dict(urlparser.parse_qsl(request.query_string.decode()))
             return SheetRetriever(g.session).get_objects(params)
@@ -209,12 +221,11 @@ def register(api: Api):
             'paramType': 'query',
             'minimum': 1,
         },
-        # TODO pattern
         'time_start': {
             'description': 'Time of the audio line beginning',
             'type': 'string',
-            # HH:MM:SS
             'format': 'time',
+            'pattern': '^\d{2}:\d{2}:\d{2}$',
             'paramType': 'query',
             'maxLength': 8,
         },
@@ -231,6 +242,9 @@ def register(api: Api):
     @api.response(422, 'Validation unsuccessful')
     @ns.route('/tracktabs')
     class Tracktabs(Resource):
+        """
+        Track tabs GET method.
+        """
         def get(self):
             params = dict(urlparser.parse_qsl(request.query_string.decode()))
             return TrackTabRetriever(g.session).get_objects(params)
