@@ -3,8 +3,8 @@ import {
 } from '../constants/action-types';
 
 const initialState = {
-    search_bar_toggle: false,
-    search_query: '',
+    searchBarToggle: false,
+    searchQuery: '',
 };
 
 const searchReducer = (state = initialState, action) => {
@@ -12,12 +12,12 @@ const searchReducer = (state = initialState, action) => {
     case TOGGLE_SEARCH_BAR:
         return {
             ...state,
-            search_bar_toggle: (!state.search_bar_toggle),
+            searchBarToggle: (!state.searchBarToggle),
         };
     case CHANGE_SEARCH_QUERY:
         return {
             ...state,
-            search_query: action.payload.search_query,
+            searchQuery: action.payload.searchQuery,
         };
     default:
         return state;

@@ -13,7 +13,7 @@ class SongList extends Component {
     static propTypes = {
         getSongList: PropTypes.func.isRequired,
         toggleSearchBar: PropTypes.func.isRequired,
-        searchBarToggle: PropTypes.func.isRequired,
+        searchBarToggle: PropTypes.bool.isRequired,
         songList: PropTypes.array,
     }
 
@@ -51,7 +51,7 @@ class SongList extends Component {
 
 const mapStateToProps = (state) => ({
     songList: state.songReducer.songList,
-    searchBarToggle: state.searchReducer.search_bar_toggle,
+    searchBarToggle: state.searchReducer.searchBarToggle,
 });
 
 export default connect(mapStateToProps, {getSongList, toggleSearchBar})(SongList);
