@@ -1,9 +1,11 @@
 from flask import Flask, g
+from flask_cors import CORS
+from flask_restx import Api
 
+from api.meta import register as register_meta_namespace
+from api.resources import register as register_resources_namespace
 from cli import register_cli_commands
 from model.zeugma import Session
-from routes import register_routes
-from flask_cors import CORS
 
 
 def create_app(config_class=None):
@@ -12,7 +14,11 @@ def create_app(config_class=None):
     if config_class:
         app.config.from_object(config_class)
     register_cli_commands(app)
-    register_routes(app)
+
+    api = Api(app, version='v1', title='Taburet API', validate=True,
+              description='Database objects manipulation API', doc='/docs/')
+    register_meta_namespace(api)
+    register_resources_namespace(api)
 
     @app.before_request
     def setup_session():

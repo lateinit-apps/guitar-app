@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 click = "*"
 flask = "*"
+flask-restx = "*"
 pg8000 = "*"
 python-dotenv = "*"
 sqlalchemy = "*"
