@@ -38,6 +38,7 @@ def register(api: Api):
             'maxLength': 10,
         },
     }
+
     @ns.route('/artists')
     @api.doc(params=artists_params)
     @api.response(200, 'Success')
@@ -66,6 +67,7 @@ def register(api: Api):
             'maxLength': 64,
         },
     }
+
     @ns.route('/genres')
     @api.doc(params=genres_params)
     @api.response(200, 'Success')
@@ -117,6 +119,7 @@ def register(api: Api):
             'paramType': 'query',
         },
     }
+
     @ns.route('/releases')
     @api.doc(params=releases_params)
     @api.response(200, 'Success')
@@ -145,11 +148,12 @@ def register(api: Api):
             'maxLength': 64,
         },
     }
+
+    @ns.route('/songs')
     @api.doc(params=songs_params)
     @api.response(200, 'Success')
     @api.response(404, 'No entity is found')
     @api.response(422, 'Validation unsuccessful')
-    @ns.route('/songs')
     class Songs(Resource):
         def get(self):
             """
@@ -187,6 +191,7 @@ def register(api: Api):
             'maxLength': 10,
         },
     }
+
     @ns.route('/sheets')
     @api.doc(params=sheets_params)
     @api.response(200, 'Success')
@@ -235,11 +240,12 @@ def register(api: Api):
             'maxLength': 64,
         },
     }
+
+    @ns.route('/tracktabs')
     @api.doc(params=tracktabs_params)
     @api.response(200, 'Success')
     @api.response(404, 'No entity is found')
     @api.response(422, 'Validation unsuccessful')
-    @ns.route('/tracktabs')
     class Tracktabs(Resource):
         def get(self):
             """
