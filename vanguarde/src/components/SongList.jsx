@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {SongCard} from './SongCard.jsx';
 import {MDBBtn, MDBCol, MDBContainer,
     MDBIcon, MDBInput, MDBRow} from 'mdbreact';
@@ -9,6 +10,13 @@ import {getSongList, toggleSearchBar} from '../actions/songList';
 
 
 class SongList extends Component {
+    static propTypes = {
+        getSongList: PropTypes.func.isRequired,
+        toggleSearchBar: PropTypes.func.isRequired,
+        searchBarToggle: PropTypes.func.isRequired,
+        songList: PropTypes.array,
+    }
+
     componentDidMount() {
         console.log('componentDidMount');
         this.props.getSongList();
@@ -32,9 +40,9 @@ class SongList extends Component {
                 {this.props.searchBarToggle ?
                     <SearchOptions/> :
                     null}
-                {this.props.songList.map((value) => {
+                {this.props.songList.map((value, index) => {
                     const trackName = value.name;
-                    return <SongCard artist="Someone cool" trackName={trackName}/>;
+                    return <SongCard key={index} artist="Someone cool" trackName={trackName}/>;
                 })}
             </MDBContainer>
         );
