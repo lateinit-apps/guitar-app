@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from 'react-redux'
 import {applyMiddleware, createStore, combineReducers} from 'redux'
 import songReducer from './reducers'
+import searchReducer from './reducers/searchReducer'
 import thunk from "redux-thunk";
 
 const config = {
@@ -17,7 +18,7 @@ const config = {
 
 const store = createStore(
   combineReducers(
-    {songReducer, }
+    {songReducer, searchReducer}
   ),
   applyMiddleware(thunk.withExtraArgument(config))
 )

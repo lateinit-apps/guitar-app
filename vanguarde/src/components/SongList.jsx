@@ -4,24 +4,13 @@ import {MDBBtn, MDBCol, MDBContainer, MDBIcon, MDBInput, MDBRow} from "mdbreact"
 
 import { connect } from 'react-redux';
 import {SearchOptions} from "./SearchOptions";
-import {getSongList} from "../actions/songList";
+import {getSongList, toggleSearchBar} from "../actions/songList";
 
 
 class SongList extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            searchOptionsToggle: false
-        }
-
-        this.handleSearchOptionClick = this.handleSearchOptionClick.bind(this);
-    }
-
     handleSearchOptionClick(e) {
-        this.setState(state => ({
-            searchOptionsToggle: !state.searchOptionsToggle
-        }))
+        
     }
 
     componentDidMount() {
@@ -29,30 +18,31 @@ class SongList extends Component {
         this.props.getSongList();
     }
 
-    render() {
+    render() { return (
         <MDBContainer>
             <MDBRow className="d-flex flex-row">
                 <MDBCol md="10">
                     <MDBInput label="Search"/>
                 </MDBCol>
-                <MDBCol  md="2"><MDBBtn floating size="lg" color="elegant" onClick={this.handleSearchOptionClick}>
+                <MDBCol  md="2"><MDBBtn floating size="lg" color="elegant" onClick={this.props.toggleSearchBar}>
                     <MDBIcon icon="tools" size="2x"/>
                 </MDBBtn></MDBCol>
             </MDBRow>
-            {this.state.searchOptionsToggle ?
+            {this.props.searchBarToggle ?
                 <SearchOptions/>
             : null}
-            {this.props.songList.map((value, index) => {
+            {this.props.songList.map((value) => {
                 let trackName = value.name
                 return <SongCard artist="Someone cool" trackName={trackName}/>
             })}
         </MDBContainer>
-    }
+    )}
 
 }
 
 const mapStateToProps = (state) => ({
-    songList: state.songReducer.songList
+    songList: state.songReducer.songList,
+    searchBarToggle: state.searchReducer.search_bar_toggle
 });
 
-export default connect(mapStateToProps, {getSongList})(SongList);
+export default connect(mapStateToProps, {getSongList, toggleSearchBar})(SongList);

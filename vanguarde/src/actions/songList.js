@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { FETCH_SONG_LIST_SUCCESS } from "../constants/action-types";
+import { FETCH_SONG_LIST_SUCCESS, TOGGLE_SEARCH_BAR } from "../constants/action-types";
 
 import { fetchBegin, fetchError, handleError } from "./index";
 
@@ -25,3 +25,9 @@ export function getSongList() { return (dispatch, getState, { apiConfig }) => {
             dispatch(handleError(error));
         })
 };}
+
+export function toggleSearchBar() { return (dispatch, getState) => {
+    dispatch(
+        {type: TOGGLE_SEARCH_BAR}
+    );
+}}

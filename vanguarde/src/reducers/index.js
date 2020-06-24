@@ -14,6 +14,7 @@ const initialState = {
 const songReducer = (state = initialState, action) => {
     switch (action.type) {
         case FETCH_BEGIN:
+            console.log("FEETCH_BEGIN");
             return {
                 ...state,
                 loading: true,
