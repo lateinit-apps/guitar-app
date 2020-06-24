@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import {Provider} from 'react-redux';
-import {applyMiddleware, createStore, combineReducers} from 'redux';
+import {applyMiddleware, createStore, combineReducers, compose} from 'redux';
 import songReducer from './reducers';
 import searchReducer from './reducers/searchReducer';
 import thunk from 'redux-thunk';
@@ -16,11 +16,14 @@ const config = {
     },
 };
 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
     combineReducers(
         {songReducer, searchReducer},
     ),
-    applyMiddleware(thunk.withExtraArgument(config)),
+    composeEnhancers(
+        applyMiddleware(thunk.withExtraArgument(config)),
+    ),
 );
 
 ReactDOM.render(
