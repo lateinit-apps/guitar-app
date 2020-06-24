@@ -1,9 +1,8 @@
-import React, { Component } from "react";
-import {MDBCol, MDBContainer, MDBRow} from "mdbreact";
-import SongList from "./SongList.jsx";
+import React, {Component} from 'react';
+import {MDBCol, MDBContainer, MDBRow} from 'mdbreact';
+import SongList from './SongList.jsx';
 
 class MainPage extends Component {
-
     render() {
         return (
 
@@ -21,9 +20,7 @@ class MainPage extends Component {
             </MDBContainer>
 
         );
-
     }
-
 }
 
 export default MainPage;

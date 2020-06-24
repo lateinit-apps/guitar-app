@@ -1,16 +1,11 @@
-import React, {Component} from "react";
+import React, {Component} from 'react';
 import {
-    MDBCollapse,
-    MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBNavbar, MDBIcon,
-    MDBNavbarBrand,
-    MDBNavbarNav,
-    MDBNavbarToggler,
-    MDBNavItem,
-    MDBNavLink,
-} from "mdbreact";
+    MDBCollapse, MDBDropdown, MDBDropdownItem, MDBDropdownMenu,
+    MDBDropdownToggle, MDBNavbar, MDBIcon, MDBNavbarBrand, MDBNavbarNav,
+    MDBNavbarToggler, MDBNavItem, MDBNavLink,
+} from 'mdbreact';
 
 export class Header extends Component {
-
     render() {
         return (
             <MDBNavbar color="elegant-color" dark expand="md">
@@ -31,8 +26,6 @@ export class Header extends Component {
                                 <MDBDropdownMenu>
                                     <MDBDropdownItem href="#!">Action</MDBDropdownItem>
                                     <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>
-                                    <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                                    <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
                                 </MDBDropdownMenu>
                             </MDBDropdown>
                         </MDBNavItem>
@@ -40,13 +33,13 @@ export class Header extends Component {
                     <MDBNavbarNav right>
                         <MDBNavItem>
                             <MDBNavLink to="#!">
-                                <MDBIcon icon="user" className="d-inline-inline" />{" "}
+                                <MDBIcon icon="user" className="d-inline-inline" />{' '}
                                 <div className="d-none d-md-inline">Sign In</div>
                             </MDBNavLink>
                         </MDBNavItem>
                     </MDBNavbarNav>
                 </MDBCollapse>
             </MDBNavbar>
-        )
+        );
     }
 }
