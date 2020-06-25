@@ -19,13 +19,12 @@ export class SongCard extends Component {
                     <MDBCard className="align-middle mb-3 text-left">
                         <div className="row no-gutters">
                             <div className="col-md-1" style={{minWidth: '150px'}}>
-                                <img src={placeholder} alt="thumbnail"
-                                />
+                                <img src={placeholder} alt="thumbnail"/>
                             </div>
                             <div className="col-md-6">
                                 <div className="card-body">
                                     <h4 className="card-title">
-                                        {this.props.artist} -  {this.props.trackName}
+                                        {this.props.artist} - {this.props.trackName}
                                     </h4>
                                 </div>
                             </div>

@@ -26,8 +26,9 @@ export class Footer extends Component {
     handleFooterClick(e) {
         this.footerClicks += 1;
         if (this.footerClicks > 5) {
-            const newFooterText = this.footerArray[(this.footerClicks - 5) %
-        this.footerArray.length];
+            const newFooterText = this.footerArray[
+                (this.footerClicks - 5) % this.footerArray.length
+            ];
             this.setState({footerText: newFooterText});
         }
     }
