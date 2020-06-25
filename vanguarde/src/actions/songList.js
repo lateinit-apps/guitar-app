@@ -3,7 +3,7 @@ import axios from 'axios';
 import {FETCH_SONG_LIST_SUCCESS,
     TOGGLE_SEARCH_BAR} from '../constants/action-types';
 
-import {fetchBegin, fetchError, handleError} from './index';
+import {fetchBegin, fetchError, handleError, handleSuccess} from './index';
 
 
 export const fetchSongListSuccess = (songList) => ({
@@ -19,7 +19,7 @@ export function getSongList() {
             .then((res) => {
                 console.log({res});
                 dispatch(fetchSongListSuccess(res.data));
-            // dispatch(handleSuccess(res))
+                dispatch(handleSuccess(res));
             })
             .catch((error) => {
                 console.log('error');

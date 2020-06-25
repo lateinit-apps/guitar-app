@@ -10,6 +10,9 @@ import songReducer from './reducers';
 import searchReducer from './reducers/searchReducer';
 import thunk from 'redux-thunk';
 
+import ReactNotification from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+
 const config = {
     apiConfig: {
         url: 'http://127.0.0.1:5000/',
@@ -28,6 +31,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
+        <ReactNotification />
         <App />
     </Provider>,
     document.getElementById('root'),
