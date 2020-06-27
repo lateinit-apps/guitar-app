@@ -1,18 +1,22 @@
-import { FETCH_BEGIN, FETCH_FAILURE, } from "../constants/action-types";
+import {FETCH_BEGIN, FETCH_FAILURE} from '../constants/action-types';
 
 export const fetchBegin = () => ({
-    type: FETCH_BEGIN
+    type: FETCH_BEGIN,
 });
 
-export const fetchError = error => ({
+export const fetchError = (error) => ({
     type: FETCH_FAILURE,
-    payload: { error }
+    payload: {error},
 });
 
-export function handleSuccess(response) { return dispatch => {
+export function handleSuccess(response) {
+    return (dispatch) => {
     // TODO
-};}
+    };
+}
 
-export function handleError(errorObj) { return dispatch => {
+export function handleError(errorObj) {
+    return (dispatch) => {
     // TODO
-};}
+    };
+}

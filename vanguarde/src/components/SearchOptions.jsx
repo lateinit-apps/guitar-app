@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import {MDBCol, MDBContainer, MDBInput, MDBRow, MDBCard, MDBAnimation} from "mdbreact";
+import React, {Component} from 'react';
+import {MDBCol, MDBContainer, MDBInput,
+    MDBRow, MDBCard, MDBAnimation} from 'mdbreact';
 
 
 export class SearchOptions extends Component {
-
     render() {
         return (
             <MDBAnimation type="fadeInUp">
@@ -26,7 +26,7 @@ export class SearchOptions extends Component {
                                         <MDBInput label="Something else" group/>
                                         <select className="browser-default custom-select">
                                             <option value="1">Rock</option>
-                                            <option value="2">Not Rock</option>=
+                                            <option value="2">Not Rock</option>
                                         </select>
                                     </div>
                                 </MDBCol>
@@ -36,7 +36,6 @@ export class SearchOptions extends Component {
                 </MDBContainer>
 
             </MDBAnimation>
-        )
+        );
     }
-
 }
