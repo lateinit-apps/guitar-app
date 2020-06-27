@@ -6,7 +6,7 @@ import {MDBBtn, MDBCol, MDBContainer,
 
 import {connect} from 'react-redux';
 import {SearchOptions} from './SearchOptions';
-import {getSongList, toggleSearchBar, changeSearchInput} from '../actions/songList';
+import {getSongList, toggleSearchBar, handleSearchChange} from '../actions/songList';
 
 
 class SongList extends Component {
@@ -14,7 +14,7 @@ class SongList extends Component {
         // methods
         getSongList: PropTypes.func.isRequired,
         toggleSearchBar: PropTypes.func.isRequired,
-        changeSearchInput: PropTypes.func.isRequired,
+        handleSearchChange: PropTypes.func.isRequired,
         // fields
         searchBarIsVisible: PropTypes.bool.isRequired,
         songList: PropTypes.array,
@@ -30,7 +30,7 @@ class SongList extends Component {
             <MDBContainer>
                 <MDBRow className="d-flex flex-row">
                     <MDBCol md="10">
-                        <MDBInput label="Search" onChange={this.props.changeSearchInput}/>
+                        <MDBInput label="Search" onChange={this.props.handleSearchChange}/>
                     </MDBCol>
                     <MDBCol md="2">
                         <MDBBtn floating size="lg"
@@ -58,5 +58,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps,
-    {getSongList, toggleSearchBar, changeSearchInput},
+    {getSongList, toggleSearchBar, handleSearchChange},
 )(SongList);

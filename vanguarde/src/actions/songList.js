@@ -11,36 +11,41 @@ export const fetchSongListSuccess = (songList) => ({
     payload: {songList},
 });
 
+function makeSongQuery(dispatch, getState, {apiConfig}, searchQuery = {}) {
+    dispatch(fetchBegin());
+    axios.get(`${apiConfig.url}/songs`, searchQuery)
+        .then((res) => {
+            dispatch(fetchSongListSuccess(res.data));
+            dispatch(handleSuccess(res));
+        })
+        .catch((error) => {
+            dispatch(fetchError(error));
+            dispatch(handleError(error));
+        });
+}
+
 export function getSongList(searchQuery = {}) {
     return (dispatch, getState, {apiConfig}) => {
-        dispatch(fetchBegin());
-        axios.get(`${apiConfig.url}/songs`, searchQuery)
-            .then((res) => {
-                dispatch(fetchSongListSuccess(res.data));
-                dispatch(handleSuccess(res));
-            })
-            .catch((error) => {
-                dispatch(fetchError(error));
-                dispatch(handleError(error));
-            });
+        makeSongQuery(dispatch, getState, {apiConfig}, searchQuery);
     };
 }
 
 export function toggleSearchBar() {
-    return (dispatch, getState) => {
-        dispatch(
-            {type: TOGGLE_SEARCH_BAR},
-        );
+    return {
+        type: TOGGLE_SEARCH_BAR,
     };
 }
 
 export function changeSearchInput(event) {
-    return (dispatch, getState) => {
-        dispatch(
-            {
-                type: CHANGE_SEARCH_QUERY,
-                payload: event.target.value,
-            },
-        );
+    return {
+        type: CHANGE_SEARCH_QUERY,
+        payload: event.target.value,
+    };
+}
+
+export function handleSearchChange(event) {
+    return (dispatch, getState, {apiConfig}) => {
+        dispatch(changeSearchInput(event));
+        makeSongQuery(dispatch, getState, {apiConfig}, {'name': event.target.value});
     };
 }
