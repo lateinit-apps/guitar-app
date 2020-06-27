@@ -13,7 +13,8 @@ export const fetchSongListSuccess = (songList) => ({
 
 function makeSongQuery(dispatch, getState, {apiConfig}, searchQuery = {}) {
     dispatch(fetchBegin());
-    axios.get(`${apiConfig.url}/songs`, searchQuery)
+    console.log({searchQuery});
+    axios.get(`${apiConfig.url}/songs`, {params: searchQuery})
         .then((res) => {
             dispatch(fetchSongListSuccess(res.data));
             dispatch(handleSuccess(res));
@@ -36,16 +37,20 @@ export function toggleSearchBar() {
     };
 }
 
-export function changeSearchInput(event) {
+export function changeSearchInput(value) {
     return {
         type: CHANGE_SEARCH_QUERY,
-        payload: event.target.value,
+        payload: value,
     };
 }
 
 export function handleSearchChange(event) {
+    const value = event.target.value;
     return (dispatch, getState, {apiConfig}) => {
-        dispatch(changeSearchInput(event));
-        makeSongQuery(dispatch, getState, {apiConfig}, {'name': event.target.value});
+        dispatch(changeSearchInput(value));
+        makeSongQuery(dispatch, getState,
+            {apiConfig},
+            {'name': value},
+        );
     };
 }
