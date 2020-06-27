@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import {FETCH_SONG_LIST_SUCCESS,
-    TOGGLE_SEARCH_BAR} from '../constants/action-types';
+    TOGGLE_SEARCH_BAR, CHANGE_SEARCH_QUERY} from '../constants/action-types';
 
 import {fetchBegin, fetchError, handleError, handleSuccess} from './index';
 
@@ -11,18 +11,15 @@ export const fetchSongListSuccess = (songList) => ({
     payload: {songList},
 });
 
-export function getSongList() {
+export function getSongList(searchQuery = {}) {
     return (dispatch, getState, {apiConfig}) => {
-        console.log('getSongList');
         dispatch(fetchBegin());
-        axios.get(`${apiConfig.url}/songs`)
+        axios.get(`${apiConfig.url}/songs`, searchQuery)
             .then((res) => {
-                console.log({res});
                 dispatch(fetchSongListSuccess(res.data));
                 dispatch(handleSuccess(res));
             })
             .catch((error) => {
-                console.log('error');
                 dispatch(fetchError(error));
                 dispatch(handleError(error));
             });
@@ -33,6 +30,17 @@ export function toggleSearchBar() {
     return (dispatch, getState) => {
         dispatch(
             {type: TOGGLE_SEARCH_BAR},
+        );
+    };
+}
+
+export function changeSearchInput(event) {
+    return (dispatch, getState) => {
+        dispatch(
+            {
+                type: CHANGE_SEARCH_QUERY,
+                payload: event.target.value,
+            },
         );
     };
 }
