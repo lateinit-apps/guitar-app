@@ -5,6 +5,8 @@ import {FETCH_SONG_LIST_SUCCESS,
 
 import {fetchBegin, fetchError, handleError, handleSuccess} from './index';
 
+import AwesomeDebouncePromise from 'awesome-debounce-promise';
+
 
 export const fetchSongListSuccess = (songList) => ({
     type: FETCH_SONG_LIST_SUCCESS,
@@ -24,6 +26,12 @@ function makeSongQuery(dispatch, getState, {apiConfig}, searchQuery = {}) {
             dispatch(handleError(error));
         });
 }
+
+// eslint-disable-next-line new-cap
+const makeSongQueryDebounced = AwesomeDebouncePromise(
+    makeSongQuery,
+    500,
+);
 
 export function getSongList(searchQuery = {}) {
     return (dispatch, getState, {apiConfig}) => {
@@ -48,7 +56,7 @@ export function handleSearchChange(event) {
     const value = event.target.value;
     return (dispatch, getState, {apiConfig}) => {
         dispatch(changeSearchInput(value));
-        makeSongQuery(dispatch, getState,
+        makeSongQueryDebounced(dispatch, getState,
             {apiConfig},
             {'name': value},
         );
