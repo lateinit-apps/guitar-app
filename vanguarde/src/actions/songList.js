@@ -1,9 +1,11 @@
 import axios from 'axios';
 
 import {FETCH_SONG_LIST_SUCCESS,
-    TOGGLE_SEARCH_BAR} from '../constants/action-types';
+    TOGGLE_SEARCH_BAR, CHANGE_SEARCH_QUERY} from '../constants/action-types';
 
-import {fetchBegin, fetchError, handleError} from './index';
+import {fetchBegin, fetchError, handleError, handleSuccess} from './index';
+
+import AwesomeDebouncePromise from 'awesome-debounce-promise';
 
 
 export const fetchSongListSuccess = (songList) => ({
@@ -11,28 +13,52 @@ export const fetchSongListSuccess = (songList) => ({
     payload: {songList},
 });
 
-export function getSongList() {
+function makeSongQuery(dispatch, getState, {apiConfig}, searchQuery = {}) {
+    dispatch(fetchBegin());
+    console.log({searchQuery});
+    axios.get(`${apiConfig.url}/songs`, {params: searchQuery})
+        .then((res) => {
+            dispatch(fetchSongListSuccess(res.data));
+            dispatch(handleSuccess(res));
+        })
+        .catch((error) => {
+            dispatch(fetchError(error));
+            dispatch(handleError(error));
+        });
+}
+
+// eslint-disable-next-line new-cap
+const makeSongQueryDebounced = AwesomeDebouncePromise(
+    makeSongQuery,
+    500,
+);
+
+export function getSongList(searchQuery = {}) {
     return (dispatch, getState, {apiConfig}) => {
-        console.log('getSongList');
-        dispatch(fetchBegin());
-        axios.get(`${apiConfig.url}/songs`)
-            .then((res) => {
-                console.log({res});
-                dispatch(fetchSongListSuccess(res.data));
-            // dispatch(handleSuccess(res))
-            })
-            .catch((error) => {
-                console.log('error');
-                dispatch(fetchError(error));
-                dispatch(handleError(error));
-            });
+        makeSongQuery(dispatch, getState, {apiConfig}, searchQuery);
     };
 }
 
 export function toggleSearchBar() {
-    return (dispatch, getState) => {
-        dispatch(
-            {type: TOGGLE_SEARCH_BAR},
+    return {
+        type: TOGGLE_SEARCH_BAR,
+    };
+}
+
+export function changeSearchInput(value) {
+    return {
+        type: CHANGE_SEARCH_QUERY,
+        payload: value,
+    };
+}
+
+export function handleSearchChange(event) {
+    const value = event.target.value;
+    return (dispatch, getState, {apiConfig}) => {
+        dispatch(changeSearchInput(value));
+        makeSongQueryDebounced(dispatch, getState,
+            {apiConfig},
+            {'name': value},
         );
     };
 }
