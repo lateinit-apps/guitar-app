@@ -38,7 +38,7 @@ export function handleError(errorObj) {
                 duration: 4000,
                 onScreen: true,
             },
-            type: 'success',
+            type: 'danger',
             insert: 'top',
             container: 'top-right',
             animationIn: ['animated', 'fadeIn'],
