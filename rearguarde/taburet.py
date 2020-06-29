@@ -1,4 +1,4 @@
-from flask import Flask, g
+from flask import Flask, g, redirect
 from flask_cors import CORS
 from flask_restx import Api
 
@@ -10,6 +10,7 @@ from model.zeugma import Session
 
 def create_app(config_class=None):
     app = Flask(__name__)
+    app.url_map.strict_slashes = False
     CORS(app)
     if config_class:
         app.config.from_object(config_class)
@@ -21,11 +22,14 @@ def create_app(config_class=None):
     register_resources_namespace(api)
 
     @app.before_request
-    def setup_session():
+    def precede_request():
         g.session = Session()
+        path = request.path 
+        if path != '/' and path.endswith('/'):
+            return redirect(path[:-1])
 
     @app.teardown_request
-    def close_session(exception):
+    def teardown_request(exception):
         session = g.pop('session')
         # not using 'if session:' due to uncertainty about empty session semantics
         if session is not None:
