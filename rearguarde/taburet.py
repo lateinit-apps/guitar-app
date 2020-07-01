@@ -1,4 +1,4 @@
-from flask import Flask, g, redirect
+from flask import Flask, g, redirect, request
 from flask_cors import CORS
 from flask_restx import Api
 
