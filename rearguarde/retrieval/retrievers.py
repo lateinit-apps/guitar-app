@@ -5,8 +5,9 @@ from model.crack import Artist, Genre, Release, Sheet, Song, TrackTab
 class ArtistRetriever(AbstractRetriever):
     underlying_class = Artist
 
-    def get_objects(self, desired_values={}):
-        query = self._apply_filters(self.session.query(type(self).underlying_class), desired_values)
+    def get_objects(self, parameter_values={}):
+        query = self._apply_filters(self.session.query(type(self).underlying_class),
+            self._process_parameter_values(parameter_values))
         query = query.join(Artist.genres, isouter=True) \
                      .join(Artist.releases, isouter=True)
         return [{
@@ -23,8 +24,9 @@ class ArtistRetriever(AbstractRetriever):
 class GenreRetriever(AbstractRetriever):
     underlying_class = Genre
 
-    def get_objects(self, desired_values={}):
-        query = self._apply_filters(self.session.query(type(self).underlying_class), desired_values)
+    def get_objects(self, parameter_values={}):
+        query = self._apply_filters(self.session.query(type(self).underlying_class),
+            self._process_parameter_values(parameter_values))
         query = query.join(Genre.artists, isouter=True) \
                      .join(Genre.releases, isouter=True)
         return [{
@@ -39,8 +41,9 @@ class GenreRetriever(AbstractRetriever):
 class ReleaseRetriever(AbstractRetriever):
     underlying_class = Release
 
-    def get_objects(self, desired_values={}):
-        query = self._apply_filters(self.session.query(type(self).underlying_class), desired_values)
+    def get_objects(self, parameter_values={}):
+        query = self._apply_filters(self.session.query(type(self).underlying_class),
+            self._process_parameter_values(parameter_values))
         query = query.join(Release.artists, isouter=True) \
                      .join(Release.genres, isouter=True) \
                      .join(Release.songs, isouter=True)
@@ -61,8 +64,9 @@ class ReleaseRetriever(AbstractRetriever):
 class SheetRetriever(AbstractRetriever):
     underlying_class = Sheet
 
-    def get_objects(self, desired_values={}):
-        query = self._apply_filters(self.session.query(type(self).underlying_class), desired_values)
+    def get_objects(self, parameter_values={}):
+        query = self._apply_filters(self.session.query(type(self).underlying_class),
+            self._process_parameter_values(parameter_values))
         query = query.join(Sheet.tracktabs, isouter=True)
         return [{
                     'id': item.id,
@@ -76,8 +80,9 @@ class SheetRetriever(AbstractRetriever):
 class SongRetriever(AbstractRetriever):
     underlying_class = Song
 
-    def get_objects(self, desired_values={}):
-        query = self._apply_filters(self.session.query(type(self).underlying_class), desired_values)
+    def get_objects(self, parameter_values={}):
+        query = self._apply_filters(self.session.query(type(self).underlying_class),
+            self._process_parameter_values(parameter_values))
         query = query.join(Song.releases, isouter=True)
         return [{
                     'id': item.id,
@@ -90,8 +95,9 @@ class SongRetriever(AbstractRetriever):
 class TrackTabRetriever(AbstractRetriever):
     underlying_class = TrackTab
 
-    def get_objects(self, desired_values={}):
-        query = self._apply_filters(self.session.query(type(self).underlying_class), desired_values)
+    def get_objects(self, parameter_values={}):
+        query = self._apply_filters(self.session.query(type(self).underlying_class),
+            self._process_parameter_values(parameter_values))
         return [{
                     'id': item.id,
                     'gp5': item.gp5.decode(),

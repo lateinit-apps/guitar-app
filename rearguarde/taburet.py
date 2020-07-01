@@ -31,8 +31,7 @@ def create_app(config_class=None):
     @app.teardown_request
     def teardown_request(exception):
         session = g.pop('session')
-        # not using 'if session:' due to uncertainty about empty session semantics
-        if session is not None:
+        if session:
             Session.remove()
 
     return app

@@ -42,7 +42,7 @@ def register(api: Api):
     @ns.route('/artists')
     @api.doc(params=artists_params)
     @api.response(200, 'Success')
-    @api.response(404, 'No entity is found')
+    @api.response(404, 'Resource not found')
     @api.response(422, 'Validation unsuccessful')
     class Artists(Resource):
         def get(self):
@@ -71,7 +71,7 @@ def register(api: Api):
     @ns.route('/genres')
     @api.doc(params=genres_params)
     @api.response(200, 'Success')
-    @api.response(404, 'No entity is found')
+    @api.response(404, 'Resource not found')
     @api.response(422, 'Validation unsuccessful')
     class Genres(Resource):
         def get(self):
@@ -123,7 +123,7 @@ def register(api: Api):
     @ns.route('/releases')
     @api.doc(params=releases_params)
     @api.response(200, 'Success')
-    @api.response(404, 'No entity is found')
+    @api.response(404, 'Resource not found')
     @api.response(422, 'Validation unsuccessful')
     class Releases(Resource):
         def get(self):
@@ -152,7 +152,7 @@ def register(api: Api):
     @ns.route('/songs')
     @api.doc(params=songs_params)
     @api.response(200, 'Success')
-    @api.response(404, 'No entity is found')
+    @api.response(404, 'Resource not found')
     @api.response(422, 'Validation unsuccessful')
     class Songs(Resource):
         def get(self):
@@ -195,7 +195,7 @@ def register(api: Api):
     @ns.route('/sheets')
     @api.doc(params=sheets_params)
     @api.response(200, 'Success')
-    @api.response(404, 'No entity is found')
+    @api.response(404, 'Resource not found')
     @api.response(422, 'Validation unsuccessful')
     class Sheets(Resource):
         def get(self):
@@ -244,7 +244,7 @@ def register(api: Api):
     @ns.route('/tracktabs')
     @api.doc(params=tracktabs_params)
     @api.response(200, 'Success')
-    @api.response(404, 'No entity is found')
+    @api.response(404, 'Resource not found')
     @api.response(422, 'Validation unsuccessful')
     class Tracktabs(Resource):
         def get(self):
