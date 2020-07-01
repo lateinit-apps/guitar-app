@@ -2,6 +2,7 @@ from flask import g, request
 from flask_restx import Api, Resource
 from urllib import parse as urlparser
 
+from api.util import normalize_parameters
 from retrieval.retrievers import ArtistRetriever, GenreRetriever, ReleaseRetriever, \
     SheetRetriever, SongRetriever, TrackTabRetriever
 
@@ -49,8 +50,8 @@ def register(api: Api):
             """
             Artists GET method.
             """
-            params = dict(urlparser.parse_qsl(request.query_string.decode()))
-            return ArtistRetriever(g.session).get_objects(params)
+            return ArtistRetriever(g.session).get_objects(normalize_parameters(
+                dict(urlparser.parse_qsl(request.query_string.decode()))))
 
 
     genres_params = {
@@ -78,8 +79,8 @@ def register(api: Api):
             """
             Genres GET method.
             """
-            params = dict(urlparser.parse_qsl(request.query_string.decode()))
-            return GenreRetriever(g.session).get_objects(params)
+            return GenreRetriever(g.session).get_objects(normalize_parameters(
+                dict(urlparser.parse_qsl(request.query_string.decode()))))
 
 
     releases_params = {
@@ -130,8 +131,8 @@ def register(api: Api):
             """
             Releases GET method.
             """
-            params = dict(urlparser.parse_qsl(request.query_string.decode()))
-            return ReleaseRetriever(g.session).get_objects(params)
+            return ReleaseRetriever(g.session).get_objects(normalize_parameters(
+                dict(urlparser.parse_qsl(request.query_string.decode()))))
 
 
     songs_params = {
@@ -159,8 +160,8 @@ def register(api: Api):
             """
             Songs GET method.
             """
-            params = dict(urlparser.parse_qsl(request.query_string.decode()))
-            return SongRetriever(g.session).get_objects(params)
+            return SongRetriever(g.session).get_objects(normalize_parameters(
+                dict(urlparser.parse_qsl(request.query_string.decode()))))
 
 
     sheets_params = {
@@ -202,8 +203,8 @@ def register(api: Api):
             """
             Sheets GET method.
             """
-            params = dict(urlparser.parse_qsl(request.query_string.decode()))
-            return SheetRetriever(g.session).get_objects(params)
+            return SheetRetriever(g.session).get_objects(normalize_parameters(
+                dict(urlparser.parse_qsl(request.query_string.decode()))))
 
 
     tracktabs_params = {
@@ -251,5 +252,5 @@ def register(api: Api):
             """
             Track tabs GET method.
             """
-            params = dict(urlparser.parse_qsl(request.query_string.decode()))
-            return TrackTabRetriever(g.session).get_objects(params)
+            return TrackTabRetriever(g.session).get_objects(normalize_parameters(
+                dict(urlparser.parse_qsl(request.query_string.decode()))))
