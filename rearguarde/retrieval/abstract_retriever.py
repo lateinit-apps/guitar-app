@@ -4,12 +4,15 @@ from sys import stderr
 
 class AbstractRetriever(ABC):
     underlying_class = None
+    _substring_fields = []
 
     def __init__(self, session):
         self.session = session
 
     def _process_parameter_values(self, parameter_values):
-        return [('exact', key, parameter_values[key]) for key in parameter_values]
+        return [(
+            'substring' if key in self._substring_fields else 'exact', key, parameter_values[key]
+        ) for key in parameter_values]
 
     def _apply_filters(self, query, filters_list):
         """Get modified query with applied filters.
@@ -30,7 +33,7 @@ class AbstractRetriever(ABC):
                 print(f'{field} is not found for class {entity}', file=stderr)
                 continue
             query = query.filter(getattr(entity, field) == value) if match_strategy == 'exact' \
-                else query.filter(getattr(entity, field).like(value))
+                else query.filter(getattr(entity, field).like(f'%{value}%'))
             # no sense in further filtering of an empty result set
             if not query.count():
                 break

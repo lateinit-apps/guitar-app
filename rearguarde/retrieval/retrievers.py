@@ -4,6 +4,7 @@ from model.crack import Artist, Genre, Release, Sheet, Song, TrackTab
 
 class ArtistRetriever(AbstractRetriever):
     underlying_class = Artist
+    _substring_fields = ['country', 'name']
 
     def get_objects(self, parameter_values={}):
         query = self._apply_filters(self.session.query(type(self).underlying_class),
@@ -23,6 +24,7 @@ class ArtistRetriever(AbstractRetriever):
 
 class GenreRetriever(AbstractRetriever):
     underlying_class = Genre
+    _substring_fields = ['name']
 
     def get_objects(self, parameter_values={}):
         query = self._apply_filters(self.session.query(type(self).underlying_class),
@@ -31,8 +33,8 @@ class GenreRetriever(AbstractRetriever):
                      .join(Genre.releases, isouter=True)
         return [{
                     'id': item.id,
-                    'name': item.name,
                     'highlights': item.highlights,
+                    'name': item.name,
                     'artist_ids': [artist.id for artist in item.artists],
                     'release_ids': [release.id for release in item.releases],
                 } for item in query.all()]
@@ -40,6 +42,7 @@ class GenreRetriever(AbstractRetriever):
 
 class ReleaseRetriever(AbstractRetriever):
     underlying_class = Release
+    _substring_fields = ['label', 'name']
 
     def get_objects(self, parameter_values={}):
         query = self._apply_filters(self.session.query(type(self).underlying_class),
@@ -50,12 +53,12 @@ class ReleaseRetriever(AbstractRetriever):
         return [{
                     'id': item.id,
                     'album_kind': item.album_kind,
-                    'embracing_release_id': item.release_id,
                     'label': item.label,
                     'name': item.name,
                     'type': item.type,
                     'year': str(item.year),
                     'artist_ids': [artist.id for artist in item.artists],
+                    'embracing_release_id': item.release_id,
                     'genre_ids': [genre.id for genre in item.genres],
                     'song_ids': [song.id for song in item.songs],
                 } for item in query.all()]
@@ -79,6 +82,7 @@ class SheetRetriever(AbstractRetriever):
 
 class SongRetriever(AbstractRetriever):
     underlying_class = Song
+    _substring_fields = ['name']
 
     def get_objects(self, parameter_values={}):
         query = self._apply_filters(self.session.query(type(self).underlying_class),
@@ -94,6 +98,7 @@ class SongRetriever(AbstractRetriever):
 
 class TrackTabRetriever(AbstractRetriever):
     underlying_class = TrackTab
+    _substring_fields = ['instrument', 'tuning']
 
     def get_objects(self, parameter_values={}):
         query = self._apply_filters(self.session.query(type(self).underlying_class),
