@@ -33,7 +33,7 @@ class AbstractRetriever(ABC):
                 print(f'{field} is not found for class {entity}', file=stderr)
                 continue
             query = query.filter(getattr(entity, field) == value) if match_strategy == 'exact' \
-                else query.filter(getattr(entity, field).like(f'%{value}%'))
+                else query.filter(getattr(entity, field).ilike(f'%{value}%'))
             # no sense in further filtering of an empty result set
             if not query.count():
                 break

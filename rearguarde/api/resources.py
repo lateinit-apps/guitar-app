@@ -2,7 +2,7 @@ from flask import g, request
 from flask_restx import Api, Resource
 from urllib import parse as urlparser
 
-from api.util import normalize_parameters
+from api.util import sieve_parameters
 from retrieval.retrievers import ArtistRetriever, GenreRetriever, ReleaseRetriever, \
     SheetRetriever, SongRetriever, TrackTabRetriever
 
@@ -50,7 +50,7 @@ def register(api: Api):
             """
             Artists GET method.
             """
-            return ArtistRetriever(g.session).get_objects(normalize_parameters(
+            return ArtistRetriever(g.session).get_objects(sieve_parameters(
                 dict(urlparser.parse_qsl(request.query_string.decode()))))
 
 
@@ -79,7 +79,7 @@ def register(api: Api):
             """
             Genres GET method.
             """
-            return GenreRetriever(g.session).get_objects(normalize_parameters(
+            return GenreRetriever(g.session).get_objects(sieve_parameters(
                 dict(urlparser.parse_qsl(request.query_string.decode()))))
 
 
@@ -131,7 +131,7 @@ def register(api: Api):
             """
             Releases GET method.
             """
-            return ReleaseRetriever(g.session).get_objects(normalize_parameters(
+            return ReleaseRetriever(g.session).get_objects(sieve_parameters(
                 dict(urlparser.parse_qsl(request.query_string.decode()))))
 
 
@@ -160,7 +160,7 @@ def register(api: Api):
             """
             Songs GET method.
             """
-            return SongRetriever(g.session).get_objects(normalize_parameters(
+            return SongRetriever(g.session).get_objects(sieve_parameters(
                 dict(urlparser.parse_qsl(request.query_string.decode()))))
 
 
@@ -203,7 +203,7 @@ def register(api: Api):
             """
             Sheets GET method.
             """
-            return SheetRetriever(g.session).get_objects(normalize_parameters(
+            return SheetRetriever(g.session).get_objects(sieve_parameters(
                 dict(urlparser.parse_qsl(request.query_string.decode()))))
 
 
@@ -252,5 +252,5 @@ def register(api: Api):
             """
             Track tabs GET method.
             """
-            return TrackTabRetriever(g.session).get_objects(normalize_parameters(
+            return TrackTabRetriever(g.session).get_objects(sieve_parameters(
                 dict(urlparser.parse_qsl(request.query_string.decode()))))
