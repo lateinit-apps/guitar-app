@@ -61,12 +61,12 @@ def register(api: Api):
             'paramType': 'query',
             'minimum': 1,
         },
-        'name': {
-            'description': 'Genre name',
-            'type': 'string',
-            'paramType': 'query',
-            'maxLength': 64,
-        },
+        # 'name': {
+        #     'description': 'Genre name',
+        #     'type': 'string',
+        #     'paramType': 'query',
+        #     'maxLength': 64,
+        # },
     }
 
     @ns.route('/genres')
@@ -75,12 +75,17 @@ def register(api: Api):
     @api.response(404, 'Resource not found')
     @api.response(422, 'Validation unsuccessful')
     class Genres(Resource):
+        parser = api.parser()
+        parser.add_argument('id', type=int, help='Genre ID', location='args')
+        parser.add_argument('name', type=str, help='Gdenre name', location='args')
+
+        @api.expect(parser, validate=True)
         def get(self):
             """
             Genres GET method.
             """
             return GenreRetriever(g.session).get_objects(sieve_parameters(
-                dict(urlparser.parse_qsl(request.query_string.decode()))))
+                self.parser.parse_args()))
 
 
     releases_params = {
