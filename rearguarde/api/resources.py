@@ -12,11 +12,13 @@ def register(api: Api):
     # this creates and assigns the namespace to the Api instance
     ns = api.namespace('resources')
 
+    # @api.errorhandler()
+
 
     @ns.route('/artists')
     @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
     @api.response(404, 'Resource not found')
-    @api.response(422, 'Validation unsuccessful')
     class Artists(Resource):
         parser = api.parser()
         parser.add_argument('id', type=inputs.positive, help='Artist ID', location='args')
@@ -38,8 +40,8 @@ def register(api: Api):
 
     @ns.route('/genres')
     @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
     @api.response(404, 'Resource not found')
-    @api.response(422, 'Validation unsuccessful')
     class Genres(Resource):
         parser = api.parser()
         parser.add_argument('id', type=inputs.positive, help='Genre ID', location='args')
@@ -57,8 +59,8 @@ def register(api: Api):
 
     @ns.route('/releases')
     @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
     @api.response(404, 'Resource not found')
-    @api.response(422, 'Validation unsuccessful')
     class Releases(Resource):
         parser = api.parser()
         parser.add_argument('id', type=inputs.positive, help='Release ID', location='args')
@@ -85,8 +87,8 @@ def register(api: Api):
 
     @ns.route('/songs')
     @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
     @api.response(404, 'Resource not found')
-    @api.response(422, 'Validation unsuccessful')
     class Songs(Resource):
         parser = api.parser()
         parser.add_argument('id', type=inputs.positive, help='Song ID', location='args')
@@ -104,8 +106,8 @@ def register(api: Api):
 
     @ns.route('/sheets')
     @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
     @api.response(404, 'Resource not found')
-    @api.response(422, 'Validation unsuccessful')
     class Sheets(Resource):
         parser = api.parser()
         parser.add_argument('id', type=inputs.positive, help='Sheet ID', location='args')
@@ -126,8 +128,8 @@ def register(api: Api):
 
     @ns.route('/tracktabs')
     @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
     @api.response(404, 'Resource not found')
-    @api.response(422, 'Validation unsuccessful')
     class Tracktabs(Resource):
         parser = api.parser()
         parser.add_argument('id', type=inputs.positive, help='Track tab ID', location='args')
