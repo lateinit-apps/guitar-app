@@ -17,10 +17,12 @@ class AbstractRetriever(ABC):
     def _apply_filters(self, query, filters_list):
         """Get modified query with applied filters.
 
-        Parameters:
-            query (sqlalchemy.orm.query.Query): base query
-            filters_list (list): collection of tuples like (match_strategy, 'field', 'value'),
-                where `match_strategy` can be either 'exact' or 'substring'
+        :param query: base query
+        :param filters_list: collection of triplets like (match_strategy, 'field', 'value'),
+            where `match_strategy` can be either 'exact' or 'substring'
+        :type query: sqlalchemy.orm.query.Query
+        :type filters_list: list(tuple)
+        :return: query with applied modifications
         """
         entity = type(self).underlying_class
         for pair in filters_list:
@@ -40,13 +42,16 @@ class AbstractRetriever(ABC):
         return query
 
     @abstractmethod
-    def get_objects(self, parameter_values={}):
-        """Retrieve elements with fields satisfying constraints passed as an argument.
+    def _dictionarize_objects(self, query):
+        """Prepare data for further JSON incapsulation.
 
-        Parameters:
-            parameter_values (dict): key-value map for filter conditions
-
-        Returns:
-            satisfied_objects (list): list of objects which met a conjunction of filter entries
+        :param query: query to use for joining and retrieval
+        :type query: sqlalchemy.orm.query.Query
+        :return: dictionary w/ desired fields
         """
         raise NotImplementedError
+
+    def get_objects(self, parameter_values={}):
+        query = self._apply_filters(self.session.query(type(self).underlying_class),
+            self._process_parameter_values(parameter_values))
+        return self._dictionarize_objects(query)
