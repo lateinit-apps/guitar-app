@@ -1,5 +1,7 @@
 import {createReducer} from '@reduxjs/toolkit';
 
+import {toggleSearchBar, changeSearchQuery} from '../actions/songList';
+
 const initialState = {
     searchBarIsVisible: false,
     searchQuery: '',
@@ -8,10 +10,10 @@ const initialState = {
 const searchReducer = createReducer(
     initialState,
     {
-        toggleSearchBar: (state, action) => {
+        [toggleSearchBar]: (state, action) => {
             state.searchBarIsVisible = !state.searchBarIsVisible;
         },
-        changeSearchQuery: (state, action) => {
+        [changeSearchQuery]: (state, action) => {
             state.searchQuery = action.payload;
         },
     },

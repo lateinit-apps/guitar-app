@@ -1,14 +1,9 @@
-import {FETCH_BEGIN, FETCH_FAILURE} from '../constants/action-types';
 import {store} from 'react-notifications-component';
+import {createAction} from '@reduxjs/toolkit';
 
-export const fetchBegin = () => ({
-    type: FETCH_BEGIN,
-});
+export const fetchBegin = createAction('fetch/begin');
 
-export const fetchError = (error) => ({
-    type: FETCH_FAILURE,
-    payload: {error},
-});
+export const fetchError = createAction('fetch/error');
 
 export function handleSuccess(response) {
     return () => {

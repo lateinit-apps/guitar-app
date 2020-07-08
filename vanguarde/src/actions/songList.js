@@ -1,17 +1,17 @@
 import axios from 'axios';
 
-import {FETCH_SONG_LIST_SUCCESS,
-    TOGGLE_SEARCH_BAR, CHANGE_SEARCH_QUERY} from '../constants/action-types';
-
-import {fetchBegin, fetchError, handleError, handleSuccess} from './index';
+import {fetchBegin, fetchError, handleError, handleSuccess} from './fetching';
 
 import AwesomeDebouncePromise from 'awesome-debounce-promise';
 
+import {createAction} from '@reduxjs/toolkit';
 
-export const fetchSongListSuccess = (songList) => ({
-    type: FETCH_SONG_LIST_SUCCESS,
-    payload: {songList},
-});
+
+export const fetchSongListSuccess = createAction('fetch/songList/success');
+
+export const toggleSearchBar = createAction('search_bar/toggle');
+
+export const changeSearchQuery = createAction('search_bar/change_query');
 
 function makeSongQuery(dispatch, getState, {apiConfig}, searchQuery = {}) {
     dispatch(fetchBegin());
@@ -39,23 +39,10 @@ export function getSongList(searchQuery = {}) {
     };
 }
 
-export function toggleSearchBar() {
-    return {
-        type: TOGGLE_SEARCH_BAR,
-    };
-}
-
-export function changeSearchInput(value) {
-    return {
-        type: CHANGE_SEARCH_QUERY,
-        payload: value,
-    };
-}
-
 export function handleSearchChange(event) {
     const value = event.target.value;
     return (dispatch, getState, {apiConfig}) => {
-        dispatch(changeSearchInput(value));
+        dispatch(changeSearchQuery(value));
         makeSongQueryDebounced(dispatch, getState,
             {apiConfig},
             {'name': value},
