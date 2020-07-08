@@ -1,9 +1,4 @@
 import {store} from 'react-notifications-component';
-import {createAction} from '@reduxjs/toolkit';
-
-export const fetchBegin = createAction('fetch/begin');
-
-export const fetchError = createAction('fetch/error');
 
 export function handleSuccess(response) {
     return () => {

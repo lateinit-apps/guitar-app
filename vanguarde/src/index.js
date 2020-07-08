@@ -8,14 +8,13 @@ import {Provider} from 'react-redux';
 import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
 import songReducer from './reducers/songReducer';
 import searchReducer from './reducers/searchReducer';
-import thunk from 'redux-thunk';
 
 import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 
 const config = {
     apiConfig: {
-        url: 'http://127.0.0.1:5000/',
+        url: 'http://127.0.0.1:5000/resources/',
     },
 };
 
@@ -25,7 +24,11 @@ const rootReducer = {
 };
 const store = configureStore({
     reducer: rootReducer,
-    middleware: [thunk.withExtraArgument(config), ...getDefaultMiddleware()],
+    middleware: getDefaultMiddleware({
+        thunk: {
+            extraArgument: config,
+        },
+    }),
     devTools: true, // TODO: disable in production
 });
 
