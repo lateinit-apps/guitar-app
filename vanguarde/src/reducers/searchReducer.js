@@ -1,28 +1,20 @@
-import {
-    CHANGE_SEARCH_QUERY, TOGGLE_SEARCH_BAR,
-} from '../constants/action-types';
+import {createReducer} from '@reduxjs/toolkit';
 
 const initialState = {
     searchBarIsVisible: false,
     searchQuery: '',
 };
 
-const searchReducer = (state = initialState, action) => {
-    switch (action.type) {
-    case TOGGLE_SEARCH_BAR:
-        return {
-            ...state,
-            searchBarIsVisible: (!state.searchBarIsVisible),
-        };
-    case CHANGE_SEARCH_QUERY:
-        return {
-            ...state,
-            searchQuery: action.payload,
-        };
-    default:
-        return state;
-    }
-};
-
+createReducer(
+    initialState,
+    {
+        toggleSearchBar: (state, action) => {
+            state.searchBarIsVisible = !state.searchBarIsVisible;
+        },
+        changeSearchQuery: (state, action) => {
+            state.searchQuery = action.payload;
+        },
+    },
+);
 
 export default searchReducer;

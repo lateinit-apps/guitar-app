@@ -1,9 +1,4 @@
-import {
-    FETCH_BEGIN,
-    FETCH_SONG_LIST_SUCCESS,
-    FETCH_SONG_SUCCESS,
-    FETCH_FAILURE,
-} from '../constants/action-types';
+import {createReducer, current} from '@reduxjs/toolkit';
 
 const initialState = {
     songList: [],
@@ -11,35 +6,24 @@ const initialState = {
     error: null,
 };
 
-const songReducer = (state = initialState, action) => {
-    switch (action.type) {
-    case FETCH_BEGIN:
-        return {
-            ...state,
-            loading: true,
-            error: null,
-        };
-    case FETCH_SONG_LIST_SUCCESS:
-        return {
-            ...state,
-            loading: false,
-            songList: action.payload.songList,
-        };
-    case FETCH_SONG_SUCCESS:
-        return {
-            ...state,
-            loading: false,
-        };
-    case FETCH_FAILURE:
-        return {
-            ...state,
-            loading: false,
-            error: action.payload.error,
-        };
-    default:
-        return state;
-    }
-};
-
+const songReducer = createReducer(
+    initialState,
+    {
+        fetchBegin: (state, action) => {
+            state.loading = true;
+            state.error = null;
+        },
+        fetchSongListSuccess: (state, action) => {
+            const songList = action.payload.songList;
+            state.loading = false;
+            state.songList = songList;
+            console.log('new state: ', current(state));
+        },
+        fetchFailure: (state, action) => {
+            state.loading = false;
+            state.error = action.payload.error;
+        },
+    },
+);
 
 export default songReducer;
