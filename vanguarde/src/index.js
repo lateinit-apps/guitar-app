@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 
 import {Provider} from 'react-redux';
 import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
-import songReducer from './reducers';
+import songReducer from './reducers/songReducer';
 import searchReducer from './reducers/searchReducer';
 import thunk from 'redux-thunk';
 

@@ -5,7 +5,7 @@ const initialState = {
     searchQuery: '',
 };
 
-createReducer(
+const searchReducer = createReducer(
     initialState,
     {
         toggleSearchBar: (state, action) => {
