@@ -6,8 +6,8 @@ import * as serviceWorker from './serviceWorker';
 
 import {Provider} from 'react-redux';
 import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
-import songReducer from './reducers/songReducer';
-import searchReducer from './reducers/searchReducer';
+import songReducer from './redux/songs';
+import searchReducer from './redux/search';
 
 import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';

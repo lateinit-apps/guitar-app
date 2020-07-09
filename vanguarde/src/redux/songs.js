@@ -2,7 +2,7 @@ import {current, createSlice} from '@reduxjs/toolkit';
 
 import axios from 'axios';
 
-import {handleError, handleSuccess} from '../actions/fetching';
+import {handleError, handleSuccess} from './common';
 
 const initialState = {
     songList: [],
@@ -37,11 +37,11 @@ export function makeSongQuery(dispatch, getState, {apiConfig}, searchQuery = {})
     axios.get(`${apiConfig.url}/songs`, {params: searchQuery})
         .then((res) => {
             dispatch(fetchSongListSuccess(res.data));
-            dispatch(handleSuccess(res));
+            handleSuccess(res);
         })
         .catch((error) => {
             dispatch(fetchError(error));
-            dispatch(handleError(error));
+            handleError(error);
         });
 }
 

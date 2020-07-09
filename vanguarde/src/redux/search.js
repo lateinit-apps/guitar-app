@@ -2,7 +2,7 @@ import {createSlice} from '@reduxjs/toolkit';
 
 import AwesomeDebouncePromise from 'awesome-debounce-promise';
 
-import {makeSongQuery} from './songReducer';
+import {makeSongQuery} from './songs';
 
 const initialState = {
     searchBarIsVisible: false,
