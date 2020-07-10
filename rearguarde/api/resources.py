@@ -32,7 +32,7 @@ def register(api: Api):
         @api.expect(parser, validate=True)
         def get(self):
             """
-            Artists GET method.
+            Get artists list and filter by specified parameters.
             """
             return ArtistRetriever(g.session).get_objects(remove_empty_parameters(
                 dict(urlparser.parse_qsl(request.query_string.decode()))))
@@ -51,7 +51,7 @@ def register(api: Api):
         @api.expect(parser, validate=True)
         def get(self):
             """
-            Genres GET method.
+            Get genres list and filter by specified parameters.
             """
             return GenreRetriever(g.session).get_objects(remove_empty_parameters(
                 self.parser.parse_args()))
@@ -79,7 +79,7 @@ def register(api: Api):
         @api.expect(parser, validate=True)
         def get(self):
             """
-            Releases GET method.
+            Get releases list and filter by specified parameters.
             """
             return ReleaseRetriever(g.session).get_objects(remove_empty_parameters(
                 dict(urlparser.parse_qsl(request.query_string.decode()))))
@@ -98,7 +98,7 @@ def register(api: Api):
         @api.expect(parser, validate=True)
         def get(self):
             """
-            Songs GET method.
+            Get songs list and filter by specified parameters.
             """
             return SongRetriever(g.session).get_objects(remove_empty_parameters(
                 dict(urlparser.parse_qsl(request.query_string.decode()))))
@@ -120,7 +120,7 @@ def register(api: Api):
         @api.expect(parser, validate=True)
         def get(self):
             """
-            Sheets GET method.
+            Get sheets list and filter by specified parameters.
             """
             return SheetRetriever(g.session).get_objects(remove_empty_parameters(
                 dict(urlparser.parse_qsl(request.query_string.decode()))))
@@ -145,7 +145,7 @@ def register(api: Api):
         @api.expect(parser, validate=True)
         def get(self):
             """
-            Track tabs GET method.
+            Get track tabs list and filter by specified parameters.
             """
             return TrackTabRetriever(g.session).get_objects(remove_empty_parameters(
                 dict(urlparser.parse_qsl(request.query_string.decode()))))
