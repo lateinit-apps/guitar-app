@@ -6,8 +6,8 @@ import {MDBBtn, MDBCol, MDBContainer,
 
 import {connect} from 'react-redux';
 import {SearchOptions} from './SearchOptions';
-import {getSongList, toggleSearchBar, handleSearchChange} from '../actions/songList';
-
+import {toggleSearchBar, handleSearchChange} from '../redux/search';
+import {getSongList} from '../redux/songs';
 
 class SongList extends Component {
     static propTypes = {

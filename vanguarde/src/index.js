@@ -5,29 +5,32 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import {Provider} from 'react-redux';
-import {applyMiddleware, createStore, combineReducers, compose} from 'redux';
-import songReducer from './reducers';
-import searchReducer from './reducers/searchReducer';
-import thunk from 'redux-thunk';
+import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
+import songReducer from './redux/songs';
+import searchReducer from './redux/search';
 
 import ReactNotification from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 
 const config = {
     apiConfig: {
-        url: 'http://127.0.0.1:5000/',
+        url: 'http://127.0.0.1:5000/resources/',
     },
 };
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
-    combineReducers(
-        {songReducer, searchReducer},
-    ),
-    composeEnhancers(
-        applyMiddleware(thunk.withExtraArgument(config)),
-    ),
-);
+const rootReducer = {
+    searchReducer: searchReducer,
+    songReducer: songReducer,
+};
+const store = configureStore({
+    reducer: rootReducer,
+    middleware: getDefaultMiddleware({
+        thunk: {
+            extraArgument: config,
+        },
+    }),
+    devTools: true, // TODO: disable in production
+});
 
 ReactDOM.render(
     <Provider store={store}>
