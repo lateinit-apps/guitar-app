@@ -41,7 +41,7 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react": "^7.20.3",
     "react-page-layout": "^0.9.8"
   }
 }
