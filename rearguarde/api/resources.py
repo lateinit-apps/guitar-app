@@ -3,7 +3,7 @@ from flask_restx import Api, Resource
 import flask_restx.inputs as inputs
 from urllib import parse as urlparser
 
-from api.util import remove_empty_parameters
+from api.util import abort_on_invalid_parameters, remove_empty_parameters
 from retrieval.retrievers import ArtistRetriever, GenreRetriever, ReleaseRetriever, \
     SheetRetriever, SongRetriever, TrackTabRetriever
 
@@ -11,8 +11,6 @@ from retrieval.retrievers import ArtistRetriever, GenreRetriever, ReleaseRetriev
 def register(api: Api):
     # this creates and assigns the namespace to the Api instance
     ns = api.namespace('resources')
-
-    # @api.errorhandler()
 
 
     @ns.route('/artists')
@@ -35,7 +33,23 @@ def register(api: Api):
             Get artists list and filter by specified parameters.
             """
             return ArtistRetriever(g.session).get_objects(remove_empty_parameters(
-                dict(urlparser.parse_qsl(request.query_string.decode()))))
+                self.parser.parse_args()))
+
+
+
+    @ns.route('/artists/<artist_id>')
+    @api.param('artist_id', 'Artist ID')
+    @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
+    @api.response(404, 'Resource not found')
+    class ArtistById(Resource):
+        def get(self, artist_id):
+            """
+            Get single artist instance by its ID.
+            """
+            abort_on_invalid_parameters(api, {'artist_id': artist_id})
+            retrieved = ArtistRetriever(g.session).get_objects({'id': artist_id})
+            return retrieved[0] if retrieved else {}
 
 
     @ns.route('/genres')
@@ -82,7 +96,7 @@ def register(api: Api):
             Get releases list and filter by specified parameters.
             """
             return ReleaseRetriever(g.session).get_objects(remove_empty_parameters(
-                dict(urlparser.parse_qsl(request.query_string.decode()))))
+                self.parser.parse_args()))
 
 
     @ns.route('/songs')
@@ -101,7 +115,7 @@ def register(api: Api):
             Get songs list and filter by specified parameters.
             """
             return SongRetriever(g.session).get_objects(remove_empty_parameters(
-                dict(urlparser.parse_qsl(request.query_string.decode()))))
+                self.parser.parse_args()))
 
 
     @ns.route('/sheets')
@@ -123,7 +137,7 @@ def register(api: Api):
             Get sheets list and filter by specified parameters.
             """
             return SheetRetriever(g.session).get_objects(remove_empty_parameters(
-                dict(urlparser.parse_qsl(request.query_string.decode()))))
+                self.parser.parse_args()))
 
 
     @ns.route('/tracktabs')
@@ -148,4 +162,4 @@ def register(api: Api):
             Get track tabs list and filter by specified parameters.
             """
             return TrackTabRetriever(g.session).get_objects(remove_empty_parameters(
-                dict(urlparser.parse_qsl(request.query_string.decode()))))
+                self.parser.parse_args()))
