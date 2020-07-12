@@ -71,6 +71,21 @@ def register(api: Api):
                 self.parser.parse_args()))
 
 
+    @ns.route('/genres/<genre_id>')
+    @api.param('genre_id', 'Genre ID')
+    @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
+    @api.response(404, 'Resource not found')
+    class GenreById(Resource):
+        def get(self, genre_id):
+            """
+            Get single genre instance by its ID.
+            """
+            abort_on_invalid_parameters(api, {'genre_id': genre_id})
+            retrieved = GenreRetriever(g.session).get_objects({'id': genre_id})
+            return retrieved[0] if retrieved else {}
+
+
     @ns.route('/releases')
     @api.response(200, 'Success')
     @api.response(400, 'Validation unsuccessful')
@@ -99,6 +114,21 @@ def register(api: Api):
                 self.parser.parse_args()))
 
 
+    @ns.route('/releases/<release_id>')
+    @api.param('release_id', 'Release ID')
+    @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
+    @api.response(404, 'Resource not found')
+    class ReleaseById(Resource):
+        def get(self, release_id):
+            """
+            Get single release instance by its ID.
+            """
+            abort_on_invalid_parameters(api, {'release_id': release_id})
+            retrieved = ReleaseRetriever(g.session).get_objects({'id': release_id})
+            return retrieved[0] if retrieved else {}
+
+
     @ns.route('/songs')
     @api.response(200, 'Success')
     @api.response(400, 'Validation unsuccessful')
@@ -116,6 +146,21 @@ def register(api: Api):
             """
             return SongRetriever(g.session).get_objects(remove_empty_parameters(
                 self.parser.parse_args()))
+
+
+    @ns.route('/songs/<song_id>')
+    @api.param('song_id', 'Song ID')
+    @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
+    @api.response(404, 'Resource not found')
+    class SongById(Resource):
+        def get(self, song_id):
+            """
+            Get single song instance by its ID.
+            """
+            abort_on_invalid_parameters(api, {'song_id': song_id})
+            retrieved = SongRetriever(g.session).get_objects({'id': song_id})
+            return retrieved[0] if retrieved else {}
 
 
     @ns.route('/sheets')
@@ -138,6 +183,21 @@ def register(api: Api):
             """
             return SheetRetriever(g.session).get_objects(remove_empty_parameters(
                 self.parser.parse_args()))
+
+
+    @ns.route('/sheets/<sheet_id>')
+    @api.param('sheet_id', 'Sheet ID')
+    @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
+    @api.response(404, 'Resource not found')
+    class SheetById(Resource):
+        def get(self, sheet_id):
+            """
+            Get single sheet instance by its ID.
+            """
+            abort_on_invalid_parameters(api, {'sheet_id': sheet_id})
+            retrieved = SheetRetriever(g.session).get_objects({'id': sheet_id})
+            return retrieved[0] if retrieved else {}
 
 
     @ns.route('/tracktabs')
@@ -163,3 +223,18 @@ def register(api: Api):
             """
             return TrackTabRetriever(g.session).get_objects(remove_empty_parameters(
                 self.parser.parse_args()))
+
+
+    @ns.route('/tracktabs/<tracktab_id>')
+    @api.param('tracktab_id', 'Track tab ID')
+    @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
+    @api.response(404, 'Resource not found')
+    class TracktabById(Resource):
+        def get(self, tracktab_id):
+            """
+            Get single track tab instance by its ID.
+            """
+            abort_on_invalid_parameters(api, {'tracktab_id': tracktab_id})
+            retrieved = TrackTabRetriever(g.session).get_objects({'id': tracktab_id})
+            return retrieved[0] if retrieved else {}
