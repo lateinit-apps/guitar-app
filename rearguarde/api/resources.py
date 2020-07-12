@@ -204,7 +204,7 @@ def register(api: Api):
     @api.response(200, 'Success')
     @api.response(400, 'Validation unsuccessful')
     @api.response(404, 'Resource not found')
-    class Tracktabs(Resource):
+    class TrackTabs(Resource):
         parser = api.parser()
         parser.add_argument('id', type=inputs.positive, help='Track tab ID', location='args')
         parser.add_argument('instrument', type=inputs.regex('^.{1,32}$'),
@@ -230,7 +230,7 @@ def register(api: Api):
     @api.response(200, 'Success')
     @api.response(400, 'Validation unsuccessful')
     @api.response(404, 'Resource not found')
-    class TracktabById(Resource):
+    class TrackTabById(Resource):
         def get(self, tracktab_id):
             """
             Get single track tab instance by its ID.
