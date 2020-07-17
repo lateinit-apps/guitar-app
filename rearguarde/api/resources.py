@@ -3,7 +3,7 @@ from flask_restx import Api, Resource
 import flask_restx.inputs as inputs
 from urllib import parse as urlparser
 
-from api.util import remove_empty_parameters
+from api.util import abort_on_invalid_parameters, remove_empty_parameters
 from retrieval.retrievers import ArtistRetriever, GenreRetriever, ReleaseRetriever, \
     SheetRetriever, SongRetriever, TrackTabRetriever
 
@@ -11,8 +11,6 @@ from retrieval.retrievers import ArtistRetriever, GenreRetriever, ReleaseRetriev
 def register(api: Api):
     # this creates and assigns the namespace to the Api instance
     ns = api.namespace('resources')
-
-    # @api.errorhandler()
 
 
     @ns.route('/artists')
@@ -32,10 +30,26 @@ def register(api: Api):
         @api.expect(parser, validate=True)
         def get(self):
             """
-            Artists GET method.
+            Get artists list and filter by specified parameters.
             """
             return ArtistRetriever(g.session).get_objects(remove_empty_parameters(
-                dict(urlparser.parse_qsl(request.query_string.decode()))))
+                self.parser.parse_args()))
+
+
+
+    @ns.route('/artists/<artist_id>')
+    @api.param('artist_id', 'Artist ID')
+    @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
+    @api.response(404, 'Resource not found')
+    class ArtistById(Resource):
+        def get(self, artist_id):
+            """
+            Get single artist instance by its ID.
+            """
+            abort_on_invalid_parameters(api, {'artist_id': artist_id})
+            retrieved = ArtistRetriever(g.session).get_objects({'id': artist_id})
+            return retrieved[0] if retrieved else {}
 
 
     @ns.route('/genres')
@@ -51,10 +65,25 @@ def register(api: Api):
         @api.expect(parser, validate=True)
         def get(self):
             """
-            Genres GET method.
+            Get genres list and filter by specified parameters.
             """
             return GenreRetriever(g.session).get_objects(remove_empty_parameters(
                 self.parser.parse_args()))
+
+
+    @ns.route('/genres/<genre_id>')
+    @api.param('genre_id', 'Genre ID')
+    @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
+    @api.response(404, 'Resource not found')
+    class GenreById(Resource):
+        def get(self, genre_id):
+            """
+            Get single genre instance by its ID.
+            """
+            abort_on_invalid_parameters(api, {'genre_id': genre_id})
+            retrieved = GenreRetriever(g.session).get_objects({'id': genre_id})
+            return retrieved[0] if retrieved else {}
 
 
     @ns.route('/releases')
@@ -79,10 +108,25 @@ def register(api: Api):
         @api.expect(parser, validate=True)
         def get(self):
             """
-            Releases GET method.
+            Get releases list and filter by specified parameters.
             """
             return ReleaseRetriever(g.session).get_objects(remove_empty_parameters(
-                dict(urlparser.parse_qsl(request.query_string.decode()))))
+                self.parser.parse_args()))
+
+
+    @ns.route('/releases/<release_id>')
+    @api.param('release_id', 'Release ID')
+    @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
+    @api.response(404, 'Resource not found')
+    class ReleaseById(Resource):
+        def get(self, release_id):
+            """
+            Get single release instance by its ID.
+            """
+            abort_on_invalid_parameters(api, {'release_id': release_id})
+            retrieved = ReleaseRetriever(g.session).get_objects({'id': release_id})
+            return retrieved[0] if retrieved else {}
 
 
     @ns.route('/songs')
@@ -98,10 +142,25 @@ def register(api: Api):
         @api.expect(parser, validate=True)
         def get(self):
             """
-            Songs GET method.
+            Get songs list and filter by specified parameters.
             """
             return SongRetriever(g.session).get_objects(remove_empty_parameters(
-                dict(urlparser.parse_qsl(request.query_string.decode()))))
+                self.parser.parse_args()))
+
+
+    @ns.route('/songs/<song_id>')
+    @api.param('song_id', 'Song ID')
+    @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
+    @api.response(404, 'Resource not found')
+    class SongById(Resource):
+        def get(self, song_id):
+            """
+            Get single song instance by its ID.
+            """
+            abort_on_invalid_parameters(api, {'song_id': song_id})
+            retrieved = SongRetriever(g.session).get_objects({'id': song_id})
+            return retrieved[0] if retrieved else {}
 
 
     @ns.route('/sheets')
@@ -120,17 +179,32 @@ def register(api: Api):
         @api.expect(parser, validate=True)
         def get(self):
             """
-            Sheets GET method.
+            Get sheets list and filter by specified parameters.
             """
             return SheetRetriever(g.session).get_objects(remove_empty_parameters(
-                dict(urlparser.parse_qsl(request.query_string.decode()))))
+                self.parser.parse_args()))
+
+
+    @ns.route('/sheets/<sheet_id>')
+    @api.param('sheet_id', 'Sheet ID')
+    @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
+    @api.response(404, 'Resource not found')
+    class SheetById(Resource):
+        def get(self, sheet_id):
+            """
+            Get single sheet instance by its ID.
+            """
+            abort_on_invalid_parameters(api, {'sheet_id': sheet_id})
+            retrieved = SheetRetriever(g.session).get_objects({'id': sheet_id})
+            return retrieved[0] if retrieved else {}
 
 
     @ns.route('/tracktabs')
     @api.response(200, 'Success')
     @api.response(400, 'Validation unsuccessful')
     @api.response(404, 'Resource not found')
-    class Tracktabs(Resource):
+    class TrackTabs(Resource):
         parser = api.parser()
         parser.add_argument('id', type=inputs.positive, help='Track tab ID', location='args')
         parser.add_argument('instrument', type=inputs.regex('^.{1,32}$'),
@@ -145,7 +219,22 @@ def register(api: Api):
         @api.expect(parser, validate=True)
         def get(self):
             """
-            Track tabs GET method.
+            Get track tabs list and filter by specified parameters.
             """
             return TrackTabRetriever(g.session).get_objects(remove_empty_parameters(
-                dict(urlparser.parse_qsl(request.query_string.decode()))))
+                self.parser.parse_args()))
+
+
+    @ns.route('/tracktabs/<tracktab_id>')
+    @api.param('tracktab_id', 'Track tab ID')
+    @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
+    @api.response(404, 'Resource not found')
+    class TrackTabById(Resource):
+        def get(self, tracktab_id):
+            """
+            Get single track tab instance by its ID.
+            """
+            abort_on_invalid_parameters(api, {'tracktab_id': tracktab_id})
+            retrieved = TrackTabRetriever(g.session).get_objects({'id': tracktab_id})
+            return retrieved[0] if retrieved else {}
