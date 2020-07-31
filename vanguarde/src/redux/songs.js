@@ -1,8 +1,6 @@
 import {current, createSlice} from '@reduxjs/toolkit';
 
-import axios from 'axios';
-
-import {handleError, handleSuccess} from './common';
+import {makeSongQuery} from './common';
 
 const initialState = {
     songList: [],
@@ -30,20 +28,6 @@ const songSlice = createSlice({
         },
     },
 });
-
-export function makeSongQuery(dispatch, getState, {apiConfig}, searchQuery = {}) {
-    dispatch(fetchBegin());
-    console.log({searchQuery});
-    axios.get(`${apiConfig.url}songs`, {params: searchQuery})
-        .then((res) => {
-            dispatch(fetchSongListSuccess(res.data));
-            handleSuccess(res);
-        })
-        .catch((error) => {
-            dispatch(fetchError(error));
-            handleError(error);
-        });
-}
 
 export function getSongList(searchQuery = {}) {
     return (dispatch, getState, {apiConfig}) => {
