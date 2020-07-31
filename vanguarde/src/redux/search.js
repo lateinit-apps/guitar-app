@@ -7,6 +7,7 @@ import {makeSongQuery} from './songs';
 const initialState = {
     searchBarIsVisible: false,
     searchQuery: '',
+    sorting: null, // null, 'asc', 'desc'
 };
 
 const searchSlice = createSlice({
@@ -18,6 +19,9 @@ const searchSlice = createSlice({
         },
         changeSearchQuery(state, action) {
             state.searchQuery = action.payload;
+        },
+        toggleSorting: (state, action) => {
+            state.sorting = state.sorting === 'asc' ? 'desc' : 'asc';
         },
     },
 });
@@ -39,6 +43,10 @@ export function handleSearchChange(event) {
     };
 }
 
+export function handleSortToggle(event) {
+    // dispatch(actions[toggleSearchBar]);
+}
+
 const {actions, reducer} = searchSlice;
-export const {toggleSearchBar, changeSearchQuery} = actions;
+export const {toggleSearchBar, changeSearchQuery, toggleSorting} = actions;
 export default reducer;

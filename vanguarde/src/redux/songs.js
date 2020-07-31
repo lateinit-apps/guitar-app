@@ -51,7 +51,6 @@ export function getSongList(searchQuery = {}) {
     };
 }
 
-
 const {actions, reducer} = songSlice;
-export const {fetchBegin, fetchSongListSuccess, fetchError} = actions;
+export const {fetchBegin, fetchSongListSuccess, fetchError, toggleSorting} = actions;
 export default reducer;
