@@ -15,6 +15,7 @@ fileConfig(config.config_file_name)
 # add model's MetaData object here
 # for 'autogenerate' support
 from model.base import Base
+from model.crack import *
 target_metadata = Base.metadata
 
 # other values from the config, defined by the needs of env.py,
