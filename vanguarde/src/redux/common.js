@@ -21,7 +21,7 @@ export function handleSuccess(response) {
 export function handleError(errorObj) {
     console.log({errorObj});
     store.addNotification({
-        title: 'Error!',
+        title: `HTTP error ${errorObj.statusCode}!`,
         message: 'Check console log for more info',
         dismiss: {
             duration: 4000,
