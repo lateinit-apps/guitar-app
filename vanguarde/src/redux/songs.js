@@ -34,7 +34,7 @@ const songSlice = createSlice({
 export function makeSongQuery(dispatch, getState, {apiConfig}, searchQuery = {}) {
     dispatch(fetchBegin());
     console.log({searchQuery});
-    axios.get(`${apiConfig.url}/songs`, {params: searchQuery})
+    axios.get(`${apiConfig.url}songs`, {params: searchQuery})
         .then((res) => {
             dispatch(fetchSongListSuccess(res.data));
             handleSuccess(res);

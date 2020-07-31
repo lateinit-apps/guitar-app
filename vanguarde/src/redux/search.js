@@ -44,6 +44,12 @@ export function handleSearchChange(event) {
 }
 
 export function handleSortToggle(event) {
+    return (dispatch, getState, {apiConfig}) => {
+        dispatch(toggleSorting());
+        const searchState = getState().searchReducer;
+        makeSongQuery(dispatch, getState,
+            {apiConfig}, {'name': searchState.searchQuery, 'sort_by': 'name|'+searchState.sorting});
+    };
     // dispatch(actions[toggleSearchBar]);
 }
 

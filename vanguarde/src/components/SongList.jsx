@@ -6,7 +6,7 @@ import {MDBBtn, MDBCol, MDBContainer,
 
 import {connect} from 'react-redux';
 import {SearchOptions} from './SearchOptions';
-import {toggleSearchBar, handleSearchChange, toggleSorting} from '../redux/search';
+import {toggleSearchBar, handleSearchChange, handleSortToggle} from '../redux/search';
 import {getSongList} from '../redux/songs';
 
 class SongList extends Component {
@@ -15,7 +15,7 @@ class SongList extends Component {
         getSongList: PropTypes.func.isRequired,
         toggleSearchBar: PropTypes.func.isRequired,
         handleSearchChange: PropTypes.func.isRequired,
-        toggleSorting: PropTypes.func.isRequired,
+        handleSortToggle: PropTypes.func.isRequired,
         // fields
         searchBarIsVisible: PropTypes.bool.isRequired,
         songList: PropTypes.array,
@@ -45,7 +45,7 @@ class SongList extends Component {
                 <MDBRow>
                     <MDBBtn
                         color="elegant"
-                        onClick={this.props.toggleSorting}
+                        onClick={this.props.handleSortToggle}
                     >
                         <MDBIcon
                             icon={
@@ -73,5 +73,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps,
-    {getSongList, toggleSearchBar, handleSearchChange, toggleSorting},
+    {getSongList, toggleSearchBar, handleSearchChange, handleSortToggle},
 )(SongList);
