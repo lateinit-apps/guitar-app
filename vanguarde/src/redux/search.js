@@ -2,11 +2,12 @@ import {createSlice} from '@reduxjs/toolkit';
 
 import AwesomeDebouncePromise from 'awesome-debounce-promise';
 
-import {makeSongQuery} from './songs';
+import {makeSongQuery} from './common';
 
 const initialState = {
     searchBarIsVisible: false,
-    searchQuery: '',
+    searchQuery: null,
+    sorting: null, // null, 'asc', 'desc'
 };
 
 const searchSlice = createSlice({
@@ -18,6 +19,9 @@ const searchSlice = createSlice({
         },
         changeSearchQuery(state, action) {
             state.searchQuery = action.payload;
+        },
+        toggleSorting: (state, action) => {
+            state.sorting = state.sorting === 'asc' ? 'desc' : 'asc';
         },
     },
 });
@@ -32,13 +36,18 @@ export function handleSearchChange(event) {
     const value = event.target.value;
     return (dispatch, getState, {apiConfig}) => {
         dispatch(changeSearchQuery(value));
-        makeSongQueryDebounced(dispatch, getState,
-            {apiConfig},
-            {'name': value},
-        );
+        makeSongQueryDebounced(dispatch, getState, {apiConfig});
     };
 }
 
+export function handleSortToggle(event) {
+    return (dispatch, getState, {apiConfig}) => {
+        dispatch(toggleSorting());
+        makeSongQuery(dispatch, getState, {apiConfig});
+    };
+    // dispatch(actions[toggleSearchBar]);
+}
+
 const {actions, reducer} = searchSlice;
-export const {toggleSearchBar, changeSearchQuery} = actions;
+export const {toggleSearchBar, changeSearchQuery, toggleSorting} = actions;
 export default reducer;

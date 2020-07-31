@@ -1,4 +1,6 @@
 import {store} from 'react-notifications-component';
+import {fetchBegin, fetchError, fetchSongListSuccess} from './songs';
+import axios from 'axios';
 
 export function handleSuccess(response) {
     store.addNotification({
@@ -19,7 +21,7 @@ export function handleSuccess(response) {
 export function handleError(errorObj) {
     console.log({errorObj});
     store.addNotification({
-        title: 'Error!',
+        title: `HTTP error ${errorObj.statusCode}!`,
         message: 'Check console log for more info',
         dismiss: {
             duration: 4000,
@@ -33,3 +35,21 @@ export function handleError(errorObj) {
     });
 }
 
+export function makeSongQuery(dispatch, getState, {apiConfig}, searchQuery = {}) {
+    dispatch(fetchBegin());
+    console.log({searchQuery});
+    const searchState = getState().searchReducer;
+    const searchParams = {
+        'name': searchState.searchQuery ? searchState.searchQuery : null,
+        'sort_by': searchState.sorting ? 'name|' + searchState.sorting : null,
+    };
+    axios.get(`${apiConfig.url}songs`, {params: searchParams})
+        .then((res) => {
+            dispatch(fetchSongListSuccess(res.data));
+            handleSuccess(res);
+        })
+        .catch((error) => {
+            dispatch(fetchError(error));
+            handleError(error);
+        });
+}
