@@ -4,7 +4,7 @@
 
 > Alembic is a lightweight database migration tool for usage with the SQLAlchemy Database 
 > Toolkit for Python.
->   - <cite>Introductory from the main Alembic webpage</cite>
+> &mdash; *Introductory from the main Alembic webpage*
 
 To be concise, Alembic provides comprehensible *werkzeugen* for undertaking DB manipulations.
 It allows to organize series of changes as a row of revisions, akin to the Git. You can handle

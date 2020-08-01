@@ -1,20 +1,28 @@
 ![database schema pic here](images/crack-schema.png)
 
-`Genre.highlights` -- a short description of main features of the genre, its origin location and time and brief summary of typical representatives.
+`Genre.highlights` &mdash; a short description of main features of the genre, its origin location
+and time and brief summary of typical representatives.
 
-`Song.trivia` -- some facts about the song, like the origin of the idea, its recording, subsequent reproductions at concerts, arrangements from other artists, etc.
+`Song.trivia` &mdash; some facts about the song, like the origin of the idea, its recording,
+subsequent reproductions at concerts, arrangements from other artists, etc.
 
-`Song.cover_of` -- if the song is a cover of other song by other artist, this field contains reference to the original song. Otherwise, the field is empty.
+`Song.cover_of` &mdash; if the song is a cover of other song by other artist, this field contains
+reference to the original song. Otherwise, the field is empty.
 
-`Release` -- table storing single entity of the artist's discography. The `type` field contains values like:
+`Release` &mdash; table storing single entity of the artist's discography. The `type` field
+contains values like:
 
 - album
 - single
 - extended_play
 
-Since the **Table-Per-Hierarchy** strategy employed, field `album_kind` will be empty, unless the `type` field equals `album`. This feature should be taken into account when working with ORM models.
+Since the **Table-Per-Hierarchy** strategy is employed, field `album_kind` will be empty, unless
+the `type` field equals `album`. This feature should be taken into account when working
+with ORM models.
 
-`Release.album_kind` = type of album depending on the place of recording, if it solo or cover album (check [Wikipedia's page](https://en.wikipedia.org/wiki/Album#Types_of_album) for more info). Supposed to have following values:
+`Release.album_kind` &mdash; type of album depending on the place of recording, if it solo or cover
+album (check [Wikipedia's page](https://en.wikipedia.org/wiki/Album#Types_of_album) for more info).
+Supposed to have the following values:
 
 - concert
 - studio
@@ -22,6 +30,14 @@ Since the **Table-Per-Hierarchy** strategy employed, field `album_kind` will be 
 - solo
 - tribute
 
-`TrackTab.gp5` = BLOB or link to the corresponding file (up to discussion).
+`TrackTab.gp5` &mdash; BLOB or link to the corresponding file (up to discussion).
 
-From wikipedia: *"... can be released for sale to the public in a variety of different formats. In most cases, a single is a song that is released separately from an album, although it usually also appears on an album"*. We agree to not have songs from EPs and singles if they do not contain some major differencies from its album versions. This means we most likely will not have compilation releases such as box sets and very few singles and EPs. **There will be multiple versions of the same song only to explicitly highlight difference of the versions**.
+From wikipedia:
+> ... can be released for sale to the public in a variety of different formats. In most cases,
+> a single is a song that is released separately from an album, although it usually also appears
+> on an album.
+
+We agree to not have songs from EPs and singles if they do not contain some major differencies from
+their album versions. This means we most likely will not have compilation releases such as box sets
+and very few singles and EPs. **There will be multiple versions of the same song only to explicitly
+highlight difference of the versions**.
