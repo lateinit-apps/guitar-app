@@ -19,10 +19,10 @@ In Unix, PostgreSQL uses role-based authentication, which is enabled by default 
 logging in as a superuser (`postgres` initially), administrator should create another role with
 limited but still powerful entitlements. Let it has a name `moderator`.
 
-Connect to any of the databases presented in your DBMS. There should be a `postgres` database
-(hereinafter called `medium`) which is originated along with the superuser, but feel free to use any
-else. For simplicity, let it be called . As a `moderator`, you should be able to establish a
-connection either with
+Connect to any of the databases presented in your DBMS. There should be a `postgres` database which
+is originated along with the superuser, but feel free to use any else. For instance, let your
+working database be called `medium`. As a `moderator`, you should be able to establish a connection
+either with
 
 ```shell
 psql -U moderator -d medium      # in case you have default peer auth
