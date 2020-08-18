@@ -150,10 +150,12 @@ For now, we don't have resources with some special queries or behavior.
 
 ## 2. API Specification
 
+<!-- TODO: specify and justify _JSON_ _REST_ API -->
 API is subdivided into two modules with separate base paths: `/meta` and `/resources`. The first one
 is a collection of helper and transient resources and won't be covered here. Resources are reckoned
 as application data, and reflect database entities. Here we go with the definitive list of
-available resources along with their fields and neighbor resources (i.e. those that can be reached via "joint resources" notation):
+available resources along with their fields and neighbor resources (i.e. those that can be reached
+via "joint resources" notation):
 
 <table>
   <thead>
@@ -166,56 +168,228 @@ available resources along with their fields and neighbor resources (i.e. those t
   </thead>
   <tbody>
     <tr>
-      <td rowspan="7">Artist</td>
-      <td rowspan="7"><ul><li>Genre</li><li>Release</li></ul></td>
-      <td>`id`</td>
+      <td rowspan="8">Artist</td>
+      <td rowspan="8"><ul><li>Genre</li><li>Release</li></ul></td>
+      <td><code>id</code></td>
       <td>Numerical: positive integer</td>
     </tr>
     <tr>
-      <td>`about`</td>
+      <td><code>about</code></td>
       <td>String</td>
     </tr>
     <tr>
-      <td>`country`</td>
+      <td><code>country</code></td>
       <td>String</td>
     </tr>
     <tr>
-      <td>`name`</td>
+      <td><code>name</code></td>
       <td>String</td>
     </tr>
     <tr>
-      <td>`year_founded`</td>
+      <td><code>year_founded</code></td>
       <td>Numerical: positive integer</td>
     </tr>
     <tr>
-      <td>`genre_ids`</td>
+      <td><code>image_link</code></td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td><code>genre_ids</code></td>
       <td>List of positive integers</td>
     </tr>
     <tr>
-      <td>`release_ids`</td>
+      <td><code>release_ids</code></td>
       <td>List of positive integers</td>
     </tr>
     <tr>
       <td rowspan="5">Genre</td>
       <td rowspan="5"><ul><li>Artist</li><li>Release</li></ul></td>
-      <td>`id`</td>
+      <td><code>id</code></td>
       <td>Numerical: positive integer</td>
     </tr>
     <tr>
-      <td>`highlights`</td>
+      <td><code>highlights</code></td>
       <td>String</td>
     </tr>
     <tr>
-      <td>`name`</td>
+      <td><code>name</code></td>
       <td>String</td>
     </tr>
     <tr>
-      <td>`artist_ids`</td>
+      <td><code>artist_ids</code></td>
       <td>List of positive integers</td>
     </tr>
     <tr>
-      <td>`release_ids`</td>
+      <td><code>release_ids</code></td>
       <td>List of positive integers</td>
+    </tr>
+    <tr>
+      <td rowspan="10">Release</td>
+      <td rowspan="10"><ul><li>Artist</li><li>Genre</li><li>Song</li></ul></td>
+      <td><code>id</code></td>
+      <td>Numerical: positive integer</td>
+    </tr>
+    <tr>
+      <td><code>album_kind</code></td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td><code>label</code></td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td><code>name</code></td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td><code>type</code></td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td><code>year</code></td>
+      <td>Numerical: positive integer</td>
+    </tr>
+    <tr>
+      <td><code>cover_image_link</code></td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td><code>artist_ids</code></td>
+      <td>List of positive integers</td>
+    </tr>
+    <tr>
+      <td><code>genre_ids</code></td>
+      <td>List of positive integers</td>
+    </tr>
+    <tr>
+      <td><code>song_ids</code></td>
+      <td>List of positive integers</td>
+    </tr>
+    <tr>
+      <td rowspan="6">Song</td>
+      <td rowspan="6"><ul><li>Release</li><li>Sheet</li></ul></td>
+      <td><code>id</code></td>
+      <td>Numerical: positive integer</td>
+    </tr>
+    <tr>
+      <td><code>name</code></td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td><code>trivia</code></td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td><code>cover_of</code></td>
+      <td>Numerical: positive integer</td>
+    </tr>
+    <tr>
+      <td><code>release_id</code></td>
+      <td>Numerical: positive integer</td>
+    </tr>
+    <tr>
+      <td><code>sheet_ids</code></td>
+      <td>List of positive integers</td>
+    </tr>
+    <tr>
+      <td rowspan="5">Sheet</td>
+      <td rowspan="5"><ul><li>Song</li><li>TrackTab</li></ul></td>
+      <td><code>id</code></td>
+      <td>Numerical: positive integer</td>
+    </tr>
+    <tr>
+      <td><code>date_uploaded</code></td>
+      <td>String (ISO-8601-date)</td>
+    </tr>
+    <tr>
+      <td><code>bpm</code></td>
+      <td>Numerical: positive integer</td>
+    </tr>
+    <tr>
+      <td><code>song_id</code></td>
+      <td>Numerical: positive integer</td>
+    </tr>
+    <tr>
+      <td><code>tracktab_ids</code></td>
+      <td>List of positive integers</td>
+    </tr>
+    <tr>
+      <td rowspan="6">TrackTab</td>
+      <td rowspan="6"><ul><li>Sheet</li></ul></td>
+      <td><code>id</code></td>
+      <td>Numerical: positive integer</td>
+    </tr>
+    <tr>
+      <td><code>instrument</code></td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td><code>time_start</code></td>
+      <td>String (ISO-8601-time)</td>
+    </tr>
+    <tr>
+      <td><code>tuning</code></td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td><code>gp5_link</code></td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td><code>sheet_id</code></td>
+      <td>Numerical: positive integer</td>
     </tr>
   </tbody>
 </table>
+
+Resources figured in the table can be accessed by hitting the
+`/resource/<lowercased_name_in_plural>` endpoint. There is
+also a possibility to retrieve a particular instance by
+`/resource/<lowercased_name_in_plural>/<entity_id>`.
+
+Example:
+
+`GET /resource/tracktabs` returns the following result (note the top-level element is a list):
+
+```json
+[
+  {
+    "id": 804281,
+    "gp5_link": "/tmp/permanent_storage/1.gp5",
+    "instrument": "Electric guitar",
+    "time_start": "00:00:04",
+    "tuning": "Standard E (E-A-D-G-B-E)",
+    "sheet_id": 71001235
+  },
+  {
+    "id": 920084,
+    "gp5_link": "/tmp/permanent_storage/2.gp5",
+    "instrument": "Acoustic guitar",
+    "time_start": "00:01:41",
+    "tuning": "Standard E (E-A-D-G-B-E)",
+    "sheet_id": 88131091
+  },
+  {
+    "id": 520421,
+    "gp5_link": "/tmp/permanent_storage/3.gp5",
+    "instrument": "Acoustic guitar",
+    "time_start": "00:02:32",
+    "tuning": "Drop D (D-A-D-G-B-E)",
+    "sheet_id": 71001235
+  }
+]
+```
+
+Using the displayed data, one can extract some identifier and use it for a single-entity request.
+Let us experiment with the last item in the list (note the top-level element now is an object):
+
+```json
+{
+  "id": 520421,
+  "gp5_link": "/tmp/permanent_storage/3.gp5",
+  "instrument": "Acoustic guitar",
+  "time_start": "00:02:32",
+  "tuning": "Drop D (D-A-D-G-B-E)",
+  "sheet_id": 71001235
+}
+```
