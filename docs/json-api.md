@@ -4,7 +4,7 @@
 
 In this section we'll highlight what we actually expect from the *Rearguade*'s API.
 
-### 1.1 Common functions
+### 1.1. Common functions
 
 Here we'll describe some general functionality that applies for all available resources, unless
 it's some special case.
@@ -31,6 +31,8 @@ be described in the sections below
 of the object
 5. GET returns 204 code if there are no available objects in the collection by given query
 
+---
+
 #### Pagination
 
 We've picked the simplest kind of pagination to implement: limit/offset pagination. It requires
@@ -39,6 +41,8 @@ two parameters:
 - `offset` - starting row number. Default value is `0`; any number less than zero is invalid
 - `limit` - sets maximum size of the retrieved collection. Default value is `20` and cannot be
 increased any further, returning HTTP `400 Bad Request` on attempts to specify more than allowed.
+
+---
   
 #### Sorting
 
@@ -51,6 +55,8 @@ of the resource.
 Example:
 
 `/artists?sort_by=year_founded!desc,name!asc`
+
+---
 
 #### Filtering
 
@@ -111,7 +117,9 @@ In the nutshell:
 - Law #4: Return it in UTC
 - Law #5: Don’t use time if you don’t need it
 
-For more discussion look [into this SO page](https://stackoverflow.com/questions/9581692/recommended-date-format-for-rest-get-api)
+For more discussion look [into this SO page](https://stackoverflow.com/questions/9581692/recommended-date-format-for-rest-get-api).
+
+---
 
 #### Including joint resources
 
@@ -125,6 +133,8 @@ through their resource name with dot:
 
 `/songs?include=releases.artists&sort_by=releases.artists.name!asc&filter(releases.name)__exact=fear%20of%20the%20dark`
 
+---
+
 #### Picking certain fields
 
 By default, API returns all available fields. We can specify set of fields we actually want to get
@@ -134,13 +144,78 @@ Example:
 
 `/releases?fields=id,name,year`
 
-### 1.2 Special cases
+### 1.2. Special cases
 
 For now, we don't have resources with some special queries or behavior.
 
 ## 2. API Specification
 
 API is subdivided into two modules with separate base paths: `/meta` and `/resources`. The first one
-is a collection of helper and transient resources and won't be covered here.
+is a collection of helper and transient resources and won't be covered here. Resources are reckoned
+as application data, and reflect database entities. Here we go with the definitive list of
+available resources along with their fields and neighbor resources (i.e. those that can be reached via "joint resources" notation):
 
-[definitive description here]
+<table>
+  <thead>
+    <tr>
+      <th>Resource</th>
+      <th>Adjacent Resources</th>
+      <th>Field</th>
+      <th>Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="7">Artist</td>
+      <td rowspan="7"><ul><li>Genre</li><li>Release</li></ul></td>
+      <td>`id`</td>
+      <td>Numerical: positive integer</td>
+    </tr>
+    <tr>
+      <td>`about`</td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td>`country`</td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td>`name`</td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td>`year_founded`</td>
+      <td>Numerical: positive integer</td>
+    </tr>
+    <tr>
+      <td>`genre_ids`</td>
+      <td>List of positive integers</td>
+    </tr>
+    <tr>
+      <td>`release_ids`</td>
+      <td>List of positive integers</td>
+    </tr>
+    <tr>
+      <td rowspan="5">Genre</td>
+      <td rowspan="5"><ul><li>Artist</li><li>Release</li></ul></td>
+      <td>`id`</td>
+      <td>Numerical: positive integer</td>
+    </tr>
+    <tr>
+      <td>`highlights`</td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td>`name`</td>
+      <td>String</td>
+    </tr>
+    <tr>
+      <td>`artist_ids`</td>
+      <td>List of positive integers</td>
+    </tr>
+    <tr>
+      <td>`release_ids`</td>
+      <td>List of positive integers</td>
+    </tr>
+  </tbody>
+</table>
