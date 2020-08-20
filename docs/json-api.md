@@ -150,7 +150,12 @@ For now, we don't have resources with some special queries or behavior.
 
 ## 2. API Specification
 
-<!-- TODO: specify and justify _JSON_ _REST_ API -->
+API provided by *Rearguarde* is a JSON API, constructed with compliance to REST style. From
+bird's-eye view, the API comprises a set of endpoints which are associated with one or more HTTP
+verbs, thus providing JSON responses to apporiate requests. JSON response format has been chosen
+for its versatility, simplicity, and native support in the majority of web browsers
+(`Content-Type: application/json`).
+
 API is subdivided into two modules with separate base paths: `/meta` and `/resources`. The first one
 is a collection of helper and transient resources and won't be covered here. Resources are reckoned
 as application data, and reflect database entities. Here we go with the definitive list of
