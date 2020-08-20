@@ -152,7 +152,7 @@ For now, we don't have resources with some special queries or behavior.
 
 API provided by *Rearguarde* is a JSON API, constructed with compliance to REST style. From
 bird's-eye view, the API comprises a set of endpoints which are associated with one or more HTTP
-verbs, thus providing JSON responses to apporiate requests. JSON response format has been chosen
+verbs, thus providing JSON responses to appropriate requests. JSON response format has been chosen
 for its versatility, simplicity, and native support in the majority of web browsers
 (`Content-Type: application/json`).
 
