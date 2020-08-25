@@ -3,7 +3,7 @@ from flask_restx import Api, Resource
 import flask_restx.inputs as inputs
 from urllib import parse as urlparser
 
-from api.util import abort_on_invalid_parameters, remove_empty_parameters
+from api.util import abort_on_invalid_parameters, consolidate_parameters, remove_empty_parameters
 from retrieval.retrievers import ArtistRetriever, GenreRetriever, ReleaseRetriever, \
     SheetRetriever, SongRetriever, TrackTabRetriever
 
@@ -33,8 +33,7 @@ def register(api: Api):
             Get artists list and filter by specified parameters.
             """
             return ArtistRetriever(g.session).get_objects(remove_empty_parameters(
-                self.parser.parse_args()))
-
+                consolidate_parameters(request.args, self.parser)))
 
 
     @ns.route('/artists/<artist_id>')
@@ -68,7 +67,7 @@ def register(api: Api):
             Get genres list and filter by specified parameters.
             """
             return GenreRetriever(g.session).get_objects(remove_empty_parameters(
-                self.parser.parse_args()))
+                consolidate_parameters(request.args, self.parser)))
 
 
     @ns.route('/genres/<genre_id>')
@@ -111,7 +110,7 @@ def register(api: Api):
             Get releases list and filter by specified parameters.
             """
             return ReleaseRetriever(g.session).get_objects(remove_empty_parameters(
-                self.parser.parse_args()))
+                consolidate_parameters(request.args, self.parser)))
 
 
     @ns.route('/releases/<release_id>')
@@ -145,7 +144,7 @@ def register(api: Api):
             Get songs list and filter by specified parameters.
             """
             return SongRetriever(g.session).get_objects(remove_empty_parameters(
-                self.parser.parse_args()))
+                consolidate_parameters(request.args, self.parser)))
 
 
     @ns.route('/songs/<song_id>')
@@ -182,7 +181,7 @@ def register(api: Api):
             Get sheets list and filter by specified parameters.
             """
             return SheetRetriever(g.session).get_objects(remove_empty_parameters(
-                self.parser.parse_args()))
+                consolidate_parameters(request.args, self.parser)))
 
 
     @ns.route('/sheets/<sheet_id>')
@@ -222,7 +221,7 @@ def register(api: Api):
             Get track tabs list and filter by specified parameters.
             """
             return TrackTabRetriever(g.session).get_objects(remove_empty_parameters(
-                self.parser.parse_args()))
+                consolidate_parameters(request.args, self.parser)))
 
 
     @ns.route('/tracktabs/<tracktab_id>')

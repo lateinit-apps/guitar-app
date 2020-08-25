@@ -28,11 +28,11 @@ class AbstractRetriever(ABC):
         for pair in filters_list:
             match_strategy = pair[0]
             if match_strategy not in ['exact', 'substring']:
-                print(f'{key} is not found for class {entity}', file=stderr)
+                print('inapplicable match strategy has been passed', file=stderr)
                 continue
             field, value = pair[1], pair[2]
             if not hasattr(entity, field):
-                print(f'{field} is not found for class {entity}', file=stderr)
+                print(f'{field} field is not found for class {entity}', file=stderr)
                 continue
             query = query.filter(getattr(entity, field) == value) if match_strategy == 'exact' \
                 else query.filter(getattr(entity, field).ilike(f'%{value}%'))

@@ -11,5 +11,11 @@ def abort_on_invalid_parameters(api: Api, request_parameters: dict):
                               + f'{key} must be a positive integer' for key in request_parameters})
 
 
+def consolidate_parameters(raw_parameters, restx_parser):
+    result = dict(raw_parameters)
+    result.update(restx_parser.parse_args())
+    return result
+
+
 def remove_empty_parameters(parameter_values: dict):
     return {key: parameter_values[key] for key in parameter_values if parameter_values[key]}
