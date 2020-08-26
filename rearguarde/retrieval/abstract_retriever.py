@@ -20,8 +20,7 @@ class AbstractRetriever(ABC):
         raise NotImplementedError
 
     def get_objects(self, parameter_values={}):
-        entity = type(self).underlying_class
-        query = QueryManipulator(self.session.query(entity), entity) \
+        query = QueryManipulator(self.session.query(), type(self).underlying_class) \
             .apply_filters(parameter_values, self._substring_fields) \
             .apply_sorting(parameter_values) \
             .withdraw_query()

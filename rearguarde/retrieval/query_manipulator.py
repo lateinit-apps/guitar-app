@@ -1,10 +1,13 @@
+import re
 from sys import stderr
+
+from sqlalchemy import asc, desc
 
 
 class QueryManipulator:
     def __init__(self, query, underlying_class):
-        self.query = query
-        # TODO investigate whether the underlying class can be extracted from the query
+
+        self.query = query.add_entity(underlying_class)
         self.underlying_class = underlying_class
 
     def apply_filters(self, parameter_values, substring_fields):
@@ -35,11 +38,24 @@ class QueryManipulator:
                 break
         return self
 
-
     def apply_sorting(self, parameter_values):
         """
         Get query with applied sorting according to the query string parameters.
         """
+        if 'sort_by' in parameter_values \
+            and re.match('(\w+!(asc|desc))(,\w+!(asc|desc))*', parameter_values['sort_by']):
+
+            comma_separated = parameter_values['sort_by'].split(',')
+            for item in [x for x in comma_separated if x]:
+
+                key, order = item.split('!')[0], item.split('!')[1]
+                if not hasattr(self.underlying_class, key):
+                    print(f'{key} cannot be used as a sorting key', file=stderr)
+                    continue
+
+                self.query = self.query.order_by(asc(getattr(self.underlying_class, key))) \
+                    if order == 'asc' \
+                    else self.query.order_by(desc(getattr(self.underlying_class, key)))
         return self
 
     def withdraw_query(self):
