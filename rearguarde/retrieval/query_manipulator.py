@@ -33,11 +33,14 @@ class QueryManipulator:
             # no sense in further filtering of an empty result set
             if not self.query.count():
                 break
-        return query
+        return self
 
 
     def apply_sorting(self, parameter_values):
         """
         Get query with applied sorting according to the query string parameters.
         """
-        return query
+        return self
+
+    def withdraw_query(self):
+        return self.query

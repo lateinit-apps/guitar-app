@@ -23,5 +23,6 @@ class AbstractRetriever(ABC):
         entity = type(self).underlying_class
         query = QueryManipulator(self.session.query(entity), entity) \
             .apply_filters(parameter_values, self._substring_fields) \
-            .apply_sorting(parameter_values)
+            .apply_sorting(parameter_values) \
+            .withdraw_query()
         return self._dictionarize_objects(query)
