@@ -3,13 +3,13 @@ import {MDBCol, MDBContainer, MDBInput,
     MDBRow, MDBCard, MDBAnimation} from 'mdbreact';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {killme} from '../redux/search';
+import {changeSearchQuery} from '../redux/search';
 
 
 class SearchOptions extends Component {
     static propTypes = {
         // methods
-        killme: PropTypes.func.isRequired,
+        changeSearchQuery: PropTypes.func.isRequired,
     }
 
     render() {
@@ -27,13 +27,13 @@ class SearchOptions extends Component {
                                             <MDBInput label="Artist name"
                                                 onChange={
                                                     (event) => {
-                                                        this.props.killme('artists', event.target.value);
+                                                        this.props.changeSearchQuery('artists', event.target.value);
                                                     }
                                                 } group/>
                                             <MDBInput label="Song name"
                                                 onChange={
                                                     (event) => {
-                                                        this.props.killme('songs', event.target.value);
+                                                        this.props.changeSearchQuery('songs', event.target.value);
                                                     }
                                                 }
                                                 group />
@@ -62,6 +62,6 @@ class SearchOptions extends Component {
 const mapStateToProps = (state) => ({});
 
 export default connect(mapStateToProps,
-    {killme},
+    {changeSearchQuery},
 )(SearchOptions);
 

@@ -6,7 +6,7 @@ import {makeSongQuery} from './common';
 
 const initialState = {
     searchBarIsVisible: false,
-    searchQuery: null,
+    ominbarQuery: null,
     artistQuery: null,
     releaseQuery: null,
     songQuery: null,
@@ -22,9 +22,8 @@ const searchSlice = createSlice({
             console.log({state, action});
             state.searchBarIsVisible = !state.searchBarIsVisible;
         },
-        changeSearchQuery(state, action) {
-            console.log('changeSearchQuery', action.payload);
-            state.searchQuery = action.payload;
+        changeOmnibarQuery(state, action) {
+            state.ominbarQuery = action.payload;
         },
         toggleSorting: (state, action) => {
             state.sorting = state.sorting === 'asc' ? 'desc' : 'asc';
@@ -55,7 +54,7 @@ const makeSongQueryDebounced = AwesomeDebouncePromise(
     500,
 );
 
-export const killme = (eventType, value) => {
+export const changeSearchQuery = (eventType, value) => {
     return (dispatch, getState, {apiConfig}) => {
         switch (eventType) {
         case 'artists':
@@ -74,12 +73,10 @@ export const killme = (eventType, value) => {
     };
 };
 
-export function handleSearchChange(event) {
-    console.log('handleSearchChange:', event);
+export function handleOmnibarChange(event) {
     const value = event.target.value;
     return (dispatch, getState, {apiConfig}) => {
-        console.log('inside func');
-        dispatch(changeSearchQuery(value));
+        dispatch(actions.changeSongQuery(value));
         makeSongQueryDebounced(dispatch, getState, {apiConfig});
     };
 }
@@ -91,23 +88,6 @@ export function handleSortToggle(event) {
     };
 }
 
-export function handleArtistChange(event) {
-    console.log('handleArtistChange', event);
-    const value = event.target.value;
-    return (dispatch, getState, {apiConfig}) => {
-        dispatch(actions.changeArtistQuery(value));
-        makeSongQuery(dispatch, getState, {apiConfig});
-    };
-}
-
-export function handleSongChange(event) {
-    const value = event.target.value;
-    return (dispatch, getState, {apiConfig}) => {
-        dispatch(actions.changeSongQuery(value));
-        makeSongQuery(dispatch, getState, {apiConfig});
-    };
-}
-
 export function handleToggleSearchBar(event) {
     return (dispatch) => {
         dispatch(toggleSearchBar);
@@ -115,5 +95,5 @@ export function handleToggleSearchBar(event) {
 }
 
 export const {actions, reducer} = searchSlice;
-export const {toggleSearchBar, changeSearchQuery, toggleSorting} = actions;
+export const {toggleSearchBar, changeOmnibarhQuery, toggleSorting} = actions;
 export default reducer;

@@ -37,10 +37,9 @@ export function handleError(errorObj) {
 
 export function makeSongQuery(dispatch, getState, {apiConfig}, searchQuery = {}) {
     dispatch(fetchBegin());
-    console.log({searchQuery});
     const searchState = getState().searchReducer;
     const searchParams = {
-        'name': searchState.searchQuery ? searchState.searchQuery : null,
+        'name': searchState.songQuery ? searchState.songQuery : null,
         'releases.artists.name': searchState.artistQuery ? searchState.artistQuery : null,
         'releases.genres.name': searchState.genreQuery ? searchState.genreQuery : null,
         'releases.name': searchState.releaseQuery ? searchState.releaseQuery : null,
