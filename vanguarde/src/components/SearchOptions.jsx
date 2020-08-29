@@ -5,7 +5,13 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {changeSearchQuery} from '../redux/search';
 import {ARTIST_QUERY, RELEASE_QUERY, SONG_QUERY, GENRE_QUERY} from '../redux/search';
+import Select from 'react-select';
 
+
+const genreOptions = [
+    {value: 'rock', label: 'Rock'},
+    {value: 'notrock', label: 'Not Rock'},
+];
 
 class SearchOptions extends Component {
     static propTypes = {
@@ -50,15 +56,12 @@ class SearchOptions extends Component {
                                                 }
                                             }
                                             group/>
-                                        <select className="browser-default custom-select"
-                                            onChange={
-                                                (event) => {
-                                                    this.props.changeSearchQuery(GENRE_QUERY, event.target.value);
-                                                }
-                                            }>
-                                            <option value="1">Rock</option>
-                                            <option value="2">Not Rock</option>
-                                        </select>
+                                        <Select onChange={
+                                            (option) => {
+                                                this.props.changeSearchQuery(GENRE_QUERY, option.value);
+                                            }
+                                        }
+                                        options={genreOptions} />
                                     </div>
                                 </MDBCol>
                             </MDBRow>
