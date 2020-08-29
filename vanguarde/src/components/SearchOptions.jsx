@@ -1,9 +1,17 @@
 import React, {Component} from 'react';
 import {MDBCol, MDBContainer, MDBInput,
     MDBRow, MDBCard, MDBAnimation} from 'mdbreact';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {killme} from '../redux/search';
 
 
-export class SearchOptions extends Component {
+class SearchOptions extends Component {
+    static propTypes = {
+        // methods
+        killme: PropTypes.func.isRequired,
+    }
+
     render() {
         return (
             <MDBAnimation type="fadeInUp">
@@ -16,8 +24,19 @@ export class SearchOptions extends Component {
                                 <MDBCol md="6">
                                     <form>
                                         <div className="grey-text">
-                                            <MDBInput label="Artist name" group/>
-                                            <MDBInput label="Song name" group />
+                                            <MDBInput label="Artist name"
+                                                onChange={
+                                                    (event) => {
+                                                        this.props.killme('artists', event.target.value);
+                                                    }
+                                                } group/>
+                                            <MDBInput label="Song name"
+                                                onChange={
+                                                    (event) => {
+                                                        this.props.killme('songs', event.target.value);
+                                                    }
+                                                }
+                                                group />
                                         </div>
                                     </form>
                                 </MDBCol>
@@ -39,3 +58,10 @@ export class SearchOptions extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => ({});
+
+export default connect(mapStateToProps,
+    {killme},
+)(SearchOptions);
+
