@@ -57,17 +57,20 @@ const makeSongQueryDebounced = AwesomeDebouncePromise(
 export const changeSearchQuery = (eventType, value) => {
     return (dispatch, getState, {apiConfig}) => {
         switch (eventType) {
-        case 'artists':
+        case ARTIST_QUERY:
             dispatch(actions.changeArtistQuery(value));
             break;
-        case 'songs':
+        case SONG_QUERY:
             dispatch(actions.changeSongQuery(value));
             break;
-        case 'releases':
+        case RELEASE_QUERY:
             dispatch(actions.changeReleaseQuery(value));
             break;
-        case 'genre':
+        case GENRE_QUERY:
             dispatch(actions.changeGenreQuery(value));
+            break;
+        default:
+            console.log('Wrong eventType ', {eventType});
         };
         makeSongQueryDebounced(dispatch, getState, {apiConfig});
     };

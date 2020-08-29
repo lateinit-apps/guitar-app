@@ -4,6 +4,7 @@ import {MDBCol, MDBContainer, MDBInput,
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {changeSearchQuery} from '../redux/search';
+import {ARTIST_QUERY, RELEASE_QUERY, SONG_QUERY, GENRE_QUERY} from '../redux/search';
 
 
 class SearchOptions extends Component {
@@ -27,13 +28,13 @@ class SearchOptions extends Component {
                                             <MDBInput label="Artist name"
                                                 onChange={
                                                     (event) => {
-                                                        this.props.changeSearchQuery('artists', event.target.value);
+                                                        this.props.changeSearchQuery(ARTIST_QUERY, event.target.value);
                                                     }
                                                 } group/>
                                             <MDBInput label="Song name"
                                                 onChange={
                                                     (event) => {
-                                                        this.props.changeSearchQuery('songs', event.target.value);
+                                                        this.props.changeSearchQuery(SONG_QUERY, event.target.value);
                                                     }
                                                 }
                                                 group />
@@ -42,8 +43,19 @@ class SearchOptions extends Component {
                                 </MDBCol>
                                 <MDBCol md="6">
                                     <div className="grey-text">
-                                        <MDBInput label="Something else" group/>
-                                        <select className="browser-default custom-select">
+                                        <MDBInput label="Album"
+                                            onChange={
+                                                (event) => {
+                                                    this.props.changeSearchQuery(RELEASE_QUERY, event.target.value);
+                                                }
+                                            }
+                                            group/>
+                                        <select className="browser-default custom-select"
+                                            onChange={
+                                                (event) => {
+                                                    this.props.changeSearchQuery(GENRE_QUERY, event.target.value);
+                                                }
+                                            }>
                                             <option value="1">Rock</option>
                                             <option value="2">Not Rock</option>
                                         </select>
