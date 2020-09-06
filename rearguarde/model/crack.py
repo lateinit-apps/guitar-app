@@ -79,14 +79,6 @@ class Song(Base):
     covers = relationship('Song', backref='original')
 
 
-# TODO: remove
-class ReleaseSong(Base):
-    __tablename__ = 'release_song'
-
-    release_id = Column(Integer, ForeignKey(Release.id), primary_key=True)
-    song_id = Column(Integer, ForeignKey(Song.id), primary_key=True)
-
-
 class Sheet(Base):
     __tablename__ = 'sheet'
 
