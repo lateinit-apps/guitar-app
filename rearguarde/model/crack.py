@@ -71,8 +71,7 @@ class Song(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(64))
     trivia = Column(Text)
-    # TODO: change nullable to False
-    release_id = Column(Integer, ForeignKey(Release.id), nullable=True)
+    release_id = Column(Integer, ForeignKey(Release.id), nullable=False)
     original_id = Column(Integer, ForeignKey('song.id', ondelete='SET NULL'))  # cover's original
 
     release = relationship(Release, backref='songs')
