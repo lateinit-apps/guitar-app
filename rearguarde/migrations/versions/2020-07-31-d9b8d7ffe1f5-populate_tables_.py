@@ -8,11 +8,7 @@ Create Date: 2020-07-31 15:31:01.471942+00:00
 from datetime import date, datetime, time
 
 from alembic import op
-import sqlalchemy as sa
-
-from model.crack import Artist, ArtistRelease, Genre, GenreArtist, GenreRelease, \
-    Release, ReleaseSong, Sheet, Song, TrackTab
-
+from sqlalchemy import Table, MetaData
 
 # revision identifiers, used by Alembic.
 revision = 'd9b8d7ffe1f5'
@@ -23,8 +19,11 @@ depends_on = None
 
 def upgrade():
 
+    meta = MetaData(bind=op.get_bind())
+    meta.reflect()
+
     op.bulk_insert(
-        Song.__table__,
+        Table('song', meta),
         [
             {
                 "id": 13336,
@@ -51,7 +50,7 @@ def upgrade():
     )
 
     op.bulk_insert(
-        Sheet.__table__,
+        Table('sheet', meta),
         [
             {
                 "id": 71001235,
@@ -81,7 +80,7 @@ def upgrade():
     )
 
     op.bulk_insert(
-        TrackTab.__table__,
+        Table('tracktab', meta),
         [
             {
                 "id": 804281,
@@ -135,7 +134,7 @@ def upgrade():
     )
 
     op.bulk_insert(
-        Release.__table__,
+        Table('release', meta),
         [
             {
                 "id": 1193041,
@@ -195,7 +194,7 @@ def upgrade():
     )
 
     op.bulk_insert(
-        Artist.__table__,
+        Table('artist', meta),
         [
             {
                 "id": 16198,
@@ -238,7 +237,7 @@ def upgrade():
     )
 
     op.bulk_insert(
-        Genre.__table__,
+        Table('genre', meta),
         [
             {
                 "id": 182,
@@ -320,7 +319,7 @@ def upgrade():
     )
 
     op.bulk_insert(
-        GenreArtist.__table__,
+        Table('genre_artist', meta),
         [
             {
                 "genre_id": 182,
@@ -402,7 +401,7 @@ def upgrade():
     )
 
     op.bulk_insert(
-        ArtistRelease.__table__,
+        Table('artist_release', meta),
         [
             {
                 "artist_id": 16198,
@@ -432,7 +431,7 @@ def upgrade():
     )
 
     op.bulk_insert(
-        GenreRelease.__table__,
+        Table('genre_release', meta),
         [
             {
                 "genre_id": 171,
@@ -486,7 +485,7 @@ def upgrade():
     )
 
     op.bulk_insert(
-        ReleaseSong.__table__,
+        Table('release_song', meta),
         [
             {
                 "release_id": 1193041,
