@@ -24,8 +24,8 @@ def register(api: Api):
             help='Artist\'s origin country', location='args')
         parser.add_argument('name', type=inputs.regex('^.{1,64}$'),
             help='Artist name', location='args')
-        parser.add_argument('year_founded', type=inputs.date_from_iso8601, 
-            help='Artist\'s initiation date (only year is taken into account)', location='args')
+        parser.add_argument('year_founded', type=inputs.positive, 
+            help='Artist\'s initiation year', location='args')
 
         @api.expect(parser, validate=True)
         def get(self):
@@ -137,6 +137,10 @@ def register(api: Api):
         parser.add_argument('id', type=inputs.positive, help='Song ID', location='args')
         parser.add_argument('name', type=inputs.regex('^.{1,64}$'),
             help='Song name', location='args')
+        parser.add_argument('original_id', type=inputs.positive,
+            help='ID of the song covered by requested one', location='args')
+        parser.add_argument('release_id', type=inputs.positive,
+            help='Corresponding release ID', location='args')
 
         @api.expect(parser, validate=True)
         def get(self):

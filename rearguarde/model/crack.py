@@ -74,8 +74,8 @@ class Song(Base):
     release_id = Column(Integer, ForeignKey(Release.id), nullable=False)
     original_id = Column(Integer, ForeignKey('song.id', ondelete='SET NULL'))  # cover's original
 
+    original = relationship('Song', backref='covers', remote_side=[id])
     release = relationship(Release, backref='songs')
-    covers = relationship('Song', backref='original')
 
 
 class Sheet(Base):

@@ -191,12 +191,12 @@ via "joint resources" notation):
       <td>String</td>
     </tr>
     <tr>
-      <td><code>year_founded</code></td>
-      <td>Numerical: positive integer</td>
+      <td><code>portrait_image_link</code></td>
+      <td>String</td>
     </tr>
     <tr>
-      <td><code>image_link</code></td>
-      <td>String</td>
+      <td><code>year_founded</code></td>
+      <td>Numerical: positive integer</td>
     </tr>
     <tr>
       <td><code>genre_ids</code></td>
@@ -247,16 +247,16 @@ via "joint resources" notation):
       <td>String</td>
     </tr>
     <tr>
+      <td><code>portrait_image_link</code></td>
+      <td>String</td>
+    </tr>
+    <tr>
       <td><code>type</code></td>
       <td>String</td>
     </tr>
     <tr>
       <td><code>year</code></td>
       <td>Numerical: positive integer</td>
-    </tr>
-    <tr>
-      <td><code>cover_image_link</code></td>
-      <td>String</td>
     </tr>
     <tr>
       <td><code>artist_ids</code></td>
@@ -271,8 +271,8 @@ via "joint resources" notation):
       <td>List of positive integers</td>
     </tr>
     <tr>
-      <td rowspan="6">Song</td>
-      <td rowspan="6"><ul><li>Release</li><li>Sheet</li></ul></td>
+      <td rowspan="7">Song</td>
+      <td rowspan="7"><ul><li>Release</li><li>Sheet</li></ul></td>
       <td><code>id</code></td>
       <td>Numerical: positive integer</td>
     </tr>
@@ -285,7 +285,11 @@ via "joint resources" notation):
       <td>String</td>
     </tr>
     <tr>
-      <td><code>cover_of</code></td>
+      <td><code>cover_ids</code></td>
+      <td>List of positive integers</td>
+    </tr>
+    <tr>
+      <td><code>original_id</code></td>
       <td>Numerical: positive integer</td>
     </tr>
     <tr>
@@ -303,12 +307,12 @@ via "joint resources" notation):
       <td>Numerical: positive integer</td>
     </tr>
     <tr>
-      <td><code>date_uploaded</code></td>
-      <td>String (ISO-8601-date)</td>
-    </tr>
-    <tr>
       <td><code>bpm</code></td>
       <td>Numerical: positive integer</td>
+    </tr>
+    <tr>
+      <td><code>date_uploaded</code></td>
+      <td>String (ISO-8601-date)</td>
     </tr>
     <tr>
       <td><code>song_id</code></td>
@@ -325,6 +329,10 @@ via "joint resources" notation):
       <td>Numerical: positive integer</td>
     </tr>
     <tr>
+      <td><code>gp5_link</code></td>
+      <td>String</td>
+    </tr>
+    <tr>
       <td><code>instrument</code></td>
       <td>String</td>
     </tr>
@@ -334,10 +342,6 @@ via "joint resources" notation):
     </tr>
     <tr>
       <td><code>tuning</code></td>
-      <td>String</td>
-    </tr>
-    <tr>
-      <td><code>gp5_link</code></td>
       <td>String</td>
     </tr>
     <tr>
