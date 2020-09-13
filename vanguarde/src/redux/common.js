@@ -43,7 +43,7 @@ export function makeSongQuery(dispatch, getState, {apiConfig}, searchQuery = {})
         'releases.artists.name': searchState.artistQuery ? searchState.artistQuery : null,
         'releases.genres.name': searchState.genreQuery ? searchState.genreQuery : null,
         'releases.name': searchState.releaseQuery ? searchState.releaseQuery : null,
-        'sort_by': searchState.sorting ? 'name|' + searchState.sorting : null,
+        'sort_by': searchState.sorting ? 'name!' + searchState.sorting : null,
     };
     axios.get(`${apiConfig.url}songs`, {params: searchParams})
         .then((res) => {

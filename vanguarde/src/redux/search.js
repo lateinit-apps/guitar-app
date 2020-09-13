@@ -6,7 +6,7 @@ import {makeSongQuery} from './common';
 
 const initialState = {
     searchBarIsVisible: false,
-    ominbarQuery: null,
+    omnibarQuery: null,
     artistQuery: null,
     releaseQuery: null,
     songQuery: null,
@@ -23,7 +23,7 @@ const searchSlice = createSlice({
             state.searchBarIsVisible = !state.searchBarIsVisible;
         },
         changeOmnibarQuery(state, action) {
-            state.ominbarQuery = action.payload;
+            state.omnibarQuery = action.payload;
         },
         toggleSorting: (state, action) => {
             state.sorting = state.sorting === 'asc' ? 'desc' : 'asc';
