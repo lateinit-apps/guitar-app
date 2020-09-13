@@ -1,9 +1,24 @@
 import React, {Component} from 'react';
 import {MDBCol, MDBContainer, MDBInput,
     MDBRow, MDBCard, MDBAnimation} from 'mdbreact';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import {changeSearchQuery} from '../redux/search';
+import {ARTIST_QUERY, RELEASE_QUERY, SONG_QUERY, GENRE_QUERY} from '../redux/search';
+import Select from 'react-select';
 
 
-export class SearchOptions extends Component {
+const genreOptions = [
+    {value: 'rock', label: 'Rock'},
+    {value: 'notrock', label: 'Not Rock'},
+];
+
+class SearchOptions extends Component {
+    static propTypes = {
+        // methods
+        changeSearchQuery: PropTypes.func.isRequired,
+    }
+
     render() {
         return (
             <MDBAnimation type="fadeInUp">
@@ -16,18 +31,37 @@ export class SearchOptions extends Component {
                                 <MDBCol md="6">
                                     <form>
                                         <div className="grey-text">
-                                            <MDBInput label="Artist name" group/>
-                                            <MDBInput label="Song name" group />
+                                            <MDBInput label="Artist name"
+                                                onChange={
+                                                    (event) => {
+                                                        this.props.changeSearchQuery(ARTIST_QUERY, event.target.value);
+                                                    }
+                                                } group/>
+                                            <MDBInput label="Song name"
+                                                onChange={
+                                                    (event) => {
+                                                        this.props.changeSearchQuery(SONG_QUERY, event.target.value);
+                                                    }
+                                                }
+                                                group />
                                         </div>
                                     </form>
                                 </MDBCol>
                                 <MDBCol md="6">
                                     <div className="grey-text">
-                                        <MDBInput label="Something else" group/>
-                                        <select className="browser-default custom-select">
-                                            <option value="1">Rock</option>
-                                            <option value="2">Not Rock</option>
-                                        </select>
+                                        <MDBInput label="Album"
+                                            onChange={
+                                                (event) => {
+                                                    this.props.changeSearchQuery(RELEASE_QUERY, event.target.value);
+                                                }
+                                            }
+                                            group/>
+                                        <Select onChange={
+                                            (option) => {
+                                                this.props.changeSearchQuery(GENRE_QUERY, option.value);
+                                            }
+                                        }
+                                        options={genreOptions} />
                                     </div>
                                 </MDBCol>
                             </MDBRow>
@@ -39,3 +73,10 @@ export class SearchOptions extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => ({});
+
+export default connect(mapStateToProps,
+    {changeSearchQuery},
+)(SearchOptions);
+
