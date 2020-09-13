@@ -6,8 +6,9 @@ and time and brief summary of typical representatives.
 `Song.trivia` &mdash; some facts about the song, like the origin of the idea, its recording,
 subsequent reproductions at concerts, arrangements from other artists, etc.
 
-`Song.cover_of` &mdash; if the song is a cover of other song by other artist, this field contains
-reference to the original song. Otherwise, the field is empty.
+`Song.original` &mdash; if the song is a cover of other song by other artist, this field contains
+reference to the original song. Otherwise, the field is empty. `Song.covers` acts as a collection
+for entities representing covers of the "local" (for relation side) one.
 
 `Release` &mdash; table storing single entity of the artist's discography. The `type` field
 contains values like:
@@ -30,7 +31,7 @@ Supposed to have the following values:
 - solo
 - tribute
 
-`TrackTab.gp5` &mdash; BLOB or link to the corresponding file (up to discussion).
+`TrackTab.gp5_link` &mdash; link to the Guitar Pro 5 file.
 
 From wikipedia:
 > ... can be released for sale to the public in a variety of different formats. In most cases,

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Date, Text, Time, LargeBinary, ForeignKey
+from sqlalchemy import Column, Integer, String, Date, Text, Time, ForeignKey
 from sqlalchemy.orm import relationship, backref
 
 from model.base import Base
@@ -20,9 +20,10 @@ class Artist(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(String(64))
-    year_founded = Column(Date)
+    year_founded = Column(Integer)
     country = Column(String(32))
     about = Column(Text)
+    portrait_image_link = Column(String(128))
 
     genres = relationship(Genre, secondary='genre_artist')
     releases = relationship('Release', secondary='artist_release')
@@ -44,12 +45,10 @@ class Release(Base):
     label = Column(String(64))
     type = Column(String(32))
     album_kind = Column(String(32))
-    release_id = Column(Integer, ForeignKey('release.id'))
+    portrait_image_link = Column(String(128))
 
     genres = relationship(Genre, secondary='genre_release')
     artists = relationship(Artist, secondary='artist_release')
-    songs = relationship('Song', secondary='release_song')
-    embracing_release = relationship('Release', remote_side=[id], backref='included_release')
 
 
 class GenreRelease(Base):
@@ -72,15 +71,11 @@ class Song(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String(64))
     trivia = Column(Text)
+    release_id = Column(Integer, ForeignKey(Release.id), nullable=False)
+    original_id = Column(Integer, ForeignKey('song.id', ondelete='SET NULL'))  # cover's original
 
-    releases = relationship(Release, secondary='release_song')
-
-
-class ReleaseSong(Base):
-    __tablename__ = 'release_song'
-
-    release_id = Column(Integer, ForeignKey(Release.id), primary_key=True)
-    song_id = Column(Integer, ForeignKey(Song.id), primary_key=True)
+    original = relationship('Song', backref='covers', remote_side=[id])
+    release = relationship(Release, backref='songs')
 
 
 class Sheet(Base):
@@ -102,5 +97,5 @@ class TrackTab(Base):
     instrument = Column(String(32))
     time_start = Column(Time)
     tuning = Column(String(64))
-    gp5 = Column(LargeBinary)
+    gp5_link = Column(String(128))
     sheet_id = Column(Integer, ForeignKey(Sheet.id, ondelete='CASCADE'), nullable=False)
