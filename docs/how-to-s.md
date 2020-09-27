@@ -28,13 +28,13 @@ for escaping from the environment)
 
 ### How to setup a connection to the database
 
-- Locate the `rearguarde/configuration/.env` and create a copy of this file in `rearguarde` 
-directory &ndash; the latter isn't published to the repository thus no crucial data will be 
-disclosed
-- Enter the real value for the `CRACK_PASSWORD` variable (it should be known since you've finished 
+- Create the `rearguarde/configuration/db_settings.json` as the copy of
+`rearguarde/configuration/db_settings_example.json`. Your newly created settings file has already
+been added to the `.gitignore` and won't published to the repository
+- Enter the real value for the `crack_password` entry (it should be known since you've finished 
 [this guide](db-postgresql-setup.md))
-- Make sure you have re-entered the virtual environment
-- Probe your connection with running `rearguarde/model/zeugma.py`
+- Probe your connection with running `rearguarde/model/zeugma.py`: on success, you'll see a prompt
+with possible database manipulations
 
 ### How to run the Rearguarde application
 

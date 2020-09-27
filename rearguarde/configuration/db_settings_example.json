@@ -1,0 +1,9 @@
+{
+    "crack_dialect": "postgresql",
+    "crack_driver": "pg8000",
+    "crack_username": "crack_user",
+    "crack_password": "XXXXXXXX",
+    "crack_host": "localhost",
+    "crack_port": 5432,
+    "crack_name": "crack"
+}

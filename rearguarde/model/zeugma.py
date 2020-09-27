@@ -1,4 +1,4 @@
-from os import getenv
+import json
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -7,21 +7,21 @@ from model.base import Base
 from model.crack import *
 
 
-dialect = getenv('CRACK_DIALECT')
-driver = getenv('CRACK_DRIVER')
-username = getenv('CRACK_USERNAME')
-password = getenv('CRACK_PASSWORD')
-host = getenv('CRACK_HOST')
-port = int(getenv('CRACK_PORT'))
-database_name = getenv('CRACK_NAME')
+with open('configuration/db_settings.json') as db_settings:
 
-db_url = f'{dialect}+{driver}://{username}:{password}@{host}:{port}/{database_name}' if driver \
-    else f'{dialect}://{username}:{password}@{host}:{port}/{database_name}'
+    config = json.load(db_settings)
 
-engine = create_engine(db_url)
-Base.metadata.bind = engine
-session_factory = sessionmaker(bind=engine)
-Session = scoped_session(session_factory)
+    db_url = f'{config["crack_dialect"]}+{config["crack_driver"]}://{config["crack_username"]}:' \
+           + f'{config["crack_password"]}@{config["crack_host"]}:{config["crack_port"]}/' \
+           + f'{config["crack_name"]}' if config.get('crack_driver') \
+        else f'{config["crack_dialect"]}://{config["crack_username"]}:' \
+           + f'{config["crack_password"]}@{config["crack_host"]}:{config["crack_port"]}/' \
+           + f'{config["crack_name"]}'
+
+    engine = create_engine(db_url)
+    Base.metadata.bind = engine
+    session_factory = sessionmaker(bind=engine)
+    Session = scoped_session(session_factory)
 
 
 def create_tables():
