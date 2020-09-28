@@ -53,13 +53,11 @@ fistful of custom commands as well.
 
 ### How to fill out the `crack` database
 
-- `flask create-tables`
-- `flask populate-tables`
-
-In case your database instance is not virgin, consider purging tables first with 
-`flask drop-tables`. To ensure you've done everything right, retrieve some data, e.g. 
-`flask view-table song`. You can access the full list of tables with the help of 
-`flask list-tables`.
+- Ensure you've created the database instance as described in [the guide](db-postgresql-setup.md)
+- Edit `rearguarde/alembic.ini` so `sqlalchemy.url` contains correct password. Get more info from
+[migrations instructions](db-migrations-instructions.md)
+- While in `rearguarde`, run `alembic upgrade head`; in case of any errors, try to run migrations
+one by one
 
 ---
 
