@@ -75,6 +75,40 @@ class SongRetriever(AbstractRetriever):
         } for item in query.all()]
 
 
+class SongWithArtistsRetriever(AbstractRetriever):
+    underlying_class = Song
+    _substring_fields = ['name']
+
+    def _dictionarize_objects(self, query):
+        query = query.join(Song.release) \
+                     .join(Release.artists)
+
+        return [{
+            'id': item.id,
+            'name': item.name,
+            'trivia': item.trivia,
+            'cover_ids': [cover.id for cover in item.covers],
+            'original_id': item.original_id,
+            'release': {
+                'id': item.release.id,
+                'name': item.release.name,
+                'year': item.release.year,
+                'label': item.release.label,
+                'type': item.release.type,
+                'album_kind': item.release.album_kind,
+                'portrait_image_link': item.release.portrait_image_link,
+                'artists': [{
+                    'id': artist.id,
+                    'name': artist.name,
+                    'year_founded': artist.year_founded,
+                    'country': artist.country,
+                    'about': artist.about,
+                    'portrait_image_link': artist.portrait_image_link,
+                } for artist in item.release.artists]
+            },
+        } for item in query.all()]        
+
+
 class SheetRetriever(AbstractRetriever):
     underlying_class = Sheet
 

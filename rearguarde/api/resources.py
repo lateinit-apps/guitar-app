@@ -5,7 +5,7 @@ from urllib import parse as urlparser
 
 from api.util import abort_on_invalid_parameters, consolidate_parameters, remove_empty_parameters
 from retrieval.retrievers import ArtistRetriever, GenreRetriever, ReleaseRetriever, \
-    SheetRetriever, SongRetriever, TrackTabRetriever
+    SheetRetriever, SongRetriever, SongWithArtistsRetriever, TrackTabRetriever
 
 
 def register(api: Api):
@@ -149,6 +149,30 @@ def register(api: Api):
             """
             return SongRetriever(g.session).get_objects(remove_empty_parameters(
                 consolidate_parameters(request.args, self.parser)))
+
+
+    @ns.route('/songs-artists')
+    @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
+    @api.response(404, 'Resource not found')
+    class SongsWithArtists(Resource):
+        parser = api.parser()
+        parser.add_argument('id', type=inputs.positive, help='Song ID', location='args')
+        parser.add_argument('name', type=inputs.regex('^.{1,64}$'),
+            help='Song name', location='args')
+        parser.add_argument('original_id', type=inputs.positive,
+            help='ID of the song covered by requested one', location='args')
+        parser.add_argument('release_id', type=inputs.positive,
+            help='Corresponding release ID', location='args')
+
+        @api.expect(parser, validate=True)
+        def get(self):
+            """
+            Get specific songs along with corresponding releases and artists.
+            """
+            return SongWithArtistsRetriever(g.session) \
+                .get_objects(remove_empty_parameters(consolidate_parameters(
+                    request.args, self.parser)))
 
 
     @ns.route('/songs/<song_id>')
