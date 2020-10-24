@@ -5,7 +5,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.4.0",
     "awesome-debounce-promise": "^2.1.0",
-    "axios": "^0.20.0",
+    "axios": "^0.21.0",
     "bootstrap": "^4.5.2",
     "mdbreact": "^4.25.5",
     "react": "^16.13.1",
