@@ -1,12 +1,17 @@
 from abc import ABC, abstractmethod
-from re import match
+from re import fullmatch, match
 from sys import stderr
 
 from sqlalchemy import asc, desc, func
 
 
+class SortByFormatError(Exception):
+    pass
+
+
 class QueryManipulator:
 
+    SORTING_PARAM_NAME = 'sort_by'
     SORTING_FUNCTIONS = {'len': func.char_length}
 
     def __init__(self, query, underlying_class):
@@ -30,7 +35,8 @@ class QueryManipulator:
                 continue
             field, value = pair[1], pair[2]
             if not hasattr(entity, field):
-                print(f'{field} field is not found for class {entity}', file=stderr)
+                if field != self.SORTING_PARAM_NAME:
+                    print(f'{field} field is not found for class {entity}', file=stderr)
                 continue
 
             self.query = self.query.filter(getattr(entity, field) == value) \
@@ -47,12 +53,12 @@ class QueryManipulator:
         """
         ident = r'[0-9a-z\_]+'
         ident_with_parentheses = r'[0-9a-z\_\(\)]+'
-        if 'sort_by' in parameter_values \
-            and match(rf'({ident_with_parentheses}!(asc|desc))' \
-                      rf'(,{ident_with_parentheses}!(asc|desc))*$',
-                      parameter_values['sort_by']):
+        if self.SORTING_PARAM_NAME in parameter_values \
+            and fullmatch(rf'({ident_with_parentheses}!(asc|desc))' \
+                          rf'(,{ident_with_parentheses}!(asc|desc))*',
+                          parameter_values[self.SORTING_PARAM_NAME]):
 
-            comma_separated = parameter_values['sort_by'].split(',')
+            comma_separated = parameter_values[self.SORTING_PARAM_NAME].split(',')
             for item in [x for x in comma_separated if x]:
 
                 format_match = match(
@@ -60,36 +66,38 @@ class QueryManipulator:
                     rf'|(?P<raw>{ident}))!(?P<order>\w+)',
                     item)
 
-                # TODO change all that `continue`-trailing boilerplate into exception throwing
-                if not format_match:
-                    print(f'"{item}" does not satisfy the required sort_by format', file=stderr)
-                    continue
+                try:
+                    if not format_match:
+                        raise SortByFormatError(f'"{item}" does not satisfy the ' \
+                                                'required sort_by format')
 
-                patterns = format_match.groupdict()
-                if patterns['func_call']:
+                    patterns = format_match.groupdict()
+                    if patterns['func_call']:
 
-                    if patterns['func_name'] not in self.SORTING_FUNCTIONS:
-                        print(f'\"{patterns["func_name"]}\" sorting function is not allowed',
-                              file=stderr)
-                        continue
-                    if not hasattr(self.underlying_class, patterns['func_arg']):
-                        print(f'\"{patterns["func_arg"]}\" is not in the attributes list of the ' \
-                              f'"{self.underlying_class.__name__}"',
-                              file=stderr)
-                        continue
-                    key = self.SORTING_FUNCTIONS[patterns['func_name']](getattr(
-                        self.underlying_class, patterns['func_arg']))
+                        if patterns['func_name'] not in self.SORTING_FUNCTIONS:
+                            raise SortByFormatError(f'\"{patterns["func_name"]}\" ' \
+                                                    'sorting function is not allowed')
 
-                else:
-                    if not hasattr(self.underlying_class, patterns['raw']):
-                        print(f'\"{patterns["raw"]}\" is not in the attributes list of the ' \
-                              f'"{self.underlying_class.__name__}"',
-                              file=stderr)
-                        continue
-                    key = getattr(self.underlying_class, patterns['raw'])
+                        if not hasattr(self.underlying_class, patterns['func_arg']):
+                            raise SortByFormatError(f'\"{patterns["func_arg"]}\" is not in the ' \
+                                                    'attributes list of the ' \
+                                                    f'"{self.underlying_class.__name__}"')
 
-                self.query = self.query.order_by(asc(key)) if patterns['order'] == 'asc' \
-                    else self.query.order_by(desc(key))
+                        key = self.SORTING_FUNCTIONS[patterns['func_name']](getattr(
+                            self.underlying_class, patterns['func_arg']))
+
+                    else:
+                        if not hasattr(self.underlying_class, patterns['raw']):
+                            raise SortByFormatError(f'\"{patterns["raw"]}\" is not in the ' \
+                                                    'attributes list of the ' \
+                                                    f'"{self.underlying_class.__name__}"')
+                        key = getattr(self.underlying_class, patterns['raw'])
+
+                    self.query = self.query.order_by(asc(key)) if patterns['order'] == 'asc' \
+                        else self.query.order_by(desc(key))
+
+                except SortByFormatError as e:
+                    print(e, file=stderr)
         return self
 
     def withdraw_query(self):
