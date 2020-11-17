@@ -279,13 +279,14 @@ def register(api: Api):
 
         @api.expect(parser, validate=True)
         def get(self):
+            substring_target = 'name'
             morphed_args = consolidate_parameters(request.args, self.parser)
-            morphed_args['name'] = morphed_args.pop('substring')
-            print(f'morphed_args: {morphed_args}')
+            morphed_args[substring_target] = morphed_args.pop('substring')
             # no substring defined leads to an empty result
-            if not morphed_args['name']:
+            if not morphed_args[substring_target]:
                 return None
 
+            morphed_args['sort_by'] = f'len({substring_target})!asc'
             return {
                 'artists': ArtistRetriever(g.session).get_objects(morphed_args),
                 'songs': SongRetriever(g.session).get_objects(morphed_args),
