@@ -265,3 +265,29 @@ def register(api: Api):
             abort_on_invalid_parameters(api, {'tracktab_id': tracktab_id})
             retrieved = TrackTabRetriever(g.session).get_objects({'id': tracktab_id})
             return retrieved[0] if retrieved else {}
+
+
+    @ns.route('/combined-artist-song-release')
+    @api.response(200, 'Success')
+    @api.response(400, 'Validation unsuccessful')
+    @api.response(404, 'Resource not found')
+    class CombinedArtistSongRelease(Resource):
+        parser = api.parser()
+        parser.add_argument('substring', type=inputs.regex('^.{1,64}$'),
+            help='Substring to be found in any Artist, Song or Release name',
+            location='args')
+
+        @api.expect(parser, validate=True)
+        def get(self):
+            morphed_args = consolidate_parameters(request.args, self.parser)
+            morphed_args['name'] = morphed_args.pop('substring')
+            print(f'morphed_args: {morphed_args}')
+            # no substring defined leads to an empty result
+            if not morphed_args['name']:
+                return None
+
+            return {
+                'artists': ArtistRetriever(g.session).get_objects(morphed_args),
+                'songs': SongRetriever(g.session).get_objects(morphed_args),
+                'releases': ReleaseRetriever(g.session).get_objects(morphed_args),
+            }
