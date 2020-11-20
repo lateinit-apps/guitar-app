@@ -51,19 +51,18 @@ class QueryManipulator:
         """
         Get query with applied sorting according to the query string parameters.
         """
-        ident = r'[0-9a-z\_]+'
-        ident_with_parentheses = r'[0-9a-z\_\(\)]+'
+        sorting_pattern = r'[0-9a-z\_\(\)]+!(asc|desc)'
         if self.SORTING_PARAM_NAME in parameter_values \
-            and fullmatch(rf'({ident_with_parentheses}!(asc|desc))' \
-                          rf'(,{ident_with_parentheses}!(asc|desc))*',
+            and fullmatch(rf'{sorting_pattern}(,{sorting_pattern})*',
                           parameter_values[self.SORTING_PARAM_NAME]):
 
             comma_separated = parameter_values[self.SORTING_PARAM_NAME].split(',')
             for item in [x for x in comma_separated if x]:
 
+                token = r'[0-9a-z\_]+'
                 format_match = match(
-                    rf'((?P<func_call>(?P<func_name>{ident})\((?P<func_arg>{ident})\))' \
-                    rf'|(?P<raw>{ident}))!(?P<order>\w+)',
+                    rf'((?P<func_call>(?P<func_name>{token})\((?P<func_arg>{token})\))' \
+                    rf'|(?P<raw>{token}))!(?P<order>\w+)',
                     item)
 
                 try:
