@@ -1,11 +1,18 @@
 from abc import ABC, abstractmethod
-from re import match
+from re import fullmatch, match
 from sys import stderr
 
-from sqlalchemy import asc, desc
+from sqlalchemy import asc, desc, func
+
+
+class SortByFormatError(Exception):
+    pass
 
 
 class QueryManipulator:
+
+    SORTING_PARAM_NAME = 'sort_by'
+    SORTING_FUNCTIONS = {'len': func.char_length}
 
     def __init__(self, query, underlying_class):
         self.query = query.add_entity(underlying_class)
@@ -28,7 +35,8 @@ class QueryManipulator:
                 continue
             field, value = pair[1], pair[2]
             if not hasattr(entity, field):
-                print(f'{field} field is not found for class {entity}', file=stderr)
+                if field != self.SORTING_PARAM_NAME:
+                    print(f'{field} field is not found for class {entity}', file=stderr)
                 continue
 
             self.query = self.query.filter(getattr(entity, field) == value) \
@@ -43,20 +51,52 @@ class QueryManipulator:
         """
         Get query with applied sorting according to the query string parameters.
         """
-        if 'sort_by' in parameter_values \
-            and match('(\w+!(asc|desc))(,\w+!(asc|desc))*$', parameter_values['sort_by']):
+        sorting_pattern = r'[0-9a-z\_\(\)]+!(asc|desc)'
+        if self.SORTING_PARAM_NAME in parameter_values \
+            and fullmatch(rf'{sorting_pattern}(,{sorting_pattern})*',
+                          parameter_values[self.SORTING_PARAM_NAME]):
 
-            comma_separated = parameter_values['sort_by'].split(',')
+            comma_separated = parameter_values[self.SORTING_PARAM_NAME].split(',')
             for item in [x for x in comma_separated if x]:
 
-                key, order = item.split('!')[0], item.split('!')[1]
-                if not hasattr(self.underlying_class, key):
-                    print(f'{key} cannot be used as a sorting key', file=stderr)
-                    continue
+                token = r'[0-9a-z\_]+'
+                format_match = match(
+                    rf'((?P<func_call>(?P<func_name>{token})\((?P<func_arg>{token})\))' \
+                    rf'|(?P<raw>{token}))!(?P<order>\w+)',
+                    item)
 
-                self.query = self.query.order_by(asc(getattr(self.underlying_class, key))) \
-                    if order == 'asc' \
-                    else self.query.order_by(desc(getattr(self.underlying_class, key)))
+                try:
+                    if not format_match:
+                        raise SortByFormatError(f'"{item}" does not satisfy the ' \
+                                                'required sort_by format')
+
+                    patterns = format_match.groupdict()
+                    if patterns['func_call']:
+
+                        if patterns['func_name'] not in self.SORTING_FUNCTIONS:
+                            raise SortByFormatError(f'\"{patterns["func_name"]}\" ' \
+                                                    'sorting function is not allowed')
+
+                        if not hasattr(self.underlying_class, patterns['func_arg']):
+                            raise SortByFormatError(f'\"{patterns["func_arg"]}\" is not in the ' \
+                                                    'attributes list of the ' \
+                                                    f'"{self.underlying_class.__name__}"')
+
+                        key = self.SORTING_FUNCTIONS[patterns['func_name']](getattr(
+                            self.underlying_class, patterns['func_arg']))
+
+                    else:
+                        if not hasattr(self.underlying_class, patterns['raw']):
+                            raise SortByFormatError(f'\"{patterns["raw"]}\" is not in the ' \
+                                                    'attributes list of the ' \
+                                                    f'"{self.underlying_class.__name__}"')
+                        key = getattr(self.underlying_class, patterns['raw'])
+
+                    self.query = self.query.order_by(asc(key)) if patterns['order'] == 'asc' \
+                        else self.query.order_by(desc(key))
+
+                except SortByFormatError as e:
+                    print(e, file=stderr)
         return self
 
     def withdraw_query(self):
