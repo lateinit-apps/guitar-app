@@ -7,7 +7,7 @@
     "awesome-debounce-promise": "^2.1.0",
     "axios": "^0.21.0",
     "bootstrap": "^4.5.3",
-    "mdbreact": "^4.25.5",
+    "mdbreact": "^5.0.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
     "react-dom": "^17.0.1",
