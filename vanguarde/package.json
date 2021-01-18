@@ -9,12 +9,12 @@
     "bootstrap": "^4.5.3",
     "mdbreact": "^5.0.1",
     "react": "^17.0.1",
-    "react-bootstrap": "^1.4.0",
+    "react-bootstrap": "^1.4.3",
     "react-dom": "^17.0.1",
     "react-notifications-component": "^3.0.3",
     "react-redux": "^7.2.2",
     "react-scripts": "4.0.1",
-    "react-select": "^3.1.1",
+    "react-select": "^3.2.0",
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0"
   },
@@ -42,7 +42,7 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react": "^7.22.0",
     "react-page-layout": "^0.9.8"
   }
 }
