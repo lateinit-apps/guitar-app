@@ -2,7 +2,6 @@
 
 [![License](https://img.shields.io/github/license/lateinit-apps/guitar-app?color=blue)](https://github.com/lateinit-apps/guitar-app/blob/develop/LICENSE)
 [![GitHub contributors](https://img.shields.io/github/contributors/lateinit-apps/guitar-app.svg)](https://GitHub.com/lateinit-apps/guitar-app/graphs/contributors/)
-[![HitCount](http://hits.dwyl.com/lateinit-apps/guitar-app.svg)](http://hits.dwyl.com/lateinit-apps/guitar-app)
 [![Depfu](https://badges.depfu.com/badges/a1cb7603c54e7378f8d8203e024678b3/overview.svg)](https://depfu.com/github/lateinit-apps/guitar-app?project_id=14088)
 
 Upcoming guitar app built with Flask/SQLAlchemy for backend, React ~~+Kotlin (WAT?)~~ for frontend
