@@ -6,7 +6,7 @@
     "@reduxjs/toolkit": "^1.5.1",
     "awesome-debounce-promise": "^2.1.0",
     "axios": "^0.21.1",
-    "bootstrap": "^4.6.0",
+    "bootstrap": "^5.0.0",
     "mdbreact": "^5.0.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.5.2",
