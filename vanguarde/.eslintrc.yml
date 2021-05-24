@@ -16,6 +16,6 @@ rules:
   require-jsdoc: off
   indent: ["error", 4]
   max-len:
-    - error
+    - warn
     - code: 100
 
