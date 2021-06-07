@@ -7,14 +7,14 @@ verify_ssl = true
 
 [packages]
 click = "*"
-flask = "*"
-flask-restx = "*"
 pg8000 = "*"
 python-dotenv = "*"
 sqlalchemy = "*"
 sqlalchemy-utils = "*"
-flask-cors = "*"
 alembic = "*"
+flask-restx = "*"
+flask = "==1.1.4"
+flask-cors = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"
