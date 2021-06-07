@@ -6,15 +6,15 @@
     "@reduxjs/toolkit": "^1.5.1",
     "awesome-debounce-promise": "^2.1.0",
     "axios": "^0.21.1",
-    "bootstrap": "^5.0.0",
+    "bootstrap": "^5.0.1",
     "mdbreact": "4.27.0",
     "react": "16.13.1",
-    "react-bootstrap": "^1.5.2",
+    "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.2",
     "react-notifications-component": "^3.1.0",
     "react-redux": "^7.2.4",
     "react-scripts": "4.0.3",
-    "react-select": "^4.3.0",
+    "react-select": "^4.3.1",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0"
   },
@@ -42,7 +42,7 @@
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react": "^7.24.0",
     "react-page-layout": "^0.9.8"
   }
 }
