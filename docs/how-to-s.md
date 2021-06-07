@@ -9,6 +9,8 @@ Will contain list of how to's.
 - Install pipenv utility:
   - `sudo apt install pipenv` (linux)
   - or install it via pip: `pip install pipenv` (or `python -m pip install pipenv`)
+  - in case you're managing multiple Python installations, consider using `py -<version> -m pipenv`
+  instead (e.g. `py -3.9 -m pipenv check` command) 
 - Navigate to the `rearguarde` folder
 - To install a new package into env use `pipenv install <package_name>`; `pipenv install` will 
 download and setup all the dependencies specified in `Pipfile`
