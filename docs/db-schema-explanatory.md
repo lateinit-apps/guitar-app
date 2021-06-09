@@ -1,3 +1,5 @@
+# DB schema explanatory
+
 ![database schema pic here](images/crack-schema.png)
 
 `Genre.highlights` &mdash; a short description of main features of the genre, its origin location

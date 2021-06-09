@@ -3,9 +3,9 @@
 ## General information
 
 You will need to install PostgreSQL distribution in order to setup the database. Please follow the
-[link](https://www.postgresql.org/download/) to download the package suitable for your system. During
-the basic installation process you may be asked to specify a password for the superadmin `postgres`
-user. DBMS also should create a `postgres` database as well to enable you joining and configuring stuff.
+[link](https://www.postgresql.org/download/) to download the package suitable for your system.
+During the basic installation process you may be asked to specify a password for the superadmin
+`postgres` user. DBMS also should create a `postgres` database as well to enable you joining and configuring stuff.
 
 For the time being, a dedicated DB-user will be established for connection to the PostgreSQL DBMS.
 Before running python code for the database creation, one needs to create user via `psql` or
@@ -76,9 +76,9 @@ the database from python's code.
 ## Windows notes
 
 You can face an issue with 866 and 1251 encoding pages discrepancies in the Windows `cmd` and `psql`
-if the default OS locale is not US English. To avoid such problem, before running the `psql` executable
-specify `chcp 1251` in the shell to replace the default one. For additional info please refer to
-[link](https://iu5bmstu.ru/index.php/PostgreSQL_-_%D0%9A%D0%B8%D1%80%D0%B8%D0%BB%D0%BB%D0%B8%D1%86%D0%B0_%D0%B2_psql_%D0%BF%D0%BE%D0%B4_Windows).
+if the default OS locale is not US English. To avoid such problem, before running the `psql`
+executable specify `chcp 1251` in the shell to replace the default one. For additional info please
+refer to [link](https://iu5bmstu.ru/index.php/PostgreSQL_-_%D0%9A%D0%B8%D1%80%D0%B8%D0%BB%D0%BB%D0%B8%D1%86%D0%B0_%D0%B2_psql_%D0%BF%D0%BE%D0%B4_Windows).
 Then, make sure you do have the `<path_to_postgresql_installation>\bin\psql.exe` entry in your
 PATH envionment variable. Next, all the setup process is similar to one described for Linux case
 except you don't need to do any configuration file editing as the default authentication for

@@ -2,7 +2,7 @@
 
 ## Alembic in a nutshell
 
-> Alembic is a lightweight database migration tool for usage with the SQLAlchemy Database 
+> Alembic is a lightweight database migration tool for usage with the SQLAlchemy Database
 > Toolkit for Python.
 > &mdash; *Introductory from the main Alembic webpage*
 

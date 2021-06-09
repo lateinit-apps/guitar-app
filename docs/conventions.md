@@ -5,7 +5,7 @@
     - [Files/directories naming](#filesdirectories-naming)
   - [Pull requests conventions](#pull-requests-conventions)
   - [Coding conventions](#coding-conventions)
-  - [Conflict solving](#conflict-solving)
+  - [Conflict solving (legacy edition)](#conflict-solving-legacy-edition)
     - [Weapon kits](#weapon-kits)
     - [1 vs 1](#1-vs-1)
     - [2 vs 2](#2-vs-2)
@@ -56,7 +56,7 @@ directories and don't forget to update [glossary](glossary.md)
 ## Pull requests conventions
 
 - Keep strict to our brand ~~new~~ [branching strategy](branching-strategy.md)
-- At least two approvals are needed to merge a pull request
+- At least one approval is needed to merge a pull request
 - Pull request shouldn't be merged until every comment is resolved
 - D.R.O.Y - Don't Resolve On Yourself - all comments to pull requests should be resolved by author
   - violate D.R.O.Y. if the comments don't require additional review
@@ -72,10 +72,10 @@ squashes, no rebasing is allowed
 - Database naming
   - PascalCase for ORM-classes
   - snake_case for table names
-- Prefer to use rather *cool* names than simple `conn`, `database`, etc. wherever possible for 
+- Prefer to use rather *cool* names than simple `conn`, `database`, etc. wherever possible for
 classes and variables and don't forget to update [glossary](glossary.md)
 
-## Conflict solving
+## Conflict solving (legacy edition)
 
 For any arguable conflicts wherever 1 vs 1 or 2 vs 2 opinions that can't be resolved with a
 compromise a PvP match in Minecraft should be held.
