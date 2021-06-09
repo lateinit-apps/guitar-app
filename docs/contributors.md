@@ -49,3 +49,11 @@ Left us, but not forgotten.
 Holds `Der Großheldarbeiter` title from May till July of 2020.
 
 Left us ~~, but not~~ and forgotten.
+
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+
+(honestly, a joke, we remember, of course)
