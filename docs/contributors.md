@@ -34,7 +34,7 @@ Held `Der Großheldarbeiter` title during Aug-Nov of 2020 and for May 2021.
 Achieved first ~~blood~~ pull request [#1](https://github.com/lateinit-apps/guitar-app/pull/1) with
 `bozzyk-branch` :c.
 
-Holds `Der Großheldarbeiter` title for December 2020 for participating in New Year 2020 event.
+Held `Der Großheldarbeiter` title for December 2020 for participating in New Year 2020 event.
 
 Left us, but not forgotten.
 
