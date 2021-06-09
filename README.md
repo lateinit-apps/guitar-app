@@ -15,17 +15,8 @@ can see full list of planned features in [PRD](docs/PRD.md).
 - Flask + SQLAlchemy for backend
 - React for frontend
 - AWS for hosting
-- Automated PR & commit builds
-- Unit testing
-
-## Things we are going to implement (or not)
-
 - CI/CD
-- Docker image for service
-- AWS resources configuration through Terraform 
-- Corporative mail service
-- Full fledged REST API for bots
-- Telegram/VK/Discord bot
+- Unit testing
 
 ## How to build
 
@@ -40,29 +31,7 @@ free to read them all if you're interested in.
 Also, we're using kinda weird *cool* naming conventions, don't forget to take a look at [glossary](docs/glossary.md)
 to understand what is going on.
 
-## Our team/in cast
+Want to know who are these awesome people doing this project? Then, well, welcome to [contributors page](docs/contributors.md).
 
-### Artem Bondar aka "Keter Curtis"
-
-- Project Manager/DevOps Engineer/Full Stack Developer/Software Architect (wannabe)/~~Secretary~~
-
-<img src="docs/images/avatars/keter-curtis.jpg" width="33%">
-
-### Yaroslav Bondarev aka "Evil Yarek"
-
-- Project Initiator/Full Stack Developer/Python ~~guru~~ Team Hive Mind/Team Spirit Holder &
-  Spiritual Mastermind
-
-<img src="docs/images/avatars/evil-yarek.jpg" width="33%">
-
-### Konstantin Kukushkin aka "Kost Metallist"
-
-- Backend Developer/Database Developer & Administrator/DevOps Engineer/~~Wishmaster~~ Docker Master
-
-<img src="docs/images/avatars/kost-metallist.jpg" width="33%">
-
-### Valentin Alexandrov aka "Nagibator Lalok"
-
-- Frontend Developer/Machine Learning Engineer/~~Outsource~~ Anonymous (?) Data Scientist
-
-<img src="docs/images/avatars/nagibator-lalok.jpg" width="33%">
+And final possible point of interest &mdash; we conduct [a historical log](docs/historical-log.md)
+for project, can be useful at least for post mortem.
