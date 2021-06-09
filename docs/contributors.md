@@ -7,7 +7,7 @@
 - Backend Developer (supporting)
 - DevOps Engineer (supporting)
 - Software Architect (wannabe)
-- ~~Secretary (in real life)~~
+- ~~Secretary (in reality)~~
 
 <img src="../docs/images/avatars/keter-curtis.jpg" width="33%">
 
@@ -48,4 +48,4 @@ Left us, but not forgotten.
 
 Holds `Der Großheldarbeiter` title from May till July of 2020.
 
-Left us, but ~~not~~ forgotten.
+Left us ~~, but not~~ and forgotten.
