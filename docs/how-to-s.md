@@ -10,18 +10,18 @@ Will contain list of how to's.
   - `sudo apt install pipenv` (linux)
   - or install it via pip: `pip install pipenv` (or `python -m pip install pipenv`)
   - in case you're managing multiple Python installations, consider using `py -<version> -m pipenv`
-  instead (e.g. `py -3.9 -m pipenv check` command) 
+  instead (e.g. `py -3.9 -m pipenv check` command)
 - Navigate to the `rearguarde` folder
-- To install a new package into env use `pipenv install <package_name>`; `pipenv install` will 
+- To install a new package into env use `pipenv install <package_name>`; `pipenv install` will
 download and setup all the dependencies specified in `Pipfile`
 - Then execute command `pipenv shell` to enter virtual environment
 
 ### How to escape from environment
 
 - Execute `deactivate`
-- To restore exactly the same state as before entering the virtual env, you may also need to kill 
-current terminal session (i.e. ^D or ^Z for different shells) cause pipenv may create a subsession 
-while providing an access to the virtual env (in most cases exiting from a subsession is sufficient 
+- To restore exactly the same state as before entering the virtual env, you may also need to kill
+current terminal session (i.e. ^D or ^Z for different shells) cause pipenv may create a subsession
+while providing an access to the virtual env (in most cases exiting from a subsession is sufficient
 for escaping from the environment)
 
 ---
@@ -33,7 +33,7 @@ for escaping from the environment)
 - Create the `rearguarde/configuration/db_settings.json` as the copy of
 `rearguarde/configuration/db_settings_example.json`. Your newly created settings file has already
 been added to the `.gitignore` and won't published to the repository
-- Enter the real value for the `crack_password` entry (it should be known since you've finished 
+- Enter the real value for the `crack_password` entry (it should be known since you've finished
 [this guide](db-postgresql-setup.md))
 - Probe your connection with running `rearguarde/model/zeugma.py`: on success, you'll see a prompt
 with possible database manipulations
@@ -45,13 +45,13 @@ with possible database manipulations
 - Then you will see debug info in your console and url (default: `http://localhost:5000/`)
 - Just open url and you're the man
 
-### How to use flask CLI 
+### How to use flask CLI
 
-Developer is encouraged to use command line shell for interacting with the application. Flask 
-provides an integration with Python's Click comprehensible library for CLI implementation. Apart 
-from this very project, feel free to append `--help` or `-h` for every command you type and you'll 
-be awarded. Enter `flask --help`to gain access to the list of available utilities. There is a 
-fistful of custom commands as well. 
+Developer is encouraged to use command line shell for interacting with the application. Flask
+provides an integration with Python's Click comprehensible library for CLI implementation. Apart
+from this very project, feel free to append `--help` or `-h` for every command you type and you'll
+be awarded. Enter `flask --help`to gain access to the list of available utilities. There is a
+fistful of custom commands as well.
 
 ### How to fill out the `crack` database
 
