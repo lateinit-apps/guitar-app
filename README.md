@@ -6,7 +6,7 @@
 
 Upcoming guitar app built with Flask/SQLAlchemy for backend and React for frontend.
 
-We will provide a SaaS that includes a web site in bundle with backend API, all powered by AWS.
+We will provide a service including a web site in bundle with backend API, all powered by AWS.
 Full list of planned and possible features is nomenclatured in [PRD](docs/PRD.md).
 
 ## Our stack

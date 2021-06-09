@@ -1,6 +1,6 @@
 # Vanguarde
 
-This is ~~frontend~~ vanguarde application written in React. Obviously, WIP.
+This is ~~frontend~~ vanguarde application written in React.
 
 ## Install and run
 

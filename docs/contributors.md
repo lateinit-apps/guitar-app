@@ -18,7 +18,7 @@
 - DevOps Engineer (supporting)
 - ~~Wishmaster~~ Docker Master (idea stakeholder)
 
-Holds `Der Großheldarbeiter` title from August till November of 2020 and for May 2021.
+Held `Der Großheldarbeiter` title during Aug-Nov of 2020 and for May 2021.
 
 <img src="../docs/images/avatars/kost-metallist.jpg" width="33%">
 
@@ -46,9 +46,9 @@ Left us, but not forgotten.
 
 <img src="../docs/images/avatars/nagibator-lalok-rip.png" width="33%">
 
-Holds `Der Großheldarbeiter` title from May till July of 2020.
+Held `Der Großheldarbeiter` title during May-Jul of 2020.
 
-Left us ~~, but not~~ and forgotten.
+Left us and now is forgotten.
 
 <br><br><br><br><br>
 <br><br><br><br><br>

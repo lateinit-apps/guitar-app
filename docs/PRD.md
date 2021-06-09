@@ -12,7 +12,7 @@ platfrom to acquaintances and relatives.
 - [ ] download tabs in .gp5 format
 - [ ] tab viewer
 
-*Note: by release here are considered release category from our database, look
+*Note: "release" should be construed as `release` entity from our database, look
 [here](db-schema-explanatory.md) for explanation.*
 
 ## Release version

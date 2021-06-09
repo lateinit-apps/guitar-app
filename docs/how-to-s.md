@@ -81,4 +81,4 @@ To run the app you must simply call
 
 `npm run start` or `npm start`
 
-This will run node server and you can look at the project at 127.0.0.1:3000
+This will run node server and you can look at the project at `http://localhost:5000/`.

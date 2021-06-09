@@ -24,7 +24,7 @@ and have some possible value for future.
 
 Automation is a neat thing, nothing stops humanity from automating everything. Indeed if we'll have
 a CI/CD, why do we need auto PR & commit builds - it's a point to think about. Adding to the barrel
-raise of computating time and costs this point can become a bit unrealiable and unuseful. Thinking
+raise of computation time and costs this point can become a bit unreliable and useless. Thinking
 of it as just testing this as POC looks like a more significant approach.
 
 ## Github actions
@@ -35,6 +35,7 @@ world hiding there, hidden gems, sneaking dragons, no reason not to make a resea
 ## Docker image for service
 
 We. Need. Docker. No. Exceptions.
+
 Encapsulate our backend -> Kubernetes or whatever container orchestration -> glorious success, now
 we are totally *serious* developers, no kindergarten plays anymore.
 
@@ -45,8 +46,8 @@ to do though.
 
 ## Full fledged REST API for bots
 
-Expose more information in text, make more specific endpoints to interact with API fully via curl,
-separate a new public API layer from internal one's to make it accessable from the whole internet.
+Expose more information in text, make more specific endpoints to interact with API fully via `curl`,
+separate a new public API layer from internal one's to make it accessible from the whole internet.
 100% an odd thing to do unless we'll really decide to make our own bot.
 
 ## Telegram/VK/Discord bot
@@ -55,12 +56,12 @@ Just one question to break everyones motivation: *who will be using it?*
 
 And another one thought to totally burry it down: *even thinking about this as just training of
 making bots, is there any reason to make specially a guitar-app bot which no one will ever use and
-not make whatever other bot, for e.g. for our cosy Discord server that will have at least some
-audience to use it sometimes? No reason, indeed.*
+not make whatever other bot, e.g. for our cosy Discord server that will have at least some audience
+to use it sometimes? No reason, indeed.*
 
 ## AccessKey shortcut for web site
 
-Having a web site in a modern world in 2021 without any accessability features? What are you? Casul?
+Having a web site in a modern world in 2021 without any accessibility features? What are you? Casul?
 
 Fastly get your stuff off the bed and implement that [Access Key](https://en.wikipedia.org/wiki/Access_key)
 finally to prove that you're indeed on `anykeys4ek` level at least.
@@ -82,7 +83,7 @@ your saliva and go implement [it](https://grafana.com/oss/loki/) right ~~nav~~ a
 
 ## Online tablature recorder/player
 
-Try it out [here](https://1j01.github.io/guitar/). Possible can help to record some demo input for
-our db to avoid copyright strikes in detour of .gp5. Will require some parser, unfortunately.
+Try it out [here](https://1j01.github.io/guitar/). Possibly can help to record some demo input for
+our DB to avoid copyright strikes in detour of `.gp5`. Will require some parser, unfortunately.
 
 [Sauce](https://github.com/1j01/guitar).
