@@ -29,7 +29,7 @@ In our project we are bundled with a significant amount of [conventions](docs/co
 free to read them if you're interested in.
 
 Also, we're using kinda weird *cool* naming conventions, consider taking a look at [glossary](docs/glossary.md)
-to understand what is going on.
+to understand our terms.
 
 Want to know who are these awesome people doing this project? Then, well, welcome to [contributors page](docs/contributors.md).
 
