@@ -47,7 +47,7 @@ def register(api: Api):
             Get single artist instance by its ID.
             """
             abort_on_invalid_parameters(api, {'artist_id': artist_id})
-            retrieved = ArtistRetriever(g.session).get_objects({'id': artist_id})
+            retrieved = ArtistRetriever(g.session).get_objects({'id': int(artist_id)})
             return retrieved[0] if retrieved else {}
 
 
@@ -81,7 +81,7 @@ def register(api: Api):
             Get single genre instance by its ID.
             """
             abort_on_invalid_parameters(api, {'genre_id': genre_id})
-            retrieved = GenreRetriever(g.session).get_objects({'id': genre_id})
+            retrieved = GenreRetriever(g.session).get_objects({'id': int(genre_id)})
             return retrieved[0] if retrieved else {}
 
 
@@ -124,7 +124,7 @@ def register(api: Api):
             Get single release instance by its ID.
             """
             abort_on_invalid_parameters(api, {'release_id': release_id})
-            retrieved = ReleaseRetriever(g.session).get_objects({'id': release_id})
+            retrieved = ReleaseRetriever(g.session).get_objects({'id': int(release_id)})
             return retrieved[0] if retrieved else {}
 
 
@@ -186,7 +186,7 @@ def register(api: Api):
             Get single song instance by its ID.
             """
             abort_on_invalid_parameters(api, {'song_id': song_id})
-            retrieved = SongRetriever(g.session).get_objects({'id': song_id})
+            retrieved = SongRetriever(g.session).get_objects({'id': int(song_id)})
             return retrieved[0] if retrieved else {}
 
 
@@ -223,7 +223,7 @@ def register(api: Api):
             Get single sheet instance by its ID.
             """
             abort_on_invalid_parameters(api, {'sheet_id': sheet_id})
-            retrieved = SheetRetriever(g.session).get_objects({'id': sheet_id})
+            retrieved = SheetRetriever(g.session).get_objects({'id': int(sheet_id)})
             return retrieved[0] if retrieved else {}
 
 
@@ -263,7 +263,7 @@ def register(api: Api):
             Get single track tab instance by its ID.
             """
             abort_on_invalid_parameters(api, {'tracktab_id': tracktab_id})
-            retrieved = TrackTabRetriever(g.session).get_objects({'id': tracktab_id})
+            retrieved = TrackTabRetriever(g.session).get_objects({'id': int(tracktab_id)})
             return retrieved[0] if retrieved else {}
 
 
