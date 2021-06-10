@@ -1,5 +1,9 @@
+from logging import getLogger
+
 from flask import current_app
 from flask_restx import Api, Resource
+
+logger = getLogger(__name__)
 
 
 def register(api: Api):
@@ -20,5 +24,6 @@ def register(api: Api):
             """
             Expose mindblowing mysterious 80 lvl easter egg.
             """
+            logger.info('Easter egg endpoint has been revealed!')
             with open('data/easter-egg.txt') as fstream:
                 return '<pre>{}</pre>'.format(''.join(fstream.readlines()))

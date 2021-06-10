@@ -1,3 +1,5 @@
+from logging import getLogger
+
 from flask import g, request
 from flask_restx import Api, Resource
 import flask_restx.inputs as inputs
@@ -6,6 +8,8 @@ from urllib import parse as urlparser
 from api.util import abort_on_invalid_parameters, consolidate_parameters, remove_empty_parameters
 from retrieval.retrievers import ArtistRetriever, GenreRetriever, ReleaseRetriever, \
     SheetRetriever, SongRetriever, SongWithArtistsRetriever, TrackTabRetriever
+
+logger = getLogger(__name__)
 
 
 def register(api: Api):
@@ -47,8 +51,12 @@ def register(api: Api):
             Get single artist instance by its ID.
             """
             abort_on_invalid_parameters(api, {'artist_id': artist_id})
-            retrieved = ArtistRetriever(g.session).get_objects({'id': artist_id})
-            return retrieved[0] if retrieved else {}
+
+            if retrieved := ArtistRetriever(g.session).get_objects({'id': artist_id}):
+                return retrieved[0]
+            else:
+                logger.warning(f'Artist was not found for ID={artist_id}')
+                return {}
 
 
     @ns.route('/genres')
@@ -81,8 +89,12 @@ def register(api: Api):
             Get single genre instance by its ID.
             """
             abort_on_invalid_parameters(api, {'genre_id': genre_id})
-            retrieved = GenreRetriever(g.session).get_objects({'id': genre_id})
-            return retrieved[0] if retrieved else {}
+
+            if retrieved := GenreRetriever(g.session).get_objects({'id': genre_id}):
+                return retrieved[0]
+            else:
+                logger.warning(f'Genre was not found for ID={genre_id}')
+                return {}
 
 
     @ns.route('/releases')
@@ -124,8 +136,12 @@ def register(api: Api):
             Get single release instance by its ID.
             """
             abort_on_invalid_parameters(api, {'release_id': release_id})
-            retrieved = ReleaseRetriever(g.session).get_objects({'id': release_id})
-            return retrieved[0] if retrieved else {}
+
+            if retrieved := ReleaseRetriever(g.session).get_objects({'id': release_id}):
+                return retrieved[0]
+            else:
+                logger.warning(f'Release was not found for ID={release_id}')
+                return {}
 
 
     @ns.route('/songs')
@@ -186,8 +202,12 @@ def register(api: Api):
             Get single song instance by its ID.
             """
             abort_on_invalid_parameters(api, {'song_id': song_id})
-            retrieved = SongRetriever(g.session).get_objects({'id': song_id})
-            return retrieved[0] if retrieved else {}
+
+            if retrieved := SongRetriever(g.session).get_objects({'id': song_id}):
+                return retrieved[0]
+            else:
+                logger.warning(f'Song was not found for ID={song_id}')
+                return {}
 
 
     @ns.route('/sheets')
@@ -223,8 +243,12 @@ def register(api: Api):
             Get single sheet instance by its ID.
             """
             abort_on_invalid_parameters(api, {'sheet_id': sheet_id})
-            retrieved = SheetRetriever(g.session).get_objects({'id': sheet_id})
-            return retrieved[0] if retrieved else {}
+
+            if retrieved := SheetRetriever(g.session).get_objects({'id': sheet_id}):
+                return retrieved[0]
+            else:
+                logger.warning(f'Sheet was not found for ID={sheet_id}')
+                return {}
 
 
     @ns.route('/tracktabs')
@@ -263,8 +287,12 @@ def register(api: Api):
             Get single track tab instance by its ID.
             """
             abort_on_invalid_parameters(api, {'tracktab_id': tracktab_id})
-            retrieved = TrackTabRetriever(g.session).get_objects({'id': tracktab_id})
-            return retrieved[0] if retrieved else {}
+
+            if retrieved := TrackTabRetriever(g.session).get_objects({'id': tracktab_id}):
+                return retrieved[0]
+            else:
+                logger.warning(f'TrackTab was not found for ID={tracktab_id}')
+                return {}
 
 
     @ns.route('/combined-artist-song-release')
@@ -279,11 +307,14 @@ def register(api: Api):
 
         @api.expect(parser, validate=True)
         def get(self):
+
             substring_target = 'name'
             morphed_args = consolidate_parameters(request.args, self.parser)
             morphed_args[substring_target] = morphed_args.pop('substring')
-            # no substring defined leads to an empty result
+
+            # No substring defined leads to an empty result
             if not morphed_args[substring_target]:
+                logging.info('Empty substring given for omnibar search endpoint')
                 return None
 
             morphed_args['sort_by'] = f'len({substring_target})!asc'
