@@ -52,7 +52,7 @@ def register(api: Api):
             """
             abort_on_invalid_parameters(api, {'artist_id': artist_id})
 
-            if retrieved := ArtistRetriever(g.session).get_objects({'id': artist_id}):
+            if retrieved := ArtistRetriever(g.session).get_objects({'id': int(artist_id)}):
                 return retrieved[0]
             else:
                 logger.warning(f'Artist was not found for ID={artist_id}')
@@ -90,7 +90,7 @@ def register(api: Api):
             """
             abort_on_invalid_parameters(api, {'genre_id': genre_id})
 
-            if retrieved := GenreRetriever(g.session).get_objects({'id': genre_id}):
+            if retrieved := GenreRetriever(g.session).get_objects({'id': int(genre_id)}):
                 return retrieved[0]
             else:
                 logger.warning(f'Genre was not found for ID={genre_id}')
@@ -137,7 +137,7 @@ def register(api: Api):
             """
             abort_on_invalid_parameters(api, {'release_id': release_id})
 
-            if retrieved := ReleaseRetriever(g.session).get_objects({'id': release_id}):
+            if retrieved := ReleaseRetriever(g.session).get_objects({'id': int(release_id)}):
                 return retrieved[0]
             else:
                 logger.warning(f'Release was not found for ID={release_id}')
@@ -203,7 +203,7 @@ def register(api: Api):
             """
             abort_on_invalid_parameters(api, {'song_id': song_id})
 
-            if retrieved := SongRetriever(g.session).get_objects({'id': song_id}):
+            if retrieved := SongRetriever(g.session).get_objects({'id': int(song_id)}):
                 return retrieved[0]
             else:
                 logger.warning(f'Song was not found for ID={song_id}')
@@ -244,7 +244,7 @@ def register(api: Api):
             """
             abort_on_invalid_parameters(api, {'sheet_id': sheet_id})
 
-            if retrieved := SheetRetriever(g.session).get_objects({'id': sheet_id}):
+            if retrieved := SheetRetriever(g.session).get_objects({'id': int(sheet_id)}):
                 return retrieved[0]
             else:
                 logger.warning(f'Sheet was not found for ID={sheet_id}')
@@ -288,7 +288,7 @@ def register(api: Api):
             """
             abort_on_invalid_parameters(api, {'tracktab_id': tracktab_id})
 
-            if retrieved := TrackTabRetriever(g.session).get_objects({'id': tracktab_id}):
+            if retrieved := TrackTabRetriever(g.session).get_objects({'id': int(tracktab_id)}):
                 return retrieved[0]
             else:
                 logger.warning(f'TrackTab was not found for ID={tracktab_id}')
