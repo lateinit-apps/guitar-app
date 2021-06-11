@@ -14,21 +14,26 @@ down_revision = '969065452b2a'
 branch_labels = None
 depends_on = None
 
-meta = sa.MetaData(bind=op.get_bind())
-meta.reflect()
-tables = {
-    'artist': sa.Table('artist', meta),
-    'artist_release': sa.Table('artist_release', meta),
-    'genre': sa.Table('genre', meta),
-    'genre_artist': sa.Table('genre_artist', meta),
-    'genre_release': sa.Table('genre_release', meta),
-    'release': sa.Table('release', meta),
-    'song': sa.Table('song', meta),
-    'tracktab': sa.Table('tracktab', meta)
-}
+
+def obtain_tables_mapping():
+
+    meta = sa.MetaData(bind=op.get_bind())
+    meta.reflect()
+    return {
+        'artist': sa.Table('artist', meta),
+        'artist_release': sa.Table('artist_release', meta),
+        'genre': sa.Table('genre', meta),
+        'genre_artist': sa.Table('genre_artist', meta),
+        'genre_release': sa.Table('genre_release', meta),
+        'release': sa.Table('release', meta),
+        'song': sa.Table('song', meta),
+        'tracktab': sa.Table('tracktab', meta)
+    }
 
 
 def upgrade():
+
+    tables = obtain_tables_mapping()
 
     op.bulk_insert(
         tables['genre'],
@@ -171,6 +176,8 @@ def upgrade():
 
 
 def downgrade():
+
+    tables = obtain_tables_mapping()
 
     op.execute(tables['tracktab'].update().where(tables['tracktab'].c.id == 123023)
         .values(gp5_link=None))
