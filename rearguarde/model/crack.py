@@ -1,4 +1,6 @@
-from sqlalchemy import Column, Integer, String, Date, Text, Time, ForeignKey
+from enum import Enum as NativeEnum
+
+from sqlalchemy import Column, Enum, Integer, String, Date, Text, Time, ForeignKey
 from sqlalchemy.orm import relationship, backref
 
 from model.base import Base
@@ -36,6 +38,22 @@ class GenreArtist(Base):
     artist_id = Column(Integer, ForeignKey(Artist.id), primary_key=True)
 
 
+class ReleaseType(NativeEnum):
+    ALBUM = 'album'
+    EXTENDED_PLAY = 'extended_play'
+    LONG_PLAY = 'long_play'
+    SINGLE = 'single'
+
+
+class AlbumKind(NativeEnum):
+    COMPILATION = 'compilation'
+    COVER = 'cover'
+    LIVE = 'live'
+    SOUNDTRACK = 'soundtrack'
+    STUDIO = 'studio'
+    TRIBUTE = 'tribute'
+
+
 class Release(Base):
     __tablename__ = 'release'
 
@@ -43,8 +61,8 @@ class Release(Base):
     name = Column(String(64))
     year = Column(Integer)
     label = Column(String(64))
-    type = Column(String(32))
-    album_kind = Column(String(32))
+    type = Column(Enum(ReleaseType, name='release_type'), nullable=False)
+    album_kind = Column(Enum(AlbumKind, name='album_kind'))
     portrait_image_link = Column(String(128))
 
     genres = relationship(Genre, secondary='genre_release')
