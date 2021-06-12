@@ -39,19 +39,19 @@ class GenreArtist(Base):
 
 
 class ReleaseType(NativeEnum):
-    ALBUM = 'album'
-    EXTENDED_PLAY = 'extended_play'
-    LONG_PLAY = 'long_play'
-    SINGLE = 'single'
+    ALBUM = 'ALBUM'
+    EXTENDED_PLAY = 'EXTENDED_PLAY'
+    LONG_PLAY = 'LONG_PLAY'
+    SINGLE = 'SINGLE'
 
 
 class AlbumKind(NativeEnum):
-    COMPILATION = 'compilation'
-    COVER = 'cover'
-    LIVE = 'live'
-    SOUNDTRACK = 'soundtrack'
-    STUDIO = 'studio'
-    TRIBUTE = 'tribute'
+    COMPILATION = 'COMPILATION'
+    COVER = 'COVER'
+    LIVE = 'LIVE'
+    SOUNDTRACK = 'SOUNDTRACK'
+    STUDIO = 'STUDIO'
+    TRIBUTE = 'TRIBUTE'
 
 
 class Release(Base):

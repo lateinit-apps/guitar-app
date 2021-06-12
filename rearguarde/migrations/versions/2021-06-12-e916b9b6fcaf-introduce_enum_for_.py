@@ -18,22 +18,22 @@ depends_on = None
 release_type = {
     'name': 'release_type',
     'values': [
-        'album',
-        'extended_play',
-        'long_play',
-        'single',
+        'ALBUM',
+        'EXTENDED_PLAY',
+        'LONG_PLAY',
+        'SINGLE',
     ],
 }
 
 album_kind = {
     'name': 'album_kind',
     'values': [
-        'compilation',
-        'cover',
-        'live',
-        'soundtrack',
-        'studio',
-        'tribute',
+        'COMPILATION',
+        'COVER',
+        'LIVE',
+        'SOUNDTRACK',
+        'STUDIO',
+        'TRIBUTE',
     ],
 }
 
@@ -49,13 +49,13 @@ def upgrade():
                    type_=sa.Enum(*release_type['values'], name=release_type['name']),
                    existing_type=sa.VARCHAR(length=32),
                    nullable=False,
-                   postgresql_using=f'lower(type)::{release_type["name"]}')
+                   postgresql_using=f'UPPER(type)::{release_type["name"]}')
 
         op.execute(f"CREATE TYPE {album_kind['name']} AS ENUM ({','.join(repr(x) for x in album_kind['values'])})")
         op.alter_column('release', 'album_kind',
                    type_=sa.Enum(*album_kind['values'], name=album_kind['name']),
                    existing_type=sa.VARCHAR(length=32),
-                   postgresql_using=f'lower(album_kind)::{album_kind["name"]}')
+                   postgresql_using=f'UPPER(album_kind)::{album_kind["name"]}')
 
 
 def downgrade():
