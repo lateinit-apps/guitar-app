@@ -1,6 +1,7 @@
 from enum import Enum as NativeEnum
 
 from sqlalchemy import Column, Enum, Integer, String, Date, Text, Time, ForeignKey
+from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import relationship, backref
 
 from model.base import Base
@@ -67,6 +68,14 @@ class Release(Base):
 
     genres = relationship(Genre, secondary='genre_release')
     artists = relationship(Artist, secondary='artist_release')
+
+    @hybrid_property
+    def type_formatted(self):
+        return self.type.value if self.type else None
+
+    @hybrid_property
+    def album_kind_formatted(self):
+        return self.album_kind.value if self.album_kind else None
 
 
 class GenreRelease(Base):
