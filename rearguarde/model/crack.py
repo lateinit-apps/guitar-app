@@ -1,4 +1,7 @@
-from sqlalchemy import Column, Integer, String, Date, Text, Time, ForeignKey
+from enum import Enum as NativeEnum
+
+from sqlalchemy import Column, Enum, Integer, String, Date, Text, Time, ForeignKey
+from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.orm import relationship, backref
 
 from model.base import Base
@@ -36,6 +39,22 @@ class GenreArtist(Base):
     artist_id = Column(Integer, ForeignKey(Artist.id), primary_key=True)
 
 
+class ReleaseType(NativeEnum):
+    ALBUM = 'ALBUM'
+    EXTENDED_PLAY = 'EXTENDED_PLAY'
+    LONG_PLAY = 'LONG_PLAY'
+    SINGLE = 'SINGLE'
+
+
+class AlbumKind(NativeEnum):
+    COMPILATION = 'COMPILATION'
+    COVER = 'COVER'
+    LIVE = 'LIVE'
+    SOUNDTRACK = 'SOUNDTRACK'
+    STUDIO = 'STUDIO'
+    TRIBUTE = 'TRIBUTE'
+
+
 class Release(Base):
     __tablename__ = 'release'
 
@@ -43,12 +62,20 @@ class Release(Base):
     name = Column(String(64))
     year = Column(Integer)
     label = Column(String(64))
-    type = Column(String(32))
-    album_kind = Column(String(32))
+    type = Column(Enum(ReleaseType, name='release_type'), nullable=False)
+    album_kind = Column(Enum(AlbumKind, name='album_kind'))
     portrait_image_link = Column(String(128))
 
     genres = relationship(Genre, secondary='genre_release')
     artists = relationship(Artist, secondary='artist_release')
+
+    @hybrid_property
+    def type_formatted(self):
+        return self.type.value if self.type else None
+
+    @hybrid_property
+    def album_kind_formatted(self):
+        return self.album_kind.value if self.album_kind else None
 
 
 class GenreRelease(Base):

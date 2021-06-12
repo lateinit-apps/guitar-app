@@ -47,10 +47,10 @@ class ReleaseRetriever(AbstractRetriever):
                      .join(Release.songs, isouter=True)
         return [{
             'id': item.id,
-            'album_kind': item.album_kind,
+            'album_kind': item.album_kind_formatted,
             'label': item.label,
             'name': item.name,
-            'type': item.type,
+            'type': item.type_formatted,
             'portrait_image_link': item.portrait_image_link,
             'year': item.year,
             'artist_ids': [artist.id for artist in item.artists],
@@ -94,8 +94,8 @@ class SongWithArtistsRetriever(AbstractRetriever):
                 'name': item.release.name,
                 'year': item.release.year,
                 'label': item.release.label,
-                'type': item.release.type,
-                'album_kind': item.release.album_kind,
+                'type': item.release.type_formatted,
+                'album_kind': item.release.album_kind_formatted,
                 'portrait_image_link': item.release.portrait_image_link,
                 'artists': [{
                     'id': artist.id,
