@@ -14,6 +14,7 @@ logconf.dictConfig(CONFIG)
 logger = getLogger(__name__)
 
 DOCS_LOCATION = '/docs/'
+FRONTEND_ORIGIN = 'http://localhost:3000'
 logger.debug(f'Serving Swagger specs under {DOCS_LOCATION}')
 
 
@@ -21,7 +22,14 @@ def create_app(config_class=None):
 
     app = Flask(__name__)
     app.url_map.strict_slashes = False
-    CORS(app)
+    CORS(app, resources={
+        r'/resources/*': {
+            'origins': FRONTEND_ORIGIN,
+            'max_age': 5,  # in seconds
+            'vary_header': False,  # set CORS headers static -> allow caching
+        }
+    })
+
     if config_class:
         logger.debug(f'Loading Flask app configuration from {config_class.__name__}')
         app.config.from_object(config_class)
