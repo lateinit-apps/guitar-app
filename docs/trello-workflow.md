@@ -7,11 +7,11 @@ more strict and organized way.
 
 ## General points
 
-The key is in a basic planning, everyone should now what to do on in every moment of time and
-doesn't do things on their own, all tasks and their ordering should be decided on repeating meetups,
-that replace grooming, planning and standup sessions, so generally we're more into waterflow model.
+Basic planning is the key: everyone should know what to do at the moment and doesn't do things on
+their own. All tasks and their ordering should be decided on recurring meetups, that replace
+grooming, planning and standup sessions, so generally we're more into waterflow model.
 
-For better and more efficient ordering some high level goals should be decided and things that move
+For better and more efficient ordering some high level goals should be decided and tasks that move
 us toward them should be prioritized over any other.
 
 ## Lists' description
@@ -22,41 +22,41 @@ here Trello is a perfect simple option. Next four lists are present on the board
 ### Propositions
 
 Here goes all new upcoming tasks, any ideas, suggestions, new information, generally speaking -
-almost everything except issues. On meetup sessions new cards should be processed further. They
-could be converted into tasks, saved in .md on github (if information has some possible value, but
-we're unsure if we will definitely do something with it) or archived if they were declined or don't
-require any actions.
+almost everything except issues. New cards should be processed further on meetup sessions. They
+could be converted into tasks, saved in `.md` on Github (if information has some possible value, but
+we're unsure if we will definitely do something with it) or archived (if they were declined or don't
+require any actions).
 
 ### Backlog
 
-This and all following lists can have only tasks in them, also, should follow next conventions -
+This and all the following lists can have only tasks in them, also, must follow two conventions -
 task header should start with a verb and the card should have all proper labels in it.
 
 Backlog is a *definitely do* list, so here goes only that tasks that we are mandatory to do at some
-moment. Why we don't keep tasks that we're doubtful on or ideas here? Mostly to keep it short and
+moment. Why don't we keep tasks that we're doubtful on or ideas here? Mostly to keep it short and
 simple and don't pollute it with a lot of cards that will require some re-reading and will distract
 attention.
 
 ### Priority Queue
 
-Almost the same as the backlog, but here tasks are prioritized in order. Tasks should be done one by
+Almost the same as the backlog, but tasks here are prioritized in order. Tasks should be done one by
 one descending from the top grouped by assignees.
 
 ### Current
 
 Here are tasks that are in progress (not usually means that they're being done right now,
-more likely it's the first next task to do). Normally only one task per assignee should goes here,
-but if by one task multiple things can be closed there can be more than one task. When a task is
-done, any comments on execution should be left if there are some and then the card should be simply
-archived, while everyone on the board should be subscribed on this list they will be notified when
-it's finished and in ideal world nothing will be missed.
+more likely it's the first next task to do). Normally only one task per assignee should go here,
+a parallel work on multiple is allowed though. When a task is done, comments (if any) on the
+execution should be left, and the card should be merely archived. It is recommended to have a
+subscription to this list so notification will be sent for a card on its completion, and in ideal
+world nothing will be missed.
 
 ## Tracking of issues
 
-We don't store issues (more in a meaning of bugs/wrong behavior) on Trello because it's more useful
-to have historical tracking of them where Trello's archive is a terrible thing to search. So for
-storing issues we use github issues, all issue descriptions should be written there, this way they
-will be kept in the repository history and will be easy to access later. For tracking of doing
-particular issues we need to duplicate them with cards in Trello. Just keep it simple, no links are
-needed, nor any description, just label it with `issue` and put header like `!88`, where 88 - is a
-number of issue on github.
+It's useful to have historical tracking of issues (more in a meaning of bugs/wrong behavior), but we
+don't store them on Trello as its archive is a terrible thing to search. So we use Github issues for
+storing: all issue descriptions should be written there - this way they will be kept in the
+repository history and will be easy to access later. For tracking of doing particular issues we need
+to duplicate them with cards in Trello. Just keep it simple, no links are needed, nor any
+description - just label it with `issue` and put header like `!88`, where 88 - is a number of issue
+on Github.
