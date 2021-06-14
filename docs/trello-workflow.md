@@ -44,9 +44,12 @@ one descending from the top grouped by assignees.
 
 ### Current
 
-Simply here are tasks that are in progress (not usually means that they're being done right now,
+Here are tasks that are in progress (not usually means that they're being done right now,
 more likely it's the first next task to do). Normally only one task per assignee should goes here,
-but if by one task multiple things can be closed there can be more than one task.
+but if by one task multiple things can be closed there can be more than one task. When a task is
+done, any comments on execution should be left if there are some and then the card should be simply
+archived, while everyone on the board should be subscribed on this list they will be notified when
+it's finished and in ideal world nothing will be missed.
 
 ## Tracking of issues
 
