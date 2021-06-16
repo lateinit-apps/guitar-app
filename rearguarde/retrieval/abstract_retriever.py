@@ -1,8 +1,11 @@
 from abc import ABC, abstractmethod
+from logging import getLogger
 from re import fullmatch, match
 from sys import stderr
 
 from sqlalchemy import asc, desc, func
+
+logger = getLogger(__name__)
 
 
 class SortByFormatError(Exception):
@@ -31,12 +34,13 @@ class QueryManipulator:
 
             match_strategy = pair[0]
             if match_strategy not in ['exact', 'substring']:
-                print('inapplicable match strategy has been passed', file=stderr)
+                logger.warning(f'Inapplicable match strategy has been passed: {match_strategy}')
                 continue
+
             field, value = pair[1], pair[2]
             if not hasattr(entity, field):
                 if field != self.SORTING_PARAM_NAME:
-                    print(f'{field} field is not found for class {entity}', file=stderr)
+                    logger.warning(f'{field} field is not found for class {entity}')
                 continue
 
             self.query = self.query.filter(getattr(entity, field) == value) \
@@ -96,7 +100,7 @@ class QueryManipulator:
                         else self.query.order_by(desc(key))
 
                 except SortByFormatError as e:
-                    print(e, file=stderr)
+                    logger.error(e)
         return self
 
     def withdraw_query(self):

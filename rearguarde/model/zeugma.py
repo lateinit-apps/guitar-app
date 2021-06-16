@@ -18,6 +18,7 @@ with open('configuration/db_settings.json') as db_settings:
            + f'{config["crack_password"]}@{config["crack_host"]}:{config["crack_port"]}/' \
            + f'{config["crack_name"]}'
 
+    # Put 'echo=True' to enable extra logging
     engine = create_engine(db_url)
     Base.metadata.bind = engine
     session_factory = sessionmaker(bind=engine)
