@@ -80,6 +80,6 @@ if the default OS locale is not US English. To avoid such problem, before runnin
 executable specify `chcp 1251` in the shell to replace the default one. For additional info please
 refer to [link](https://iu5bmstu.ru/index.php/PostgreSQL_-_%D0%9A%D0%B8%D1%80%D0%B8%D0%BB%D0%BB%D0%B8%D1%86%D0%B0_%D0%B2_psql_%D0%BF%D0%BE%D0%B4_Windows).
 Then, make sure you do have the `<path_to_postgresql_installation>\bin\psql.exe` entry in your
-PATH envionment variable. Next, all the setup process is similar to one described for Linux case
+PATH environment variable. Next, all the setup process is similar to one described for Linux case
 except you don't need to do any configuration file editing as the default authentication for
 Windows is performed via password specification.
