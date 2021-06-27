@@ -23,6 +23,24 @@ convenience some possible troublesome topics can be duplicated just to make more
 somebody who thinks he is quite familiar with PEP 8 and is sly enough not to read it before or feels
 like he may have forgot something.
 
+## Table of Contents
+
+- [KwK 8.8 L/100](#kwk-88-l100)
+  - [Table of Contents](#table-of-contents)
+  - [Code Lay-out](#code-lay-out)
+    - [Indentation](#indentation)
+    - [Maximum Line Length](#maximum-line-length)
+    - [Should a Line Break Before or After a Binary Operator?](#should-a-line-break-before-or-after-a-binary-operator)
+    - [Imports](#imports)
+    - [Module Level Dunder Names](#module-level-dunder-names)
+  - [String Quotes](#string-quotes)
+  - [Whitespace in Expressions and Statements](#whitespace-in-expressions-and-statements)
+  - [When to Use Trailing Commas](#when-to-use-trailing-commas)
+  - [Comments](#comments)
+  - [Naming Conventions](#naming-conventions)
+    - [Descriptive: Naming Styles](#descriptive-naming-styles)
+  - [Programming Recommendations](#programming-recommendations)
+
 ## [Code Lay-out](https://www.python.org/dev/peps/pep-0008/#code-lay-out)
 
 ### [Indentation](https://www.python.org/dev/peps/pep-0008/#indentation)
