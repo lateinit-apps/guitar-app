@@ -65,10 +65,7 @@ squashes, no rebasing is allowed
 
 ## Coding conventions
 
-- [PEP 8](https://www.python.org/dev/peps/pep-0008/)
-- 100 characters line length limit
-  - supports of opening two files side by side and a console/file explorer tab on 24" monitor
-  - having a small part of word over limit is fine
+- For Python we have our own coding convention, mostly inherited from PEP 8, codenamed as [KwK 8.8 L/100](KwK8.8L100.md)
 - Database naming
   - PascalCase for ORM-classes
   - snake_case for table names
