@@ -78,8 +78,8 @@ somewhere, maybe... ~~in a long time ago in a galaxy far, far away~~
 
 Loki is an instrument for logs aggregation and *cute* displaying. We MUST have it.
 
-No, seriously, just look at [this thing's demo](https://play.grafana.org)! Don't forget to pick up
-your saliva and go implement [it](https://grafana.com/oss/loki/) right ~~nav~~ ahead.
+No, seriously, just look at [this thing's demo](https://play.grafana.org)! Stop drooling and go implement
+[it](https://grafana.com/oss/loki/) right now!
 
 ## Online tablature recorder/player
 
@@ -87,3 +87,8 @@ Try it out [here](https://1j01.github.io/guitar/). Possibly can help to record s
 our DB to avoid copyright strikes in detour of `.gp5`. Will require some parser, unfortunately.
 
 [Sauce](https://github.com/1j01/guitar).
+
+## Mock DB for testing
+
+Currently, we don't have any rearguarde's endpoints modifying the database. But if we had, it would
+be great to setup temporary lightweight database for testing purposes. It is recommended practice.
