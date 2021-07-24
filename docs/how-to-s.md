@@ -45,6 +45,11 @@ with possible database manipulations
 - Then you will see debug info in your console and url (default: `http://localhost:5000/`)
 - Just open url and you're the man
 
+### How to run test suite
+
+- Launch Rearguarde application
+- Execute `python tests/test_api.py`
+
 ### How to use flask CLI
 
 Developer is encouraged to use command line shell for interacting with the application. Flask
