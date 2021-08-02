@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@reduxjs/toolkit": "^1.6.0",
+    "@reduxjs/toolkit": "^1.6.1",
     "awesome-debounce-promise": "^2.1.0",
     "axios": "^0.21.1",
     "bootstrap": "^5.0.2",
