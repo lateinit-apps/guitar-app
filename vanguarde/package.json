@@ -6,7 +6,7 @@
     "@reduxjs/toolkit": "^1.6.1",
     "awesome-debounce-promise": "^2.1.0",
     "axios": "^0.21.1",
-    "bootstrap": "^5.0.2",
+    "bootstrap": "^5.1.0",
     "mdbreact": "5.1.0",
     "react": "16.13.1",
     "react-bootstrap": "^1.6.1",
@@ -15,7 +15,7 @@
     "react-redux": "^7.2.4",
     "react-scripts": "4.0.3",
     "react-select": "^4.3.1",
-    "redux": "^4.1.0",
+    "redux": "^4.1.1",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
