@@ -1,5 +1,15 @@
 # Guitar app
 
+The project is frozen and will be never continued in the old way, the team was disbanded.
+
+It's left as it was on the end point without any changes as a historical snapshot.
+
+As on October 2021 it [was continued](https://github.com/tankonstin-labs/taburette) in a more dry
+and formalized way with huge losses in originality and spirit (in comparison to source) by the
+previous main contributor.
+
+---
+
 [![License](https://img.shields.io/github/license/lateinit-apps/guitar-app?color=blue)](https://github.com/lateinit-apps/guitar-app/blob/develop/LICENSE)
 [![GitHub contributors](https://img.shields.io/github/contributors/lateinit-apps/guitar-app.svg)](https://GitHub.com/lateinit-apps/guitar-app/graphs/contributors/)
 [![Depfu](https://badges.depfu.com/badges/a1cb7603c54e7378f8d8203e024678b3/overview.svg)](https://depfu.com/github/lateinit-apps/guitar-app?project_id=14088)
